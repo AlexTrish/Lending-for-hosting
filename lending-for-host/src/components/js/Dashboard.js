@@ -6,13 +6,50 @@ import Content_3 from './Content_3';
 import Content_4 from './Content_4';
 
 function Dashboard() {
+
+
+useEffect(() => {
+    localStorage.setItem('currentMenu', currentMenu);
+}, [currentMenu]);
+
+
+
     return (
         <div className="dashboard">
-            <Content_main />
-            <Content_1 />
-            <Content_2 />
-            <Content_3 />
-            <Content_4 />
+            {currentMenu === 'Main' ? (
+                <div>
+                    <Content_main />
+                    <Content_1 />
+                    <Content_2 />
+                    <Content_3 />
+                    <Content_4 />
+                </div>
+            ) : currentMenu === 'VPS' ? (
+                <div>
+                    
+                </div>
+            ) : currentMenu === 'VDS' ? (
+                <div>
+
+                </div>
+            ) : currentMenu === 'VPN' ? (
+                <div>
+
+                </div>
+            ) : currentMenu === 'cl-pn' ? (
+                <div>
+
+                </div>
+            ) : currentMenu === 'bulletproof' ? (
+                <div>
+
+                </div>
+            ) : currentMenu === 'VPS' ? (
+                <div>
+
+                </div>
+            ) : (
+            )}
         </div>
     );
 }
