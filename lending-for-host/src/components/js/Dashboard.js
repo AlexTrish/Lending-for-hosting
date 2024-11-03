@@ -8,7 +8,7 @@ import Rules from './Rules';
 
 import '../css/styles.scss';
 
-function Dashboard({ currentMenu }) {
+function Dashboard({ setCurrentMenu, currentMenu }) {
   useEffect(() => {
     localStorage.setItem('currentMenu', currentMenu);
   }, [currentMenu]);
@@ -516,6 +516,7 @@ function Dashboard({ currentMenu }) {
                 <h3>Домены</h3>
                 <p>это услуга хостинг-провайдера, где пользователь получает свой удалённый рабочий стол. Пользователь VPS имеет полные root-права по использованию. Может установить любое доступное ПО без каких-либо ограничений. Другими словами, это удалённый компьютер, который работает круглые сутки.<br/><br/>
                   Если у Вас имеются сложности в установке ПО, наша команда всегда готова помочь.</p>
+                  <button className='btn btn-buy-domain' onClick={() => setCurrentMenu('buy-domain')}></button>
               </div>
             </section>
           </div>
