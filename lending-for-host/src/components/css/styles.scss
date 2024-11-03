@@ -3,6 +3,7 @@
     --icon-one: url('../img/ico-one-lg.svg') center no-repeat;
     --icon-two: url('../img/ico-two-lg.svg') center no-repeat;
     --icon-three: url('../img/ico-three-lg.svg') center no-repeat;
+    --icon-buy: url('../img/buy-ico-lg.svg') center no-repeat;
     --svg-center-info-block: url('../img/svg-center-info-block-lg.svg') center no-repeat;
     --svg-content-block-info: url('../img/svg-content-block-info-lg.svg') center no-repeat;
 
@@ -40,6 +41,7 @@
     --icon-one: url('../img/ico-one-dr.svg') center no-repeat;
     --icon-two: url('../img/ico-two-dr.svg') center no-repeat;
     --icon-three: url('../img/ico-three-dr.svg') center no-repeat;
+    --icon-buy: url('../img/buy-ico-dr.svg') center no-repeat;
     --svg-center-info-block: url('../img/svg-center-info-block-dr.svg') center no-repeat;
     --svg-content-block-info: url('../img/svg-content-block-info-dr.svg') center no-repeat;
 
@@ -654,6 +656,10 @@ body {
     padding: 0 4.5rem;
   }
 
+  li {
+    margin-bottom: 1.5rem;
+  }
+
   p {
     font-size: 1rem;
     color: var(--text-color);
@@ -728,6 +734,10 @@ body {
 
   background-color: var(--buy-block);
 
+  -webkit-box-shadow: var(--box-shadow);
+  -moz-box-shadow: var(--box-shadow);
+  box-shadow: var(--box-shadow);
+
   .buy-card-header {
     width: 100%;
     display: flex;
@@ -789,6 +799,44 @@ body {
       height: 1.5px;
       border-radius: 1.5rem;
       background-color: var(--footer-line);
+    }
+  }
+
+  .buy-card-footer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    .line-buy-card {
+      margin: 1rem 0;
+      width: 16vw;
+      height: 1.5px;
+      border-radius: 1.5rem;
+      background-color: var(--footer-line);
+    }
+
+    .buy-card-btn {
+      width: 12vw;
+      height: 3rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+
+      font-size: 1.2rem;
+      font-weight: 600;
+      border-radius: 0.75rem;
+      color: var(--button-text-color);
+      background-color: var(--green-block);
+      cursor: pointer;
+
+      .img-btn-buy {
+        width: 2vw;
+        height: 2vw;
+        background: var(--icon-buy);
+      }
     }
   }
 }

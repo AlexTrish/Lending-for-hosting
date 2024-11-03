@@ -49,6 +49,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -70,6 +71,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -91,6 +93,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -112,6 +115,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                  <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -146,6 +150,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -167,6 +172,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -188,6 +194,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -209,6 +216,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                  <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -243,6 +251,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -264,6 +273,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -285,6 +295,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -306,6 +317,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                  <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -340,6 +352,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -361,6 +374,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -382,6 +396,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -403,6 +418,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                  <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -437,6 +453,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -458,6 +475,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -479,6 +497,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -500,6 +519,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                   <div className='buy-card-description'></div>
                 </div>
                 <div className='buy-card-footer'>
+                  <div className='line-buy-card'></div>
                   <button className='buy-card-btn'>
                     <div className='img-btn-buy'></div>
                     Заказать
@@ -516,7 +536,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
                 <h3>Домены</h3>
                 <p>это услуга хостинг-провайдера, где пользователь получает свой удалённый рабочий стол. Пользователь VPS имеет полные root-права по использованию. Может установить любое доступное ПО без каких-либо ограничений. Другими словами, это удалённый компьютер, который работает круглые сутки.<br/><br/>
                   Если у Вас имеются сложности в установке ПО, наша команда всегда готова помочь.</p>
-                  <button className='btn btn-buy-domain' onClick={() => setCurrentMenu('buy-domain')}></button>
+                  <button className='btn btn-buy-domain' onClick={() => setCurrentMenu('buy-domain')}><div className='img-btn-buy'></div></button>
               </div>
             </section>
           </div>
