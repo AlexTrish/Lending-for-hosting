@@ -7,14 +7,14 @@ function Domain() {
             <div>
                 <h3>Приобрести домен</h3>
                 <Form>
-                    <Form.Group>
-                        <Form.Control type="text" value="text" placeholder="домен" />
+                    <Form.Group className="form-conteiner">
+                        <Form.Control type="text" placeholder="Введите домен" className="domain-color"/>
+                        <div className='input-dropdown domain-color'></div>
+                        <button className="btn search-btn">Проверить</button>
                     </Form.Group>
                 </Form>
             </div>
-            <div>
 
-            </div>
         </div>
     )
 }
