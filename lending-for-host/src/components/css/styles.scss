@@ -30,6 +30,7 @@
     --button-text-color: #FFFFFF !important;
 
     --box-shadow: 12px 32px 80px -20px rgba(0, 0, 0, 0.12);
+    --box-shadow-inset: None;
     --opacity-sun: 1;
     --opacity-moon: 0;
     --filter-dropdown: brightness(80%);
@@ -68,6 +69,7 @@
     --button-text-color: #000000 !important;
 
     --box-shadow: none;
+    --box-shadow-inset: 0px 0px 15px 0px rgba(0, 0, 0, 0.25) inset;
     --opacity-sun: 0;
     --opacity-moon: 1;
     --filter-dropdown: brightness(150%);
@@ -838,5 +840,31 @@ body {
         background: var(--icon-buy);
       }
     }
+  }
+}
+
+.domain {
+  margin: 5vw 0;
+
+  h3 {
+    font-size: 4rem;
+    color: #FFFFFF;
+    padding-left: 10vw;
+  }
+  input {
+    margin-left: 15vw;
+    padding: 0.5rem 5rem;
+    border: none;
+    border-radius: 0.85rem;
+    text-align: left;
+    --bs-body-bg: #282828 !important;
+    color: #fff
+  }
+  .domain-color {
+    background: #282828;
+    border-color: #282828;
+    -webkit-box-shadow: var(--box-shadow-inset);
+    -moz-box-shadow: var(--box-shadow-inset);
+    box-shadow: var(--box-shadow-inset);
   }
 }

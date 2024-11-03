@@ -7,6 +7,7 @@ import Content_4 from './Content_4';
 import Rules from './Rules';
 
 import '../css/styles.scss';
+import Domain from "./Domain";
 
 function Dashboard({ setCurrentMenu, currentMenu }) {
   useEffect(() => {
@@ -541,7 +542,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
             </section>
           </div>
       ) : currentMenu === 'buy-domain' ? (
-        <div> {/* Контент для buy-domain */} </div>
+        <div> <Domain/> </div>
       ) : currentMenu === 'rules' ? (
         <div> <Rules /> </div>
       ) : currentMenu === 'referal' ? (
