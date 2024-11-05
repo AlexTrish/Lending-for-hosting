@@ -1,6 +1,10 @@
+// src/components/js/Content_3.js
 import React from 'react';
+import { useTranslation } from 'react-i18next'; // Импортируем хук
 
 function Content_3() {
+    const { t } = useTranslation(); // Получаем функцию перевода
+
     return (
         <section className="features">
             <div className="center-info-block">
@@ -8,12 +12,12 @@ function Content_3() {
             </div>
             <div className="features-container">
                 <div className="feature left-info-block">
-                    <h3>Абузоустойчивые серверы</h3>
-                    <p> — это сервера, на которых мы не реагируем на определенный вид жалоб от других ресурсов. Мы не блокируем сервер или сайт, если от какого-либо ресурса поступила жалоба.</p>
+                    <h3>{t('features.bulletproofServers.title')}</h3>
+                    <p>{t('features.bulletproofServers.description')}</p>
                 </div>
                 <div className="feature right-info-block">
-                    <h3>Дата Центр</h3>
-                    <p>Мы предоставляем только брендовое оборудование компаний Hewlett Packard, IBM, Dell. При аренде сервера Вы можете не беспокоиться о его техническом состоянии.</p>
+                    <h3>{t('features.dataCenter.title')}</h3>
+                    <p>{t('features.dataCenter.description')}</p>
                 </div>
             </div>
         </section>

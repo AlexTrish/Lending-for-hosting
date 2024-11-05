@@ -1,150 +1,148 @@
 import React from 'react';
+import i18n from './language/i18n';
 
 function Rules() {
     return (
         <div className="rules">
-            <section className="rules-section">
+            <section className="sec">
                 <h3>
-                    Общее положение
+                    {i18n.t('general')}
                 </h3>
-                <ol className="rules-list rules-text">
+                <ol className="list txt">
                     <li>
-                        На некоторых серверах может требовать пароль Администратора, обратитесь в техническую поддержку.
+                        {i18n.t('support')}
                     </li>
                     <li>
-                        Скорость в тарифах указывается с примечанием "ДО" и может колебаться в зависимости от активности пользователей, следовательно в тарифах со скоростью соединения 250 мбит/сек, Вы можете получить приблизительно от 40-70 мбит/сек, в зависимости от активности пользователей. Учитывайте данное примечание при заказе услуг.
+                        {i18n.t('speedNote')}
                     </li>
                     <li>
-                        RETRY.HOST в праве отказать в сотрудничестве без объяснения причины.
+                        {i18n.t('rightToRefuse')}
                     </li>
                     <li>
-                        На всех сайтах необходимо указывать наши NS через личный кабинет. В противном случае услуга может быть заблокирована без возможности восстановления.
+                        {i18n.t('nsRequirement')}
                     </li>
                     <li>
-                        После активации услуги, все действия на сервере - ответственность клиента. RETRY HOST не несёт ответственность.
+                        {i18n.t('clientResponsibility')}
                     </li>
                     <li>
-                        Сервера остановленные по вине провайдера сети, остаток неиспользуемых дней начисляется на счёт в личный кабинет.
+                        {i18n.t('providerIssue')}
                     </li>
                     <li>
-                        RETRY.HOST не несёт ответственности за хранения данных на серверах, если сервер был остановлен за нарушение, либо по истечению срока или другим причинам и клиент желает запросить доступ к серверу для выгрузки файлов и тому подобное, RETRY.HOST в праве отказать клиенту.
+                        {i18n.t('dataResponsibility')}
                     </li>
                     <li>
-                        При нарушении правил использования, RETRY.HOST вправе полностью заблокировать все услуги, а также удалить личный кабинет клиента. Если у клиента остался положительный баланс, все средства анулируются без возврата.
+                        {i18n.t('blockRights')}
                     </li>
                     <li>
-                        На всех тарифах, включая абузоустойчивые, разрешено использовать не более трёх доменных адресов, если Вам требуется больше, используйте услугу абузоустойчивого хостинга.
+                        {i18n.t('domainLimit')}
                     </li>
                     <li>
-                       На всех тарифах, включая абузоустойчивые запрещается использовать: exploit, malware, RDP-Bruteforce, Cobalt Strike
+                        {i18n.t('prohibitedUsage')}
                     </li>
                 </ol>
             </section>
-            <section className="rules-section">
-                <h3 className="rules-heading">
-                    Продление услуг
+            <section className="sec">
+                <h3 className="heading">
+                    {i18n.t('renewal')}
                 </h3>
-                <ol className="rules-list rules-text">
+                <ol className="list txt">
                     <li>
-                        Стоимость продления сервера может изменяться в зависимости от политики компании,а также поступающего трафика на сервера.
+                        {i18n.t('priceChange')}
                     </li>
                     <li>
-                       Retry.Host в праве отклонить продление сервера,даже после оплаты, если есть на то причины. Денежные средства будут возвращены клиенту на его счёт личного кабинета в течении 3 рабочих дней.
+                        {i18n.t('declineRenewal')}
                     </li>
                     <li>
-                        За просроченное продление услуги, на клиента будут применены штрафные санкции: продление будет производиться с даты отключения услуги.
+                        {i18n.t('latePenalty')}
                     </li>
                     <li>
-                        RETRY.HOST в праве не уведомлять клиентов об изменений цен на услуги провайдера, клиент сам обязан проверять изменение цен в личном кабинете.
+                        {i18n.t('noNotification')}
                     </li>
                     <li>
-                        Цены на сервера формируются от курса EURO, поэтому стоимость продления и активации услуги может изменяться.
+                        {i18n.t('euroRate')}
                     </li>
                     <li>
-                        Услугу можно продлить в течении 4 дней, по истечению данного срока услуга удаляется.
+                        {i18n.t('gracePeriod')}
                     </li>
                 </ol>
             </section>
-            <section className="rules-section">
-                <h3 className="rules-heading">
-                    Возврат денежных средств
+            <section className="sec">
+                <h3 className="heading">
+                    {i18n.t('refundPolicy')}
                 </h3>
-                <p className="rules-paragraph rules-text">
-                    За неоказанную или некачественно оказанную услугу, мы можем произвести возврат средств на карту или кошелек. С правилами возврата можно ознакомиться ниже:
+                <p className="para txt">
+                    {i18n.t('refundDetails')}
                 </p>
-                <ol className="rules-list rules-text">
+                <ol className="list txt">
                     <li>
-                        Возврат средств можно получить, если сервер перестал работать по нашей вине. В других случаях, возврат средств не производится.
+                        {i18n.t('serviceFailure')}
                     </li>
                     <li>
-                        Сервера, остановленные за нарушение правил использования, не подлежат денежному возврату.
+                        {i18n.t('ruleViolations')}
                     </li>
                     <li>
-                        Возврат средств за виртуальные сервера производится от 3 до 7 дней, выходные и праздничные дни не учитываются.
+                        {i18n.t('vpsRefund')}
                     </li>
                     <li>
-                        Возврат средств за выделенные сервера производится от 10 до 14 дней, выходные и праздничные дни не учитываются.
+                        {i18n.t('dedicatedRefund')}
                     </li>
                     <li>
-                        За установку выделенного сервера взимается плата в размере 1750 рублей, она уже включена в стоимость выделенного сервера. Данная сумма не возвращается.
+                        {i18n.t('setupFee')}
                     </li>
                     <li>
-                        Возврат средств за абузоустойчивые услуги не предусмотрен, Вы всегда можете обратиться к специалистам для настройки Вашего сервера в тикете на сайте, либо в Telegram @retry_host . Либо запросить замену сервера.
+                        {i18n.t('abuseResistant')}
                     </li>
                     <li>
-                        Возврат средств не предусмотрен за услуги, где размещался: фишинг, казино, криптоскаминг и прочее.
+                        {i18n.t('restrictedContent')}
                     </li>
                     <li>
-                        Клиент может вернуть не более 30% от стоимости сервера, если желает отказаться от услуг в первые 20 дней.
-                    </li>
-                    <li>
-                        Сервера остановленные за нарушение - возврату средств не подлежат.
+                        {i18n.t('partialRefund')}
                     </li>
                 </ol>
-                <p className="rules-paragraph rules-text">
-                    Документальный договор может изменяться и дополняться без ведома клиента. Клиент сам обязан проверять наличие обновление данного договора.
+                <p className="para txt">
+                    {i18n.t('contractChange')}
                 </p>
             </section>
-            <section className="rules-section">
-                <h3 className="rules-heading">
-                    Правила пользованием сервиса
+            <section className="sec">
+                <h3 className="heading">
+                    {i18n.t('usageRules')}
                 </h3>
-                <ol className="rules-list rules-text">
+                <ol className="list txt">
                     <li>
-                        Нарушающая права третьих лиц на интеллектуальную собственность, в том числе нарушающая авторские права, патенты, торговые знаки.
+                        {i18n.t('intellectualProperty')}
                     </li>
                     <li>
-                        Распространение персональных данных третьих лиц.
+                        {i18n.t('personalData')}
                     </li>
                     <li>
-                        Содержащая заведомо вредоносный контент, в т.ч. вирусы, трояны, программы для сканирования портов, брутфорс, стиллеры, парсеры и тому подобное.
+                        {i18n.t('maliciousContent')}
                     </li>
                     <li>
-                        Распространение или пропаганда детской порнографии, а также использование на сайте слов: <span className="rules-block-text">kids</span>, <span className="rules-block-text">lolita</span>, <span className="rules-block-text">pedo</span>, <span className="rules-block-text">peta</span>, <span className="rules-block-text">peto</span>, <span className="rules-block-text">pre-teen</span>, <span className="rules-block-text">pedophile</span>, <span className="rules-block-text">underage</span>, <span className="rules-block-text">child</span> и их аналогов на других языках в описании изображений, видео.
+                        {i18n.t('childProtectionPt1')} <span className="rules-block-text">kids</span>, <span className="rules-block-text">lolita</span>, <span className="rules-block-text">pedo</span>, <span className="rules-block-text">peta</span>, <span className="rules-block-text">peto</span>, <span className="rules-block-text">pre-teen</span>, <span className="rules-block-text">pedophile</span>, <span className="rules-block-text">underage</span>, <span className="rules-block-text">child</span> {i18n.t('childProtectionPt2')}
                     </li>
                     <li>
-                        Фишинг.
+                        {i18n.t('phishing')}
                     </li>
                     <li>
-                        Флуд.
+                        {i18n.t('spam')}
                     </li>
                     <li>
-                        Пропаганда насилия, расистские материалы.
+                        {i18n.t('hateSpeech')}
                     </li>
                     <li>
-                        Мошенничество в любом его проявлении.
+                        {i18n.t('fraud')}
                     </li>
                     <li>
-                        Финансовые пирамиды; Казино; Ставки на спорт и тому подобное; наркотические вещества в соответствии с Opium Law; torrent-трекеры или ресурсы поиска по ним.
+                        {i18n.t('pyramidSchemes')}
                     </li>
                     <li>
-                        Майнинг криптовалют, любые финансовые махинации с кошельками и тому подобное.
+                        {i18n.t('cryptoMining')}
                     </li>
                     <li>
-                        Стриминг без лицензии.
+                        {i18n.t('unlicensedStreaming')}
                     </li>
                     <li>
-                        Интимные услуги.
+                        {i18n.t('adultServices')}
                     </li>
                 </ol>
             </section>

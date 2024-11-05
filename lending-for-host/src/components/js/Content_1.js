@@ -1,13 +1,15 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Content_1() {
+    const { t } = useTranslation(); // Получаем функцию t для перевода
+
     return (
         <section className="about">
             <div className='content-info'>
-                <h2>Мы - ....</h2>
+                <h2>{t('about.title')}</h2>
                 <p>
-                    Компания, предоставляющая услуги: виртуальный хостинг, аренда VDS/VPS, абузоустойчивых серверов и выделенных, регистрация доменов и дополнительные услуги хостинга. RETRY.HOST начал свой путь в 2021 году, а теперь предоставляет полный спектр услуг хостинга, мы уже набрали сотни доволных клиентов.<br/>
-                    Цены у нас действительно доступные, чтобы каждый мог воспользоваться услугами! Наши технические специалисты работают круглые сутки! Поддержка доступна и на английском языке.
+                    {t('about.description')}
                 </p>
             </div>
             <div className="content-block-info"><div className='svg-content-block-info'></div></div>

@@ -1,10 +1,13 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+    const { t } = useTranslation();
+
     return (
         <footer className="footer">
             <div className='footer-line'></div>
-            <p>© 2024 RETRY.HOST. Все права защищены.</p>
+            <p>{t("right")}</p>
         </footer>
     );
 }

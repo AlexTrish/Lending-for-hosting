@@ -1,15 +1,18 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Content_main() {
+    const { t } = useTranslation();
+
     return (
         <section className="hero-section">
             <div className="container text-left">
                 <h2>
-                    Быстро Надёжно <br/>
-                    Доступно
+                    {t('content_main.title.part1')}
+                    <br/> {t('content_main.title.part2')}
                 </h2>
-                <p>Мы гарантируем работу наших серверов на весь оплаченный срок! Хостинг облачных серверов в Европе.</p>
-                <button className="btn join-btn">Присоединиться</button>
+                <p>{t('content_main.description')}</p>
+                <button className="btn join-btn">{t('content_main.joinButton')}</button>
             </div>
             <div className='content-blocks'>
                 <div className='content-wrapper'>
