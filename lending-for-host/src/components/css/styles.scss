@@ -201,7 +201,17 @@ body {
   background: var(--green-block);
   font-size: 1rem;
   font-weight: 600;
+  color: var(--button-text-color);
 }
+
+.sidebar-icon:hover {
+  filter: brightness(80%);
+}
+
+.sidebar-icon:active {
+  border: 1px solid var(--bg-color);
+}
+
 
 .bi-sun-fill {
   position: absolute;
