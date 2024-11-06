@@ -17,6 +17,7 @@
     --svg-domain: url('../img/Domain-img-lg.svg') center no-repeat;
     --svg-cloud-panel: url('../img/Cloud-Panel-img-lg.svg') center no-repeat;
     --svg-bulletproof: url('../img/bulletproof-img-lg.svg') center no-repeat;
+    --svg-referal: url('../img/referal-img-lg.svg') center no-repeat;
 
 
     --bg-color: #EFEFEF !important;
@@ -74,6 +75,7 @@
     --svg-domain: url('../img/Domain-img-dr.svg') center no-repeat;
     --svg-cloud-panel: url('../img/Cloud-Panel-img-dr.svg') center no-repeat;
     --svg-bulletproof: url('../img/bulletproof-img-dr.svg') center no-repeat;
+    --svg-referal: url('../img/referal-img-dr.svg') center no-repeat;
 
     --bg-color: #1A1A1A !important;
     --bg-color-navbar: #1a1a1a3d !important;
@@ -674,10 +676,6 @@ body {
       display: flex;
       align-items: center;
       justify-content: center;
-    
-      -webkit-box-shadow: var(--box-shadow);
-      -moz-box-shadow: var(--box-shadow);
-      box-shadow: var(--box-shadow);
     }
     
     .svg-content-block-info {
@@ -719,12 +717,6 @@ body {
       width: 50vw;
       display: flex;
       align-items: center;
-    }
-    
-    .bl-content {
-      -webkit-box-shadow: var(--box-shadow);
-      -moz-box-shadow: var(--box-shadow);
-      box-shadow: var(--box-shadow);
     }
 
     .img-block {
@@ -1006,10 +998,6 @@ body {
   height: 35vw;
   margin: 0 5vw;
   border-radius: 2.5vw;
-
-  -webkit-box-shadow: var(--box-shadow);
-  -moz-box-shadow: var(--box-shadow);
-  box-shadow: var(--box-shadow);
 }
 
 .vps-blc {
@@ -1029,6 +1017,9 @@ body {
 }
 .bp-blc {
   background: var(--svg-bulletproof);
+}
+.ref-blc {
+  background: var(--svg-referal);
 }
 
 .container-info {

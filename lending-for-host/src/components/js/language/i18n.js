@@ -8,11 +8,21 @@ i18n.use(initReactI18next).init({
         //home
       "about": {
         "title": "We are a hosting service provider",
-        "description": "The company provides services: virtual hosting, VDS/VPS rental, abuse-resistant servers, dedicated servers, domain registration, and additional hosting services. RETRY.HOST started its journey in 2021 and now offers a full range of hosting services, having already gained hundreds of satisfied customers.\nOur prices are genuinely affordable, so everyone can take advantage of our services! Our technical specialists work around the clock! Support is available in English as well."
+        "description": "The company provides services: virtual hosting, VDS/VPS rental, abuse-resistant servers, dedicated servers, domain registration, and additional hosting services. RETRY.HOST started its journey in 2021 and now offers a full range of hosting services, having already gained hundreds of satisfied customers.\nOur prices are genuinely affordable, so everyone can take advantage of our services! Our technical specialists work around the clock! Support is available in English as well.",
+        "lable": "Why should you choose us?",
+        "guarantee": "100% Guarantee",
+        "guarantee-descriptionPt1": "In the event of a fault, we will provide",
+        "guarantee-descriptionPt2": "you with a replacement",
+        "shield": "Protection and safety",
+        "shield-descriptionPt1": "We guarantee the protection of your",
+        "shield-descriptionPt2": "personal data",
+        "support": "24/7 Support",
+        "support-descriptionPt1": "Our operators work 24/7",
+        "shield-descriptionPt2": "You can always get help from us!"
       },
       "monitoring": {
         "title": "Monitoring",
-        "description": "A company providing services: virtual hosting, VDS/VPS rental, abuse-resistant servers and dedicated hosting, domain registration, and additional hosting services."
+        "description": "We use modern monitoring systems, so if something happens, the situation will be resolved as soon as possible. Our specialists respond promptly to customer requests, find the optimal solution for each task, and work on it as a priority."
       },
       "features": {
         "bulletproofServers": {
@@ -171,11 +181,21 @@ i18n.use(initReactI18next).init({
       //home
       "about": {
         "title": "Мы - компания, предоставляющая услуги хостинга",
-        "description": "Компания, предоставляющая услуги: виртуальный хостинг, аренда VDS/VPS, абузоустойчивых серверов и выделенных, регистрация доменов и дополнительные услуги хостинга. RETRY.HOST начал свой путь в 2021 году, а теперь предоставляет полный спектр услуг хостинга, мы уже набрали сотни довольных клиентов.\nЦены у нас действительно доступные, чтобы каждый мог воспользоваться услугами! Наши технические специалисты работают круглые сутки! Поддержка доступна и на английском языке."
+        "description": "Компания, предоставляющая услуги: виртуальный хостинг, аренда VDS/VPS, абузоустойчивых серверов и выделенных, регистрация доменов и дополнительные услуги хостинга. RETRY.HOST начал свой путь в 2021 году, а теперь предоставляет полный спектр услуг хостинга, мы уже набрали сотни довольных клиентов.\nЦены у нас действительно доступные, чтобы каждый мог воспользоваться услугами! Наши технические специалисты работают круглые сутки! Поддержка доступна и на английском языке.",
+        "lable": "Почему вы должны выбрать нас?",
+        "guarantee": "100% Гарантия",
+        "guarantee-descriptionPt1": "В случае неисправности, мы обьязательно",
+        "guarantee-descriptionPt2": "выдадим Вам замену.",
+        "shield": "Защита и безопасность",
+        "shield-descriptionPt1": "Мы гарантируем защиту Ваших",
+        "shield-descriptionPt2": "персональных данных.",
+        "support": "Круглосуточная поддержка",
+        "support-descriptionPt1": "Наши операторы работают круглые сутки",
+        "shield-descriptionPt2": "Вы всегда сможете получить помощь от нас!"
       },
       "monitoring": {
         "title": "Мониторинг",
-        "description": "Компания, предоставляющая услуги: виртуальный хостинг, аренда VDS/VPS, абузоустойчивых серверов и выделенных, регистрация доменов и дополнительные услуги хостинга."
+        "description": "Мы используем современные системы мониторинга, поэтому если что-то случится, ситуация будет решена в кратчайшие сроки. Наши специалисты оперативно реагируют на запросы клиентов, подбирают оптимальное решение для каждой задачи и работают над ней в приоритетном порядке."
       },
       "features": {
         "bulletproofServers": {

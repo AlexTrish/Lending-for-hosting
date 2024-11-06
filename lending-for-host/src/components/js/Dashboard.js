@@ -146,7 +146,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'referal' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block ref-blc'></div>
             <div className='container-info'>
               <h3>{t("referral.title", { defaultValue: 'Реферальная программа' })}</h3>
               <p>{t("referral.description", { defaultValue: 'Описание реферальной программы' })}</p>

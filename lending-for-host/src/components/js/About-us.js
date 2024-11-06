@@ -6,32 +6,24 @@ function About_us() {
 
     return (
         <section className="about-us-container-wrapper">
-            <h2>Почему вы должны выбрать нас?</h2>
+            <h2>{t('about.lable')}</h2>
             <div className="about-us-container">
                 <div className='about-us-info-block'>
                     <div className='about-us-ico garant'></div>
-                    <h3>100% Гарантия</h3>
-                    <p>
-                        В случае неисправности, мы обьязательно
-                    <br />выдадим Вам замену.
-                    </p>
+                    <h3>{t('about.guarantee')}</h3>
+                    <p>{t('about.guarantee-descriptionPt1')}<br />{t('about.guarantee-descriptionPt2')}</p>
                 </div>
 
                 <div className='about-us-info-block'>
                     <div className='about-us-ico shield'></div>
-                    <h3>Защита и безопасность</h3>
-                    <p>
-                        Мы гарантируем защиту Ваших
-                    <br />персональных данных.
-                    </p>
+                    <h3>{t('about.shield')}</h3>
+                    <p>{t('about.shield-descriptionPt1')}<br />{t('about.shield-descriptionPt2')}</p>
                 </div>
 
                 <div className='about-us-info-block'>
                     <div className='about-us-ico support'></div>
-                    <h3>Круглосуточная поддержка</h3>
-                    <p>
-                        Наши операторы работают круглые сутки
-                    <br />Вы всегда сможете получить помощь от нас!
+                    <h3>{t('about.support')}</h3>
+                    <p>{t('about.support-descriptionPt1')}<br />{t('about.support-descriptionPt2')}
                     </p>
                 </div>
             </div>
