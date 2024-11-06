@@ -64,7 +64,7 @@ i18n.use(initReactI18next).init({
         "about": "About Us",
         "rules": "Rules",
         "terms": "Terms",
-        "auth": "Log In"
+        "auth": "Sign In"
       },
       //Dashboard
       "VPS": {
@@ -237,7 +237,7 @@ i18n.use(initReactI18next).init({
         "about": "О нас",
         "rules": "Правила",
         "terms": "Условия",
-        "auth": "Войти"
+        "auth": "Авторизация"
       },
       //Dashboard
       "VPS": {
