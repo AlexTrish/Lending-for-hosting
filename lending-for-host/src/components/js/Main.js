@@ -8,8 +8,8 @@ function Content_main() {
         <section className="hero-section">
             <div className="container text-left">
                 <h2>
-                    {t('content_main.title.part1')}
-                    <br/> {t('content_main.title.part2')}
+                    {t('content_main.title.part1')} {t('content_main.title.part2')}
+                    <br/> {t('content_main.title.part3')}
                 </h2>
                 <p>{t('content_main.description')}</p>
                 <button className="btn join-btn">{t('content_main.joinButton')}</button>

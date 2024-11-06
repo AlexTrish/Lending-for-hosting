@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Content_main from './Content_main';
-import Content_1 from './Content_1';
-import Content_2 from './Content_2';
-import Content_3 from './Content_3';
-import Content_4 from './Content_4';
-import Rules from './Rules';
-import '../css/styles.scss';
+import Main from './Main';
+import Company from './Company';
+import About_us from './About-us';
+import Monitoring from './Monitoring';
+import Features from './Features';
+import Services from './Services';
 import Domain from "./Domain";
+import Rules from './Rules';
+import Pay from './Pay';
+import '../css/styles.scss';
 
 function Dashboard({ setCurrentMenu, currentMenu }) {
   const { t } = useTranslation();
@@ -56,17 +58,19 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
     <div className="dashboard">
       {currentMenu === 'Main' && (
         <>
-          <Content_main />
-          <Content_1 />
-          <Content_2 />
-          <Content_3 />
-          <Content_4 />
+          <Main />
+          <Company />
+          <About_us />
+          <Monitoring />
+          <Features />
+          <Services />
+          <Pay />
         </>
       )}
       {currentMenu === 'VPS' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block vps-blc'></div>
             <div className='container-info'>
               <h3>{t('VPS.title', { defaultValue: 'VPS' })}</h3>
               <p>{t('VPS.description', { defaultValue: 'Описание VPS' })}</p>
@@ -78,7 +82,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'VDS' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block vpd-blc'></div>
             <div className='container-info'>
               <h3>{t('vds.title', { defaultValue: 'VDS' })}</h3>
               <p>{t('vds.description', { defaultValue: 'Описание VDS' })}</p>
@@ -90,7 +94,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'VPN' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block vpn-blc'></div>
             <div className='container-info'>
               <h3>{t('vpn.title', { defaultValue: 'VPN' })}</h3>
               <p>{t('vpn.description', { defaultValue: 'Описание VPN' })}</p>
@@ -102,7 +106,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'cl-pn' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block cl-pn-blc'></div>
             <div className='container-info'>
               <h3>{t("cloudPanel.title", { defaultValue: 'Облачная панель' })}</h3>
               <p>{t("cloudPanel.description", { defaultValue: 'Описание облачной панели' })}</p>
@@ -114,7 +118,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'bulletproof' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block bp-blc'></div>
             <div className='container-info'>
               <h3>{t('bulletproof.title', { defaultValue: 'Абузоустойчивые серверы' })}</h3>
               <p>{t('bulletproof.description', { defaultValue: 'Описание абузоустойчивых серверов' })}</p>
@@ -126,7 +130,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
       {currentMenu === 'domains' && (
         <>
           <section className='main-container'>
-            <div className='container-block'></div>
+            <div className='container-block dm-blc'></div>
             <div className='container-info'>
               <h3>{t("domains.title", { defaultValue: 'Домены' })}</h3>
               <p>{t("domains.description", { defaultValue: 'Описание доменов' })}</p>

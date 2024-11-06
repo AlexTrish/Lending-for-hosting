@@ -26,8 +26,9 @@ i18n.use(initReactI18next).init({
       },
       "content_main": {
         "title": {
-          "part1": "Fast Reliable",
-          "part2": "Affordable"
+          "part1": "Fast",
+          "part2": "Reliable",
+          "part3": "Affordable"
         },
         "description": "We guarantee the operation of our servers for the entire paid period! Cloud server hosting in Europe.",
         "joinButton": "Join Us"
@@ -46,7 +47,7 @@ i18n.use(initReactI18next).init({
         "vps": "VPS Rental",
         "vds": "VDS Rental",
         "vpn": "VPN Rental",
-        "domains": "Domains",
+        "domains": "Domains Rental",
         "cloudPanel": "Cloud Panel",
         "bulletproof": "Bulletproof Servers",
         "referral": "Referral Program",
@@ -117,6 +118,7 @@ i18n.use(initReactI18next).init({
       "title-domain": "Purchase a domain",
       "input":"Enter domain",
       "right": "© 2024 RETRY.HOST. All rights reserved.",
+      "Details": "Details",
 
          // rules
         "general": "General Provisions",
@@ -187,9 +189,9 @@ i18n.use(initReactI18next).init({
       },
       "content_main": {
         "title": {
-          "part1": "Быстрый",
-          "part2": "Надежный",
-          "part3": "Доступный"
+          "part1": "Быстро",
+          "part2": "Надежно",
+          "part3": "Доступно"
         },
         "description": "Мы гарантируем работу наших серверов на весь оплаченный срок! Облачный хостинг в Европе.",
         "joinButton": "Присоединиться к нам"
@@ -208,7 +210,7 @@ i18n.use(initReactI18next).init({
         "vps": "Аренда VPS",
         "vds": "Аренда VDS",
         "vpn": "Аренда VPN",
-        "domains": "Домены",
+        "domains": "Аренда Домены",
         "cloudPanel": "Cloud Panel",
         "bulletproof": "Абузоустойчивые серверы",
         "referral": "Реферальная система",
@@ -278,6 +280,7 @@ i18n.use(initReactI18next).init({
       "title-domain": "Приобрести домен",
       "input":"Введите домен",
       "right": "© 2024 RETRY.HOST. Все права защищены.",
+      "Details": "Подробнее",
 
         // rules
         "general": "Общее положение",
