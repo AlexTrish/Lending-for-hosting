@@ -1,6 +1,6 @@
 import React from 'react'
-import { ThemeContext, themes } from './theme/ThemeContext'
-import Toggle from './theme/Toggle'
+import { ThemeContext, themes } from '../theme/ThemeContext'
+import Toggle from '../theme/Toggle'
 
 const Root = () => (
   <ThemeContext.Consumer>

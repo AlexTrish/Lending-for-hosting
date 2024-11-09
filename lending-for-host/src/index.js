@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { AuthProvider } from './AuthContext';
 import ThemeProvider from './components/js/theme/ThemeProvider'
 import App from './App';
 // import i18n from '/src/components/js/language/i18n';
@@ -14,7 +15,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
       <ThemeProvider>
+        <AuthProvider>
           <App />
+        </AuthProvider>
       </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

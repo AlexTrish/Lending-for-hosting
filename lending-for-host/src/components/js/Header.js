@@ -1,17 +1,25 @@
 // src/components/js/Header.js
-import React, { useContext } from 'react';
-import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
+import { AuthContext } from '../../AuthContext';
 import { ThemeContext, themes } from './theme/ThemeContext';
+import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
 import '../css/styles.scss';
 
 function Header({ setCurrentMenu }) {
   const { theme, setTheme } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate(); // Инициализируем navigate для редиректа
 
-  // Функция смены языка
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+  };
+
+  const handleLoginClick = () => {
+    // Переходим на страницу авторизации
+    navigate('/login'); 
   };
 
   return (
@@ -45,8 +53,10 @@ function Header({ setCurrentMenu }) {
                 <button id="switch-language" className='sidebar-icon' onClick={toggleLanguage}>
                   {i18n.language === 'ru' ? 'EN' : 'RU'}
                 </button>
-                <button id="settings-ico" className="sidebar-icon" onClick={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}><div className='bi-fill'></div></button>
-                <button className="btn auth-btn">{t("menu.auth")}</button>
+                <button id="settings-ico" className="sidebar-icon" onClick={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}>
+                  <div className='bi-fill'></div>
+                </button>
+                <button className="btn auth-btn" onClick={handleLoginClick}>{t("menu.auth")}</button> {/* Обновлено для перехода на /login */}
               </div>
             </div>
           </Navbar.Collapse>

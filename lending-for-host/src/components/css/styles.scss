@@ -54,6 +54,7 @@
     --opacity-moon: 0;
     --filter-dropdown: brightness(80%);
     --filter-dropdown-text: brightness(100%);
+    --filter-btn-close: none;
 }
 
 :root[data-theme="dark"] {
@@ -111,6 +112,7 @@
     --opacity-moon: 1;
     --filter-dropdown: brightness(150%);
     --filter-dropdown-text: brightness(1000%);
+    --filter-btn-close: brightness(0) invert(1);
 }
 
 * {
@@ -410,6 +412,49 @@ body {
   }
 }
 
+//Modal auth
+.modal-content {
+  background-color: var(--content-block) !important;
+  color: var(--text-color)  !important;
+  box-shadow: var(--box-shadow) !important;
+
+  .modal-header,
+  .modal-footer {
+    border: none;
+    background-color: var(--bg-color-navbar) !important;
+    color: var(--navbar-text) !important;
+
+    .auth-btn {
+      border-color: var(--green-block);
+      background-color: var(--green-block);
+    }
+  }
+
+  .modal-body {
+    border-top: 1px solid var(--footer-line) !important;
+    border-bottom: 1px solid var(--footer-line) !important;
+    background-color: var(--bg-color) !important;
+  }
+
+  .alert-danger {
+    color: var(--red-text-color) !important;
+    background-color: rgba(255, 0, 0, 0.1);  // adjust if needed
+  }
+
+  .btn-close {
+    filter: var(--filter-btn-close);
+  }
+}
+
+
+
+//auth notification
+.auth-notification {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
 
 
 

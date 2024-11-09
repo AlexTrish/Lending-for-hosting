@@ -18,7 +18,7 @@ i18n.use(initReactI18next).init({
         "shield-descriptionPt2": "personal data",
         "support": "24/7 Support",
         "support-descriptionPt1": "Our operators work 24/7",
-        "shield-descriptionPt2": "You can always get help from us!"
+        "support-descriptionPt2": "You can always get help from us!"
       },
       "monitoring": {
         "title": "Monitoring",
@@ -41,8 +41,23 @@ i18n.use(initReactI18next).init({
           "part3": "Affordable"
         },
         "description": "We guarantee the operation of our servers for the entire paid period! Cloud server hosting in Europe.",
-        "joinButton": "Join Us"
-      },
+        "joinButton": "Join Us",
+        "registerTitle": "Registration"
+  },
+  "form-sign-in": {
+    "username": "Username",
+    "usernamePlaceholder": "Enter username",
+    "email": "Email",
+    "emailPlaceholder": "Enter email address",
+    "password": "Password",
+    "passwordPlaceholder": "Enter password",
+    "confirmPassword": "Confirm Password",
+    "confirmPasswordPlaceholder": "Confirm password",
+    "agreeTerms": "I agree to the terms",
+    "close": "Close",
+    "register": "Register"
+  },
+
       "services": {
         "title": "Popular Services",
         "service1": "Service 1",
@@ -64,7 +79,10 @@ i18n.use(initReactI18next).init({
         "about": "About Us",
         "rules": "Rules",
         "terms": "Terms",
-        "auth": "Sign In"
+        "auth": "Sign In",
+        "profile": "Profile",
+        "personal": "Personal Cabinet",
+        "logout": "Logout"
       },
       //Dashboard
       "VPS": {
@@ -123,6 +141,17 @@ i18n.use(initReactI18next).init({
           "savings": "You can save up to 45% by choosing a longer order period."
         }
       },
+        "form-log-in": {
+          "authError": "Incorrect username or password",
+          "username": "Username",
+          "usernamePlaceholder": "Enter your username",
+          "password": "Password",
+          "passwordPlaceholder": "Enter your password",
+          "login": "Log in",
+          "close": "Close"
+        },
+      
+
       "buy": "Order",
       "check": "Check",
       "title-domain": "Purchase a domain",
@@ -191,7 +220,7 @@ i18n.use(initReactI18next).init({
         "shield-descriptionPt2": "персональных данных.",
         "support": "Круглосуточная поддержка",
         "support-descriptionPt1": "Наши операторы работают круглые сутки",
-        "shield-descriptionPt2": "Вы всегда сможете получить помощь от нас!"
+        "support-descriptionPt2": "Вы всегда сможете получить помощь от нас!"
       },
       "monitoring": {
         "title": "Мониторинг",
@@ -214,8 +243,22 @@ i18n.use(initReactI18next).init({
           "part3": "Доступно"
         },
         "description": "Мы гарантируем работу наших серверов на весь оплаченный срок! Облачный хостинг в Европе.",
-        "joinButton": "Присоединиться к нам"
-      },
+        "joinButton": "Присоединиться к нам",
+        "registerTitle": "Регистрация"
+    },
+    "form-sign-in": {
+      "username": "Логин",
+      "usernamePlaceholder": "Введите логин",
+      "email": "Электронная почта",
+      "emailPlaceholder": "Введите адрес электронной почты",
+      "password": "Пароль",
+      "passwordPlaceholder": "Введите пароль",
+      "confirmPassword": "Подтверждение пароля",
+      "confirmPasswordPlaceholder": "Подтвердите пароль",
+      "agreeTerms": "Я согласен с условиями",
+      "close": "Закрыть",
+      "register": "Регистрация",
+    },
       "services": {
         "title": "Популярные Услуги",
         "service1": "Услуга 1",
@@ -237,7 +280,10 @@ i18n.use(initReactI18next).init({
         "about": "О нас",
         "rules": "Правила",
         "terms": "Условия",
-        "auth": "Авторизация"
+        "auth": "Авторизация",
+        "profile": "Профиль",
+        "personal": "Личный кабинет",
+        "logout": "Выйти"
       },
       //Dashboard
       "VPS": {
@@ -295,6 +341,16 @@ i18n.use(initReactI18next).init({
           "savings": "Вы можете сэкономить до 45% при выборе более длительного срока."
         }
       },
+        "form-log-in": {
+          "authError": "Неверное имя пользователя или пароль",
+          "username": "Имя пользователя",
+          "usernamePlaceholder": "Введите имя пользователя",
+          "password": "Пароль",
+          "passwordPlaceholder": "Введите пароль",
+          "login": "Войти",
+          "close": "Закрыть"
+        },
+      
       "buy": "Заказать",
       "check": "Проверить",
       "title-domain": "Приобрести домен",

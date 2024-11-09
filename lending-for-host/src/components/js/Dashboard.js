@@ -1,14 +1,14 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import Main from './Main';
-import Company from './Company';
-import About_us from './About-us';
-import Monitoring from './Monitoring';
-import Features from './Features';
-import Services from './Services';
-import Domain from "./Domain";
-import Rules from './Rules';
-import Pay from './Pay';
+import Main from './lending-content/Main';
+import Company from './lending-content/Company';
+import About_us from './lending-content/About-us';
+import Monitoring from './lending-content/Monitoring';
+import Features from './lending-content/Features';
+import Services from './lending-content/Services';
+import Domain from "./lending-content/Domain";
+import Rules from './lending-content/Rules';
+import Pay from './lending-content/Pay';
 import '../css/styles.scss';
 
 function Dashboard({ setCurrentMenu, currentMenu }) {
