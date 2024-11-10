@@ -1,5 +1,9 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { AuthContext, AuthProvider } from '../../AuthContext';
+import Header from './Header';
+import Footer from './Footer';
+import AuthHeader from './AuthHeader';
 import Main from './lending-content/Main';
 import Company from './lending-content/Company';
 import About_us from './lending-content/About-us';
@@ -26,7 +30,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
   }, [currentMenu]);
 
   const renderPricingCards = (cardPlans) => (
-    <section className='buy-cards'>
+    <section className='buy-cards'>      
       {cardPlans.map((plan) => (
         <div className='buy-card' key={plan.key}>
           <div className='buy-card-header'>
@@ -56,6 +60,15 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
 
   return (
     <div className="dashboard">
+      <AuthContext.Consumer>
+        {({ isAuthenticated }) =>
+          isAuthenticated ? (
+            <AuthHeader setCurrentMenu={setCurrentMenu} />
+            ) : (
+            <Header setCurrentMenu={setCurrentMenu} />
+          )
+        }
+      </AuthContext.Consumer>
       {currentMenu === 'Main' && (
         <>
           <Main />
@@ -154,6 +167,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
           </section>
         </>
       )}
+    <Footer />
     </div>
   );
 }

@@ -1,18 +1,34 @@
 // src/pages/RegisterPage.js
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
+import {  Navbar, Container, Alert } from 'react-bootstrap';
+import Footer from '../components/js/Footer';
+import '../components/css/page.scss';
 
 function RegisterPage() {
+    const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const { t } = useTranslation();
+
+    useEffect(() => {
+        // Устанавливаем стиль overflow-y: hidden на body при загрузке LoginPage
+        document.body.style.overflowY = 'hidden';
+
+        // Очищаем стиль при уходе с этой страницы
+        return () => {
+            document.body.style.overflowY = ''; // сбросить стиль при уходе с страницы
+        };
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!email || !password || !confirmPassword) {
-            setError('Please fill in all fields');
+        if (!username || !email || !password || !confirmPassword) {
+            setError('Пожалуйста, заполните все поля');
         } else if (password !== confirmPassword) {
-            setError('Passwords do not match');
+            setError('Пароли не совпадают');
         } else {
             setError('');
             // Логика регистрации
@@ -20,64 +36,87 @@ function RegisterPage() {
     };
 
     return (
-        <div className="min-h-screen bg-gray-100 flex items-center justify-center">
-            <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-                <h2 className="text-2xl font-bold text-center mb-6">Create an Account</h2>
-                {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-                <form onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-600" htmlFor="email">
-                            Email Address
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
+        <div className="register-page">
+            <Container>
+                <Navbar.Toggle aria-controls="navbar-nav" />
+                    <Navbar.Collapse id="navbar-nav">
+                        <div className='container-logo'>
+                        <div className="logo"></div>
+                            <Navbar.Brand>{t('brand')}</Navbar.Brand>
+                        </div>
+                </Navbar.Collapse>
+            </Container>
+            <div className="card">
+                <h3>Регистрация</h3>
+                <div className="card-body">
+
+                    {error && (
+                        <Alert variant="danger" className="mb-4">
+                            {error}
+                        </Alert>
+                    )}
+
+                    <form onSubmit={handleSubmit}>
+                        <div className="mb-3">
+                            <label htmlFor="username" className="form-label">Имя пользователя</label>
+                            <input
+                                type="text"
+                                id="username"
+                                className="form-control"
+                                placeholder="Введите имя пользователя"
+                                value={username}
+                                onChange={(e) => setUsername(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="email" className="form-label">Электронная почта</label>
+                            <input
+                                type="email"
+                                id="email"
+                                className="form-control"
+                                placeholder="Введите электронную почту"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="password" className="form-label">Пароль</label>
+                            <input
+                                type="password"
+                                id="password"
+                                className="form-control"
+                                placeholder="Введите пароль"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+                        </div>
+
+                        <div className="mb-3">
+                            <label htmlFor="confirmPassword" className="form-label">Подтверждение пароля</label>
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                className="form-control"
+                                placeholder="Подтвердите пароль"
+                                value={confirmPassword}
+                                onChange={(e) => setConfirmPassword(e.target.value)}
+                            />
+                        </div>
+
+                        <button type="submit" className="btn btn-success w-100">
+                            Зарегистрироваться
+                        </button>
+                    </form>
+
+                    <div className="mt-3 text-center">
+                        <p className="mb-0">Уже есть аккаунт? <a href="/login">Войти</a></p>
                     </div>
-                    <div className="mb-4">
-                        <label className="block text-sm font-medium text-gray-600" htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
-                    </div>
-                    <div className="mb-6">
-                        <label className="block text-sm font-medium text-gray-600" htmlFor="confirmPassword">
-                            Confirm Password
-                        </label>
-                        <input
-                            type="password"
-                            id="confirmPassword"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            className="w-full p-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                            required
-                        />
-                    </div>
-                    <button
-                        type="submit"
-                        className="w-full bg-blue-500 text-white py-3 rounded-md hover:bg-blue-600 focus:outline-none"
-                    >
-                        Register
-                    </button>
-                </form>
-                <p className="text-center mt-4 text-sm text-gray-600">
-                    Already have an account?{' '}
-                    <a href="/login" className="text-blue-500 hover:text-blue-600">
-                        Login
-                    </a>
-                </p>
+                </div>
             </div>
+
+            <Footer />
         </div>
     );
 }

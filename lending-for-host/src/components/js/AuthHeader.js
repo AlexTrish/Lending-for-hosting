@@ -1,14 +1,17 @@
-// src/components/js/AuthHeader.js
 import React, { useState, useContext } from 'react';
 import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext, themes } from './theme/ThemeContext';
+import { TbUserSquare } from 'react-icons/tb';
+import { IoMdExit } from 'react-icons/io';
+import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
 import '../css/styles.scss';
 
 function AuthHeader({ setCurrentMenu, logout, user }) {
     const { t, i18n } = useTranslation();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const { theme, setTheme } = useContext(ThemeContext);
+    const navigate = useNavigate(); // Хук для навигации
 
     const toggleLanguage = () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
@@ -23,8 +26,12 @@ function AuthHeader({ setCurrentMenu, logout, user }) {
     const username = user ? user.username : ''; 
     const balance = user ? user.balance : '';
 
+    const handleProfileClick = () => {
+        navigate('/personal-account'); // Перенаправляем на страницу профиля
+    };
+
     return (
-        <Navbar>
+        <Navbar className='navbar-after-auth'>
             <Container>
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse id="navbar-nav">
@@ -50,34 +57,23 @@ function AuthHeader({ setCurrentMenu, logout, user }) {
                             </NavDropdown>
                         </Nav>
                         <div className='btn-container-wrapper'>
-                            <button id="switch-language" className='sidebar-icon' onClick={toggleLanguage}>
-                                {i18n.language === 'ru' ? 'EN' : 'RU'}
-                            </button>
-                            <button id="settings-ico" className="sidebar-icon" onClick={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}>
-                                <div className='bi-fill'></div>
-                            </button>
-                            
-                            {/* Profile Block */}
-                            <div className="profile-container" onClick={toggleProfileMenu}>
-                                {profileImage && <img src={profileImage} alt="Profile" className="profile-image" />}
-                                <div className="profile-info">
-                                    <span className="username">{username}</span>
-                                    <span className="balance">{balance} {t('menu.currency')}</span>
-                                </div>
-                            </div>
-
-                            {/* Profile Menu */}
-                            {showProfileMenu && (
-                                <Nav>
-                                    <NavDropdown title={t('menu.profile')} show={showProfileMenu} onClick={toggleProfileMenu}>
-                                        <NavDropdown.Item onClick={() => setCurrentMenu('personal')}>{t('menu.personal')}</NavDropdown.Item>
-                                        <NavDropdown.Item onClick={logout}>{t('menu.logout')}</NavDropdown.Item>
-                                    </NavDropdown>
-                                </Nav>
-                            )}
+                            <button id="switch-language" className='sidebar-icon' onClick={toggleLanguage}>{i18n.language === 'ru' ? 'EN' : 'RU'}</button>
+                            <button id="settings-ico" className="sidebar-icon" onClick={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}><div className='bi-fill'></div></button>
                         </div>
                     </div>
                 </Navbar.Collapse>
+                {/* Profile Block */}
+                <div className="profile-container" onClick={handleProfileClick}>
+                    {profileImage ? (
+                        <img src={profileImage} alt="Profile" className="profile-image" />
+                    ) : (
+                        <TbUserSquare className="profile-icon" />
+                    )}
+                    <div className='line'></div>
+                    <button className='btn btn-exit'>
+                        <IoMdExit className="exit-icons" />
+                    </button>
+                </div>
             </Container>
         </Navbar>
     );

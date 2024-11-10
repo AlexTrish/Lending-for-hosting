@@ -10,7 +10,6 @@ import '../css/styles.scss';
 function Header({ setCurrentMenu }) {
   const { theme, setTheme } = useContext(ThemeContext);
   const { t, i18n } = useTranslation();
-  const { login } = useContext(AuthContext);
   const navigate = useNavigate(); // Инициализируем navigate для редиректа
 
   const toggleLanguage = () => {
@@ -18,8 +17,11 @@ function Header({ setCurrentMenu }) {
   };
 
   const handleLoginClick = () => {
-    // Переходим на страницу авторизации
     navigate('/login'); 
+  };
+
+  const handlePerconal = () => {
+    navigate('/personal-account'); 
   };
 
   return (
@@ -46,7 +48,7 @@ function Header({ setCurrentMenu }) {
                 <Nav.Link className='referal-link' onClick={() => setCurrentMenu('referal')}>{t("menu.referral")}</Nav.Link>
                 <NavDropdown className='about-link' title={t("menu.about")} id="about-dropdown">
                   <NavDropdown.Item onClick={() => setCurrentMenu('rules')}>{t("menu.rules")}</NavDropdown.Item>
-                  <NavDropdown.Item onClick={() => setCurrentMenu('terms')}>{t("menu.terms")}</NavDropdown.Item>
+                  <NavDropdown.Item onClick={handlePerconal}>{t("menu.terms")}</NavDropdown.Item> {/**onClick={() => setCurrentMenu('terms')}>{t("menu.terms")} */}
                 </NavDropdown>
               </Nav>
               <div className='btn-container-wrapper'>

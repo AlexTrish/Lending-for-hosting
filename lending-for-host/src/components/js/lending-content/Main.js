@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
 
 function Content_main() {
     const { t } = useTranslation();
-    const [showModal, setShowModal] = useState(false);
+    const navigate = useNavigate(); // Хук для навигации
 
-    // Функции для управления отображением модального окна
-    const handleShow = () => setShowModal(true);
-    const handleClose = () => setShowModal(false);
+    // Функция для перехода на страницу регистрации
+    const handleJoinClick = () => {
+        navigate('/register'); // Переход на страницу регистрации
+    };
 
     return (
         <section className="hero-section">
@@ -18,7 +20,7 @@ function Content_main() {
                     <br /> {t('content_main.title.part3')}
                 </h2>
                 <p>{t('content_main.description')}</p>
-                <button className="btn join-btn" onClick={handleShow}>
+                <button className="btn join-btn" onClick={handleJoinClick}>
                     {t('content_main.joinButton')}
                 </button>
             </div>
@@ -30,44 +32,6 @@ function Content_main() {
                     <div className='miniblocks-type-two ico-none'></div>
                 </div>
             </div>
-
-            {/* Модальное окно для регистрации */}
-            <Modal show={showModal} onHide={handleClose}>
-                <Modal.Header closeButton>
-                    <Modal.Title>{t('content_main.registerTitle')}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <Form>
-                        <Form.Group controlId="formBasicUsername">
-                            <Form.Label>{t('form-sign-in.username')}</Form.Label>
-                            <Form.Control type="text" placeholder={t('form-sign-in.usernamePlaceholder')} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicEmail">
-                            <Form.Label>{t('form-sign-in.email')}</Form.Label>
-                            <Form.Control type="email" placeholder={t('form-sign-in.emailPlaceholder')} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicPassword">
-                            <Form.Label>{t('form-sign-in.password')}</Form.Label>
-                            <Form.Control type="password" placeholder={t('form-sign-in.passwordPlaceholder')} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicConfirmPassword">
-                            <Form.Label>{t('form-sign-in.confirmPassword')}</Form.Label>
-                            <Form.Control type="password" placeholder={t('form-sign-in.confirmPasswordPlaceholder')} />
-                        </Form.Group>
-                        <Form.Group controlId="formBasicCheckbox">
-                            <Form.Check type="checkbox" label={t('form-sign-in.agreeTerms')} />
-                        </Form.Group>
-                    </Form>
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose}>
-                        {t('form-sign-in.close')}
-                    </Button>
-                    <Button variant="primary" onClick={handleClose}>
-                        {t('form-sign-in.register')}
-                    </Button>
-                </Modal.Footer>
-            </Modal>
         </section>
     );
 }
