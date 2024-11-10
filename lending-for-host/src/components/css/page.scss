@@ -49,7 +49,7 @@
       max-height: 50vw;
       border-radius: 1.5vw;
       box-shadow: var(--box-shadow);
-      background: var(--content-block);
+      background: var(--bg-color-prof-block);
   
       .card-body {
         padding: 2vw;
@@ -61,6 +61,8 @@
         h3 {
           margin: 1vw 0 1.5vw 0;
           text-align: center;
+          font-size: 2vw;
+          font-weight: 400;
           color: var(--h2-text-color);
         }
   
@@ -71,10 +73,16 @@
           }
   
           .form-control {
+            height: 2.5vw;
             margin-bottom: 1vw;
             border: none;
             color: var(--text-color);
             background: var(--bg-color-input);
+          }
+
+          label {
+            font-size: 1.15vw;
+            font-weight: 500;
           }
   
           button {
@@ -82,9 +90,24 @@
             border: none;
             background: var(--green-block);
           }
+          button:hover {
+            filter: brightness(80%);
+          }
+        }
+
+        p {
+          font-size: 1vw;
+          color: var(--h2-text-color);
+          a {
+            color: var(--green-block);
+          }
+          a:hover {
+            filter: brightness(80%);
+          }
         }
   
         .text-center {
+          color: var(--h2-text-color);
           margin-top: 1vw;
         }
       }
@@ -137,16 +160,18 @@
 
     .card {
       width: 40vw;
-      margin-top: 5vw;
+      margin-top: 3vw;
+      margin-bottom: 2vw;
       padding: 2vw;
       max-height: 38vw;
       border-radius: 1.5vw;
       box-shadow: var(--box-shadow);
-      background: var(--content-block);
+      background: var(--bg-color-prof-block);
 
       h3 {
         margin: 0;
         text-align: center;
+        font-size: 2vw;
         color: var(--h2-text-color);
       }
   
@@ -160,7 +185,7 @@
         form {
           .form-label {
             margin-bottom: 0.5vw;
-            color: var(--text-color);
+            color: var(--h2-text-color);
           }
   
           .form-control {
@@ -169,11 +194,34 @@
             color: var(--text-color);
             background: var(--bg-color-input);
           }
+
+          input {
+            color: var(--h2-text-color);
+          }
   
           button {
             margin-top: 1vw;
             border: none;
+
+            font-size: 1.15vw;
+            font-weight: 600;
+            color: var(--button-color);
             background: var(--green-block);
+          }
+
+          button:hover {
+            filter: brightness(80%);
+          }
+        }
+
+        p {
+          font-size: 1vw;
+          color: var(--h2-text-color);
+          a {
+            color: var(--green-block);
+          }
+          a:hover {
+            filter: brightness(80%);
           }
         }
   
@@ -182,4 +230,19 @@
         }
       }
     }
+}
+
+
+
+.form-control::-webkit-input-placeholder {
+  color: var(--placeholder-color) !important;
+}
+.form-control::-moz-placeholder {
+    color: var(--placeholder-color) !important;
+}
+.form-control:-ms-input-placeholder {
+    color: var(--placeholder-color) !important;
+}
+.form-control:-moz-placeholder {
+    color: var(--placeholder-color) !important;
 }

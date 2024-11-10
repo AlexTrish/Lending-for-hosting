@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import {  Navbar, Container, Alert } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
 import Footer from '../components/js/Footer';
 import '../components/css/page.scss';
 
@@ -12,6 +13,7 @@ function RegisterPage() {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const { t } = useTranslation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         // Устанавливаем стиль overflow-y: hidden на body при загрузке LoginPage
@@ -35,15 +37,19 @@ function RegisterPage() {
         }
     };
 
+    const handleLogoClick = () => {
+        navigate('/HomePage'); // редирект на Dashboard
+    };
+
     return (
         <div className="register-page">
             <Container>
                 <Navbar.Toggle aria-controls="navbar-nav" />
-                    <Navbar.Collapse id="navbar-nav">
-                        <div className='container-logo'>
+                <Navbar.Collapse id="navbar-nav">
+                    <div className="container-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
                         <div className="logo"></div>
-                            <Navbar.Brand>{t('brand')}</Navbar.Brand>
-                        </div>
+                        <Navbar.Brand>{t('brand')}</Navbar.Brand>
+                    </div>
                 </Navbar.Collapse>
             </Container>
             <div className="card">

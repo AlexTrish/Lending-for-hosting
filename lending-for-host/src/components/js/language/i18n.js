@@ -141,15 +141,19 @@ i18n.use(initReactI18next).init({
           "savings": "You can save up to 45% by choosing a longer order period."
         }
       },
-        "form-log-in": {
-          "authError": "Incorrect username or password",
+        "form-sign-in": {
           "username": "Username",
-          "usernamePlaceholder": "Enter your username",
+          "usernamePlaceholder": "Enter username",
           "password": "Password",
-          "passwordPlaceholder": "Enter your password",
-          "login": "Log in",
-          "close": "Close"
-        },
+          "passwordPlaceholder": "Enter password",
+          "login": "Login",
+          "registerTitle": "Authorization",
+          "authError": "Incorrect username or password",
+          "connectionError": "Connection error",
+          "forgotPassword": "Forgot password?",
+          "register": "Register",
+          "requiredFields": "Please fill in all fields"
+      },
       
 
       "buy": "Order",
@@ -341,15 +345,19 @@ i18n.use(initReactI18next).init({
           "savings": "Вы можете сэкономить до 45% при выборе более длительного срока."
         }
       },
-        "form-log-in": {
-          "authError": "Неверное имя пользователя или пароль",
-          "username": "Имя пользователя",
-          "usernamePlaceholder": "Введите имя пользователя",
+        "form-sign-in": {
+          "username": "Логин",
+          "usernamePlaceholder": "Введите логин",
           "password": "Пароль",
           "passwordPlaceholder": "Введите пароль",
           "login": "Войти",
-          "close": "Закрыть"
-        },
+          "registerTitle": "Авторизация",
+          "authError": "Неверный логин или пароль",
+          "connectionError": "Ошибка подключения",
+          "forgotPassword": "Забыли пароль?",
+          "register": "Зарегистрироваться",
+          "requiredFields": "заполните все поля"
+      },
       
       "buy": "Заказать",
       "check": "Проверить",

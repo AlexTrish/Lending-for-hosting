@@ -1,7 +1,6 @@
-// src/pages/LoginPage.js
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Navbar, Container, Alert } from 'react-bootstrap';
+import { Navbar, Container, Alert, Button, Form, Row, Col } from 'react-bootstrap';
 import Footer from '../components/js/Footer';
 import { useNavigate } from 'react-router-dom'; // Для редиректа
 import '../components/css/page.scss';
@@ -29,7 +28,7 @@ function LoginPage() {
         setError(''); // очищаем старые ошибки
 
         if (!identifier || !password) {
-            setError('Пожалуйста, заполните оба поля');
+            setError(t('form-sign-in.username') + ' или ' + t('form-sign-in.password') + ' ' + t('form-sign-in.requiredFields'));
             return;
         }
 
@@ -50,10 +49,10 @@ function LoginPage() {
                 navigate('/HomePage'); // редирект на Dashboard
             } else {
                 // Если ошибка авторизации
-                setError(data.message || 'Неверные данные');
+                setError(data.message || t('form-sign-in.authError'));
             }
         } catch (err) {
-            setError('Ошибка при подключении к серверу');
+            setError(t('form-sign-in.connectionError'));
         }
     };
 
@@ -76,7 +75,7 @@ function LoginPage() {
 
             <div className="card">
                 <div className="card-body">
-                    <h3>Авторизация</h3>
+                    <h3>{t('form-sign-in.registerTitle')}</h3>
 
                     {error && (
                         <Alert variant="danger" className="mb-4">
@@ -87,13 +86,13 @@ function LoginPage() {
                     <form onSubmit={handleSubmit}>
                         <div className="mb-4">
                             <label htmlFor="identifier" className="form-label">
-                                Почта или Логин
+                                {t('form-sign-in.username')}
                             </label>
                             <input
                                 type="text"
                                 id="identifier"
                                 className="form-control"
-                                placeholder="Введите почту или логин"
+                                placeholder={t('form-sign-in.usernamePlaceholder')}
                                 value={identifier}
                                 onChange={(e) => setIdentifier(e.target.value)}
                             />
@@ -101,25 +100,25 @@ function LoginPage() {
 
                         <div className="mb-4">
                             <label htmlFor="password" className="form-label">
-                                Пароль
+                                {t('form-sign-in.password')}
                             </label>
                             <input
                                 type="password"
                                 id="password"
                                 className="form-control"
-                                placeholder="Введите ваш пароль"
+                                placeholder={t('form-sign-in.passwordPlaceholder')}
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
                         </div>
 
-                        <button type="submit" className="btn btn-success w-100">
-                            Войти
-                        </button>
+                        <Button type="submit" className="btn btn-success w-100">
+                            {t('form-sign-in.login')}
+                        </Button>
                     </form>
 
-                    <div className="text-center mt-4">
-                        <a href="#">Забыли пароль?</a>
+                    <div className="mt-3 text-center">
+                        <p className="mb-0">У вас нет аккаунта? <a href="/register">Зарегистрироваться</a></p>
                     </div>
                 </div>
             </div>
