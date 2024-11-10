@@ -14,7 +14,7 @@ function PersonalHeader({ setCurrentMenu, logout, user }) {
     };
 
     const handleLogoClick = () => {
-      navigate('/HomePage');
+      navigate('/');
   };
 
   return (

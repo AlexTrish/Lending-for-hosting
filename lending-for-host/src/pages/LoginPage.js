@@ -58,7 +58,7 @@ function LoginPage() {
 
     // Функция для редиректа на Dashboard при клике на логотип
     const handleLogoClick = () => {
-        navigate('/HomePage'); // редирект на Dashboard
+        navigate('/'); // редирект на Dashboard
     };
 
     return (

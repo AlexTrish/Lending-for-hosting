@@ -38,7 +38,7 @@ function RegisterPage() {
     };
 
     const handleLogoClick = () => {
-        navigate('/HomePage'); // редирект на Dashboard
+        navigate('/'); // редирект на Dashboard
     };
 
     return (

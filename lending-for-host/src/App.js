@@ -30,7 +30,7 @@ function App() {
                             element={<RegisterPage />} // Страница регистрации
                         />
                         <Route
-                            path="/HomePage"
+                            path="/"
                             element={<Dashboard currentMenu={currentMenu} setCurrentMenu={setCurrentMenu} />} // Главная страница с дашбордом
                         />
                         <Route
