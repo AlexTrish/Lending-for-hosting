@@ -71,7 +71,7 @@ function RegisterPage() {
             url.search = params.toString();
     
             // Выполнение GET запроса
-            const response = await fetch(url, { method: 'GET' });
+            const response = await fetch(url, { method: 'GET', mode: 'no-cors' });
     
             const result = await response.json();
             console.log('Ответ сервера:', result);
