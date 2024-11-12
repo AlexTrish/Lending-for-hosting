@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthContext, AuthProvider } from '../../AuthContext';
-import Header from './Header';
+import Header from './AuthHeader';
 import Footer from './Footer';
 import AuthHeader from './AuthHeader';
 import Main from './lending-content/Main';

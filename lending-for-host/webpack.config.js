@@ -42,5 +42,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.js', '.jsx'], // Расширения для файлов
+    fallback: {
+      "http": false,
+      "https": false,
+      "os": false,
+      "url": false
+  },
   },
 };
