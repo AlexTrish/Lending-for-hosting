@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { AuthContext, AuthProvider } from '../../AuthContext';
-import Header from './AuthHeader';
-import Footer from './Footer';
 import AuthHeader from './AuthHeader';
+import Footer from './Footer';
+import Header from './Header';
 import Main from './lending-content/Main';
 import Company from './lending-content/Company';
 import About_us from './lending-content/About-us';

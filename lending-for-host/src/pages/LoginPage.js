@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Navbar, Container, Alert, Button, Form, Row, Col } from 'react-bootstrap';
+import { Navbar, Container, Alert, Button } from 'react-bootstrap';
 import Footer from '../components/js/Footer';
-import { useNavigate } from 'react-router-dom'; // Для редиректа
+import { useNavigate } from 'react-router-dom';
+import Cookies from 'js-cookie'; // импортируем библиотеку для работы с куки
+import axios from 'axios'; // импортируем axios для выполнения запросов
 import '../components/css/page.scss';
 
 function LoginPage() {
@@ -10,56 +12,46 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const { t } = useTranslation();
-    const navigate = useNavigate(); // Хук для навигации
+    const navigate = useNavigate();
 
-    useEffect(() => {
-        // Устанавливаем стиль overflow-y: hidden на body при загрузке LoginPage
-        document.body.style.overflowY = 'hidden';
+    const handleLogoClick = () => {
+        navigate('/');
+    };
 
-        // Очищаем стиль при уходе с этой страницы
-        return () => {
-            document.body.style.overflowY = ''; // сбросить стиль при уходе с страницы
-        };
-    }, []);
-
-    // Функция для отправки данных авторизации
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError(''); // очищаем старые ошибки
-
-        if (!identifier || !password) {
-            setError(t('form-sign-in.username') + ' или ' + t('form-sign-in.password') + ' ' + t('form-sign-in.requiredFields'));
-            return;
-        }
-
-        // Логика авторизации, замените на ваш API
+    
         try {
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
+            // Запрос на API для авторизации пользователя
+            const response = await axios.post('https://cors-anywhere.herokuapp.com/https://cp.retry.host', null, {
+                params: {
+                    authinfo: `${identifier}:${password}`,
+                    func: 'logon',
+                    sok: 'ok',
+                    out: 'json',
                 },
-                body: JSON.stringify({ identifier, password }),
+                headers: {
+                    'Accept': 'application/json',
+                },
             });
-
-            const data = await response.json();
-
-            if (response.ok) {
-                // После успешной авторизации переходим на страницу Dashboard
-                navigate('/HomePage'); // редирект на Dashboard
+    
+            console.log(response); // Посмотреть полный ответ
+    
+            if (response.data && response.data.result === 'success') {
+                // Сохраняем сессионный токен в куки
+                Cookies.set('authToken', response.data.token, { expires: 7 });
+                // Редирект на главную страницу
+                navigate('/');
             } else {
-                // Если ошибка авторизации
-                setError(data.message || t('form-sign-in.authError'));
+                // Если авторизация не успешна, показываем ошибку
+                setError(t('form-sign-in.invalidCredentials'));
             }
-        } catch (err) {
-            setError(t('form-sign-in.connectionError'));
+        } catch (error) {
+            console.error('Ошибка авторизации:', error);
+            setError(t('form-sign-in.errorOccurred'));
         }
     };
-
-    // Функция для редиректа на Dashboard при клике на логотип
-    const handleLogoClick = () => {
-        navigate('/'); // редирект на Dashboard
-    };
+    
 
     return (
         <div className="login-page">
