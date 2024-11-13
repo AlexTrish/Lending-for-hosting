@@ -2,88 +2,48 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navbar, Container, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle } from 'react-icons/fa'; // Импорт иконки Google
-import { FaEye, FaEyeSlash } from 'react-icons/fa'; // Импорт иконок для видимости пароля
+import { FaGoogle } from 'react-icons/fa';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import '../components/css/page.scss';
 
 function RegisterPage() {
+    const { t } = useTranslation();
+    const navigate = useNavigate();
+
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [showPassword, setShowPassword] = useState(false); // Стейт для видимости пароля
-    const [showConfirmPassword, setShowConfirmPassword] = useState(false); // Стейт для видимости подтверждения пароля
+    const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [error, setError] = useState('');
-    const { t } = useTranslation();
-    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        if (!username || !email || !password || !confirmPassword) {
-            setError('Пожалуйста, заполните все поля');
-            return;
-        }
-    
-        if (password !== confirmPassword) {
-            setError('Пароли не совпадают');
-            return;
-        }
-    
         setError('');
-    
+
+        if (password !== confirmPassword) {
+            setError(t('form-sign-in.passwordMismatch'));
+            return;
+        }
+
         try {
-            console.log('Отправка запроса на регистрацию...');
-    
-            // Создание URL с параметрами
-            const url = new URL('https://cp.retry.host/');
-            const params = new URLSearchParams();
-            
-            params.append('_ga', '');
-            params.append('_ym_uid', '');
-            params.append('clicked_button', 'ok');
-            params.append('confirm', '*');
-            params.append('country', '15');
-            params.append('currency_fromsite', '126');
-            params.append('email', email);
-            params.append('email_exists', '');
-            params.append('field_2', 'on');
-            params.append('func', 'register');
-            params.append('need_manual_action', '');
-            params.append('newwindow', 'extform');
-            params.append('out', 'xjson');
-            params.append('partner', '');
-            params.append('passwd', password);
-            params.append('project', '1');
-            params.append('realname', username);
-            params.append('recaptcha_type', '');
-            params.append('redirect_auth', '');
-            params.append('redirect_params', '');
-            params.append('sesid', '');
-            params.append('sfromextform', 'yes');
-            params.append('socnetwork_account_exist', '');
-            params.append('sok', 'ok');
-            params.append('state', '');
-            params.append('tzoffset', '180,0');
-            params.append('lang', 'ru');
-    
-            // Добавление параметров в URL
-            url.search = params.toString();
-    
-            // Выполнение GET запроса
-            const response = await fetch(url, { method: 'GET', mode: 'no-cors' });
-    
-            const result = await response.json();
-            console.log('Ответ сервера:', result);
-    
-            if (result.sok === 'ok') {
+            const response = await fetch(`https://cp.retry.host/?username=${username}&email=${email}&password=${password}&func=register&out=json`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
                 navigate('/');
             } else {
-                setError('Ошибка регистрации. Пожалуйста, проверьте данные и попробуйте снова.');
+                setError(t('form-sign-in.registrationFailed'));
             }
         } catch (error) {
-            console.error('Ошибка при соединении с сервером:', error);
-            setError('Ошибка при соединении с сервером.');
+            setError(t('form-sign-in.serverError'));
         }
     };
 

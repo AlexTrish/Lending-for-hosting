@@ -44,19 +44,6 @@ i18n.use(initReactI18next).init({
         "joinButton": "Join Us",
         "registerTitle": "Registration"
   },
-  "form-sign-in": {
-    "username": "Username",
-    "usernamePlaceholder": "Enter username",
-    "email": "Email",
-    "emailPlaceholder": "Enter email address",
-    "password": "Password",
-    "passwordPlaceholder": "Enter password",
-    "confirmPassword": "Confirm Password",
-    "confirmPasswordPlaceholder": "Confirm password",
-    "agreeTerms": "I agree to the terms",
-    "close": "Close",
-    "register": "Register"
-  },
 
       "services": {
         "title": "Popular Services",
@@ -141,6 +128,7 @@ i18n.use(initReactI18next).init({
           "savings": "You can save up to 45% by choosing a longer order period."
         }
       },
+
         "form-sign-in": {
           "username": "Username",
           "usernamePlaceholder": "Enter username",
@@ -152,7 +140,8 @@ i18n.use(initReactI18next).init({
           "connectionError": "Connection error",
           "forgotPassword": "Forgot password?",
           "register": "Register",
-          "requiredFields": "Please fill in all fields"
+          "requiredFields": "Please fill in all fields",
+          "serverError": "Server error, please try again later"
       },
       
 
@@ -250,19 +239,6 @@ i18n.use(initReactI18next).init({
         "joinButton": "Присоединиться к нам",
         "registerTitle": "Регистрация"
     },
-    "form-sign-in": {
-      "username": "Логин",
-      "usernamePlaceholder": "Введите логин",
-      "email": "Электронная почта",
-      "emailPlaceholder": "Введите адрес электронной почты",
-      "password": "Пароль",
-      "passwordPlaceholder": "Введите пароль",
-      "confirmPassword": "Подтверждение пароля",
-      "confirmPasswordPlaceholder": "Подтвердите пароль",
-      "agreeTerms": "Я согласен с условиями",
-      "close": "Закрыть",
-      "register": "Регистрация",
-    },
       "services": {
         "title": "Популярные Услуги",
         "service1": "Услуга 1",
@@ -345,7 +321,8 @@ i18n.use(initReactI18next).init({
           "savings": "Вы можете сэкономить до 45% при выборе более длительного срока."
         }
       },
-        "form-sign-in": {
+
+      "form-sign-in": {
           "username": "Логин",
           "usernamePlaceholder": "Введите логин",
           "password": "Пароль",
@@ -356,7 +333,8 @@ i18n.use(initReactI18next).init({
           "connectionError": "Ошибка подключения",
           "forgotPassword": "Забыли пароль?",
           "register": "Зарегистрироваться",
-          "requiredFields": "заполните все поля"
+          "requiredFields": "заполните все поля",
+          "serverError": "Ошибка сервера, попробуйте позже"
       },
       
       "buy": "Заказать",

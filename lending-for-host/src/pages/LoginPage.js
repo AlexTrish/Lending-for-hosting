@@ -3,62 +3,50 @@ import { useTranslation } from 'react-i18next';
 import { Navbar, Container, Alert, Button } from 'react-bootstrap';
 import Footer from '../components/js/Footer';
 import { useNavigate } from 'react-router-dom';
-import Cookies from 'js-cookie'; // импортируем библиотеку для работы с куки
-import axios from 'axios'; // импортируем axios для выполнения запросов
 import '../components/css/page.scss';
 
 function LoginPage() {
-    const [identifier, setIdentifier] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const handleLogoClick = () => {
-        navigate('/');
-    };
+    const [identifier, setIdentifier] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        setError(null);
+
         try {
-            // Запрос на API для авторизации пользователя
-            const response = await axios.post('https://cors-anywhere.herokuapp.com/https://cp.retry.host', null, {
-                params: {
-                    authinfo: `${identifier}:${password}`,
-                    func: 'logon',
-                    sok: 'ok',
-                    out: 'json',
-                },
+            const response = await fetch(`https://cp.retry.host/?authinfo=${identifier}:${password}&func=logon&sok=ok&out=json`, {
+                method: 'POST',
                 headers: {
-                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
                 },
             });
-    
-            console.log(response); // Посмотреть полный ответ
-    
-            if (response.data && response.data.result === 'success') {
-                // Сохраняем сессионный токен в куки
-                Cookies.set('authToken', response.data.token, { expires: 7 });
-                // Редирект на главную страницу
+
+            const data = await response.json();
+
+            if (data.success) {
                 navigate('/');
             } else {
-                // Если авторизация не успешна, показываем ошибку
-                setError(t('form-sign-in.invalidCredentials'));
+                setError(t('form-sign-in.authError'));
             }
         } catch (error) {
-            console.error('Ошибка авторизации:', error);
-            setError(t('form-sign-in.errorOccurred'));
+            setError(t('form-sign-in.serverError'));
         }
     };
-    
+
+    const handleLogout = () => {
+        navigate('/');
+    };
 
     return (
         <div className="login-page">
             <Container>
                 <Navbar.Toggle aria-controls="navbar-nav" />
                 <Navbar.Collapse id="navbar-nav">
-                    <div className="container-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
+                    <div className="container-logo" onClick={handleLogout} style={{ cursor: 'pointer' }}>
                         <div className="logo"></div>
                         <Navbar.Brand>{t('brand')}</Navbar.Brand>
                     </div>

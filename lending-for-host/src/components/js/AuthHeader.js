@@ -4,14 +4,14 @@ import { useTranslation } from 'react-i18next';
 import { ThemeContext, themes } from './theme/ThemeContext';
 import { TbUserSquare } from 'react-icons/tb';
 import { IoMdExit } from 'react-icons/io';
-import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
+import { useNavigate } from 'react-router-dom';
 import '../css/styles.scss';
 
 function AuthHeader({ setCurrentMenu, logout, user }) {
     const { t, i18n } = useTranslation();
     const [showProfileMenu, setShowProfileMenu] = useState(false);
     const { theme, setTheme } = useContext(ThemeContext);
-    const navigate = useNavigate(); // Хук для навигации
+    const navigate = useNavigate();
 
     const toggleLanguage = () => {
         i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
@@ -21,13 +21,15 @@ function AuthHeader({ setCurrentMenu, logout, user }) {
         setShowProfileMenu(!showProfileMenu);
     };
 
-    // Проверка на наличие данных о пользователе
     const profileImage = user ? user.profileImage : ''; 
-    const username = user ? user.username : ''; 
-    const balance = user ? user.balance : '';
 
     const handleProfileClick = () => {
-        navigate('/personal-account'); // Перенаправляем на страницу профиля
+        navigate('/personal-account');
+    };
+
+    const handleLogoutClick = () => {
+        logout();
+        navigate('/');
     };
 
     return (
@@ -63,14 +65,16 @@ function AuthHeader({ setCurrentMenu, logout, user }) {
                     </div>
                 </Navbar.Collapse>
                 {/* Profile Block */}
-                <div className="profile-container" onClick={handleProfileClick}>
-                    {profileImage ? (
-                        <img src={profileImage} alt="Profile" className="profile-image" />
-                    ) : (
-                        <TbUserSquare className="profile-icon" />
-                    )}
+                <div className="profile-container">
+                    <div className="profile-image-container" onClick={handleProfileClick}>
+                        {profileImage ? (
+                            <img src={profileImage} alt="Profile" className="profile-image" />
+                        ) : (
+                            <TbUserSquare className="profile-icon" />
+                        )}
+                    </div>
                     <div className='line'></div>
-                    <button className='btn btn-exit'>
+                    <button className='btn btn-exit' onClick={handleLogoutClick}>
                         <IoMdExit className="exit-icons" />
                     </button>
                 </div>
