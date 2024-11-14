@@ -19,7 +19,7 @@ function LoginPage() {
 
         try {
             const response = await fetch(`https://cp.retry.host/?authinfo=${identifier}:${password}&func=logon&sok=ok&out=json`, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },

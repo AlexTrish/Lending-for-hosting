@@ -29,7 +29,7 @@ function RegisterPage() {
 
         try {
             const response = await fetch(`https://cp.retry.host/?username=${username}&email=${email}&password=${password}&func=register&out=json`, {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
