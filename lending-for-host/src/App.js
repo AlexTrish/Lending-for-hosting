@@ -23,11 +23,11 @@ function App() {
                     <Routes>
                         <Route
                             path="/login"
-                            element={<LoginPage />} // Страница авторизации
+                            element={<LoginPage />}
                         />
                         <Route
                             path="/register"
-                            element={<RegisterPage />} // Страница регистрации
+                            element={<RegisterPage />}
                         />
                         <Route
                             path="/"
