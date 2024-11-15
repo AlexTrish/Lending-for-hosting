@@ -13,6 +13,20 @@
         color: var(--h2-text-color);
         background: var(--bg-color-prof-block);
         z-index: 1000;
+
+        ::-webkit-scrollbar {
+            width: 0.35vw;
+        }
+          
+        ::-webkit-scrollbar-track {
+            border-radius: 0.5vw;
+            background: var(--bg-color-prof-block);
+        }
+          
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--bg-color);
+            border-radius: 20px;
+        }
     
         .line {
             border-radius: 1vw;
@@ -97,11 +111,15 @@
         }
           
         .sidebar-menu {
+            width: 16.85vw;
+            height: 37vw;
             display: flex;
             flex-direction: column;
             gap: 0.75vw;
+            overflow-y: auto;
     
             button {
+                width: 16vw;
                 gap: 0.75vw;
                 padding: 0.75vw;
                 border-radius: 0.3525vw;
@@ -110,6 +128,7 @@
                 align-items: center;
             
                 text-decoration: none;
+                font-weight: 700;
                 font-size: 1.25vw;
                 color: var(--h2-text-color);
                 transition: background-color 0.3s ease;
@@ -122,6 +141,20 @@
               
             .sidebar-icon {
                 font-size: 1.25vw;
+            }
+
+            .submenu {
+                width: 14vw;
+                margin-left: 1.5vw;
+
+                button {
+                    width: 100%;
+                    height: 2.5vw;
+                    margin: 0.5vw 0;
+                    font-weight: 500;
+                    font-size: 0.95vw !important;
+                    text-align: left;
+                }
             }
         }
     }
@@ -139,13 +172,22 @@
 
         z-index: 1;
 
+        button {
+            border: none !important;
+        }
+
+        button:hover {
+            filter: brightness(80%);
+        }
+
         .header-personal {
             position: fixed;
             top: 1vw;
-            right: 1.25vw;
+            right: 2.25vw;
 
             .container {
                 width: 100%;
+                padding: 0;
                 z-index: 1000;
           
                 #navbar-nav {
@@ -203,13 +245,126 @@
 
 
         .menu-body-container {
-            width: 100%;
-            height: 100%;
-            margin-top: 5vw;
+            width: 76vw !important;
+            height: 100vh !important;
+            margin-top: 5vw !important;
 
             display: flex;
-            align-items: center;
-            justify-content: center;   
+            align-items: flex-start;
+            justify-content: center; 
+
+            .profile-container {
+                width: 74vw !important;
+                height: 100% !important;
+                padding: 2vw !important;
+                border-radius:1vw;
+
+                color: var(--navbar-text);
+                background-color: var(--bg-color-profile);
+              }
+              
+              .profile-header {
+                position: fixed;
+                top: 0.5vw;
+                left: 20vw;
+
+                font-size: 2vw;
+                font-weight: 600;
+                color: var(--h2-text-color);
+              }
+              
+              .form-and-photo-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+
+                .form-container {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+
+                    .photo-upload {
+                        width: 14vw;
+                        height: 14vw;
+        
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: center;
+                        align-items: center;
+                        
+                        .photo-preview {
+                          display: flex;
+                          flex-direction: column;
+                          align-items: center;
+                          
+                          img {
+                            width: 8vw;
+                            height: 8vw;
+                          }
+                      
+                          input[type="file"] {
+                            border: none;
+                            background-color: transparent;
+                          }
+                        }
+                    }
+                }
+            }
+              
+              .form-group {
+                margin-bottom: 0.75vw;
+              
+                .form-label {
+                  font-weight: 600;
+                  font-size: 1vw;
+                }
+              
+                .form-control {
+                  background-color: var(--bg-color-input);
+                  color: var(--input-text-color);
+                }
+              
+                .input-group {
+                  display: flex;
+              
+                  .form-select {
+                    background-color: var(--bg-color-input);
+                    color: var(--input-text-color);
+                    border-radius: 4px 0 0 4px;
+                  }
+              
+                  .form-control {
+                    width: 20vw !important;
+                    background-color: var(--bg-color-input);
+                    color: var(--input-text-color);
+                    border-radius: 0 4px 4px 0;
+                  }
+                }
+              }
+              
+              .form-actions {
+                display: flex;
+                justify-content: flex-end;
+                gap: 10px;
+              
+                .btn {
+                  padding: 10px 20px;
+                  border-radius: 4px;
+                  font-size: 16px;
+              
+                  &.btn-secondary {
+                    background-color: var(--btn-join-color);
+                    color: var(--button-text-color);
+                  }
+              
+                  &.btn-primary {
+                    background-color: var(--green-block);
+                    color: var(--button-text-color);
+                  }
+                }
+              }              
         }
     }
 }
