@@ -39,7 +39,7 @@ const Sidebar = ({ onSelect }) => {
               <FaUser className="sidebar-icon" />
               Профиль
             </button>
-            <button onClick={() => onSelect('payers')}>
+            <button onClick={() => onSelect('PayersPage')}>
               <FaWallet className="sidebar-icon" />
               Плательщики
             </button>
@@ -47,7 +47,7 @@ const Sidebar = ({ onSelect }) => {
               <FaRegHandshake className="sidebar-icon" />
               Реферальная программа
             </button>
-            <button onClick={() => onSelect('cart')}>
+            <button onClick={() => onSelect('CartPage')}>
               <FaShoppingCart className="sidebar-icon" />
               Корзина
             </button>

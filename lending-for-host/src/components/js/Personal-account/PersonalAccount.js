@@ -10,6 +10,8 @@ import Services from './Menu/Services';
 import Dashboard from './Menu/Dashboard';
 import Settings from './Menu/Settings';
 import Transactions from './Menu/Transactions';
+import PayersPage from './Menu/PayersPage';
+import CartPage from './Menu/CartPage';
 
 function PersonalAccount() {
     const { t } = useTranslation();
@@ -51,6 +53,8 @@ function PersonalAccount() {
             <div className='menu-body-container'>
                 {currentMenu === 'profile' && <Profile />}
                 {currentMenu === 'referral' && <Referral />}
+                {currentMenu === 'PayersPage' && <PayersPage />}
+                {currentMenu === 'CartPage' && <CartPage />}
                 {currentMenu === 'services' && <Services />}
                 {currentMenu === 'dashboard' && <Dashboard />}
                 {currentMenu === 'transactions' && <Transactions />}

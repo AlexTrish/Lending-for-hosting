@@ -20,29 +20,69 @@ function RegisterPage() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setError('');
+        setError(null);
 
-        if (password !== confirmPassword) {
-            setError(t('form-sign-in.passwordMismatch'));
-            return;
-        }
+        const constructedUrl = `https://cp.retry.host/billmgr?`;
 
         try {
-            const response = await fetch(`https://cp.retry.host/?username=${username}&email=${email}&password=${password}&func=register&out=json`, {
-                method: 'GET',
+            const response = await fetch('http://109.237.99.125:8000/api/test/', {
+                method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({ 
+                    url: constructedUrl,
+                    need_manual_action: '',
+                    email_exists: '',
+                    socnetwork_account_exist: '',
+                    realname: `${username}`,
+                    recaptcha_type: '',
+                    _ga: '',
+                    _ym_uid: '',
+                    email: `${email}`,
+                    project: '1',
+                    partner: '',
+                    sesid: '',
+                    currency_fromsite: '',
+                    redirect_params: '',
+                    redirect_auth: '',
+                    tzoffset: '',
+                    passwd: `${password}`,
+                    confirm: `${confirmPassword}`,
+                    country: '1',
+                    state: '',
+                    field_2: 'on',
+                    sfromextform: 'yes',
+                    newwindow: 'extform',
+                    func: 'register',
+                    sok: 'ok',
+                    elid: '',
+                    clicked_button: 'ok',
+                    out: 'xjson',
+                 }),
             });
 
             const data = await response.json();
 
-            if (data.success) {
+            if (e) {
+                const userData = {
+                    
+                };
+
+                const expiresAt = new Date();
+                expiresAt.setDate(expiresAt.getDate() + 7);
+
+                // Сохраняем данные в localStorage
+                localStorage.setItem('user', JSON.stringify(userData));
+                localStorage.setItem('expiresAt', expiresAt.toISOString());
+
+                setUsername(userData);
                 navigate('/');
             } else {
-                setError(t('form-sign-in.registrationFailed'));
+                setError(t('form-sign-in.authError'));
             }
         } catch (error) {
+            console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
         }
     };
