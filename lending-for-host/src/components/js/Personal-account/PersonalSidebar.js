@@ -51,7 +51,7 @@ const Sidebar = ({ onSelect }) => {
               <FaShoppingCart className="sidebar-icon" />
               Корзина
             </button>
-            <button onClick={() => onSelect('orders')}>
+            <button onClick={() => onSelect('services')}>
               <FaClipboardList className="sidebar-icon" />
               Заказы
             </button>

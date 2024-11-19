@@ -16,7 +16,7 @@ function App() {
     }, [currentMenu]);
 
     return (
-        <AuthProvider>
+        // <AuthProvider>
             <Router> {/* Оборачиваем приложение в Router */}
                 <div className="app">                    
                     {/* Добавляем Routes для маршрутов */}
@@ -40,7 +40,7 @@ function App() {
                     </Routes>
                 </div>
             </Router>
-        </AuthProvider>
+        // </AuthProvider>
     );
 }
 
