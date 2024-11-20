@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FaUser, FaUsers, FaCogs, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaCog, FaServer, FaCloud, FaGlobe, FaPercentage, FaClipboardList, FaWallet, FaShoppingBag, FaLock } from 'react-icons/fa';
+import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaCog, FaServer, FaCloud, FaGlobe, FaPercentage, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
 import './PersonalPage.scss';
 
 const Sidebar = ({ onSelect }) => {
@@ -82,15 +82,15 @@ const Sidebar = ({ onSelect }) => {
               Абузоустойчивые сервера
             </button>
             <button onClick={() => onSelect('vps')}>
-              <FaCloud className="sidebar-icon" />
+              <FaDatabase className="sidebar-icon" />
               VPS
             </button>
             <button onClick={() => onSelect('vds')}>
-              <FaCloud className="sidebar-icon" />
+              <FaServer className="sidebar-icon" />
               VDS
             </button>
             <button onClick={() => onSelect('vpn')}>
-              <FaLock className="sidebar-icon" />
+              <FaShieldAlt className="sidebar-icon" />
               VPN
             </button>
             <button onClick={() => onSelect('cloud-panel')}>

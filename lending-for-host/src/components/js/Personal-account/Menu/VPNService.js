@@ -1,147 +1,153 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaServer, FaMapMarkerAlt, FaLock, FaKey, FaUsers } from 'react-icons/fa';
-import '../PersonalPage.scss';
+import { Modal, Button, Card, Form, Row, Col, InputGroup, Container } from 'react-bootstrap';
 
-const VPNSetup = () => {
-  const navigate = useNavigate();
+const VPNCard = ({ vpn, onEdit }) => (
+  <Card style={{ width: '18rem', margin: '1rem' }} className="text-center">
+    <Card.Body>
+      <Card.Title>{vpn.name}</Card.Title>
+      <Card.Subtitle className="mb-2 text-muted">{vpn.ip}</Card.Subtitle>
+      <Card.Text>
+        <strong>Status:</strong> {vpn.status} <br />
+        <strong>Location:</strong> {vpn.location} <br />
+        <strong>Bandwidth:</strong> {vpn.bandwidth} <br />
+        <strong>Protocol:</strong> {vpn.protocol}
+      </Card.Text>
+      <Button variant="primary" onClick={() => onEdit(vpn)}>
+        Configure
+      </Button>
+    </Card.Body>
+  </Card>
+);
 
-  // Состояния для выбора параметров VPN-сервера
-  const [serverType, setServerType] = useState('basic');
-  const [location, setLocation] = useState('US');
-  const [protocol, setProtocol] = useState('OpenVPN');
-  const [encryption, setEncryption] = useState(80); // Используем проценты для шифрования
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [connectionLimit, setConnectionLimit] = useState(100); // Лимит подключений в процентах
+const VPNModal = ({ show, onHide, vpn, onSave }) => (
+  <Modal show={show} onHide={onHide} centered>
+    <Modal.Header closeButton>
+      <Modal.Title>VPN Configuration</Modal.Title>
+    </Modal.Header>
+    <Modal.Body>
+      {vpn && (
+        <Form>
+          <Row>
+            <Col md={6}>
+              <Form.Group controlId="formVPNName">
+                <Form.Label>VPN Name</Form.Label>
+                <Form.Control defaultValue={vpn.name} />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formVPNIP">
+                <Form.Label>IP Address</Form.Label>
+                <Form.Control defaultValue={vpn.ip} />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6}>
+              <Form.Group controlId="formVPNLocation">
+                <Form.Label>Location</Form.Label>
+                <Form.Control defaultValue={vpn.location} />
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formVPNProtocol">
+                <Form.Label>Protocol</Form.Label>
+                <Form.Control defaultValue={vpn.protocol} />
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col md={6}>
+              <Form.Group controlId="formVPNBandwidth">
+                <Form.Label>Bandwidth</Form.Label>
+                <InputGroup>
+                  <Form.Control defaultValue={vpn.bandwidth.split(' ')[0]} />
+                  <InputGroup.Text>Mbps</InputGroup.Text>
+                </InputGroup>
+              </Form.Group>
+            </Col>
+            <Col md={6}>
+              <Form.Group controlId="formVPNStatus">
+                <Form.Label>Status</Form.Label>
+                <Form.Select defaultValue={vpn.status}>
+                  <option>Active</option>
+                  <option>Inactive</option>
+                </Form.Select>
+              </Form.Group>
+            </Col>
+          </Row>
+        </Form>
+      )}
+    </Modal.Body>
+    <Modal.Footer>
+      <Button variant="secondary" onClick={onHide}>
+        Close
+      </Button>
+      <Button variant="primary" onClick={onSave}>
+        Save Changes
+      </Button>
+    </Modal.Footer>
+  </Modal>
+);
 
-  // Функция для сохранения настроек
-  const handleSaveSettings = () => {
-    // Логика для сохранения настроек
-    alert(`Настройки для VPN-сервера сохранены:\n
-      Тип: ${serverType}\n
-      Расположение: ${location}\n
-      Протокол: ${protocol}\n
-      Шифрование: ${encryption}%\n
-      Логин: ${username}\n
-      Пароль: ${password}\n
-      Лимит подключений: ${connectionLimit}%`);
-    // Дополнительные действия, например, редирект на другие страницы
-    navigate('/dashboard');
+const VPNManager = () => {
+  const [vpns, setVPNs] = useState([
+    {
+      id: 1,
+      name: 'VPN Server 1',
+      ip: '203.0.113.1',
+      status: 'Active',
+      location: 'New York',
+      bandwidth: '100 Mbps',
+      protocol: 'OpenVPN',
+    },
+  ]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedVPN, setSelectedVPN] = useState(null);
+
+  const handleEditVPN = (vpn) => {
+    setSelectedVPN(vpn);
+    setShowModal(true);
+  };
+
+  const handleSaveChanges = () => {
+    setShowModal(false);
+  };
+
+  const handleAddVPN = () => {
+    const newVPNId = vpns.length + 1;
+    const newVPN = {
+      id: newVPNId,
+      name: `VPN Server ${newVPNId}`,
+      ip: `203.0.113.${newVPNId}`,
+      status: 'Inactive',
+      location: 'London',
+      bandwidth: '50 Mbps',
+      protocol: 'IKEv2',
+    };
+    setVPNs([...vpns, newVPN]);
   };
 
   return (
-    <div className="vpn-setup-container">
-      <div className="vpn-header">
-        <h2>Полная настройка VPN-сервера</h2>
+    <Container className="mt-3">
+      <h1 className="text-center mb-4">VPN Servers</h1>
+      <div className="d-flex flex-wrap justify-content-center">
+        {vpns.map((vpn) => (
+          <VPNCard key={vpn.id} vpn={vpn} onEdit={handleEditVPN} />
+        ))}
       </div>
-
-      <div className="vpn-options">
-        {/* Тип сервера */}
-        <div className="option">
-          <label><FaServer /> Тип сервера</label>
-          <select 
-            value={serverType} 
-            onChange={(e) => setServerType(e.target.value)}
-            className="vpn-select"
-          >
-            <option value="basic">Базовый</option>
-            <option value="premium">Премиум</option>
-            <option value="dedicated">Выделенный</option>
-          </select>
-        </div>
-
-        {/* Расположение сервера */}
-        <div className="option">
-          <label><FaMapMarkerAlt /> Расположение сервера</label>
-          <select 
-            value={location} 
-            onChange={(e) => setLocation(e.target.value)}
-            className="vpn-select"
-          >
-            <option value="US">США</option>
-            <option value="EU">Европа</option>
-            <option value="Asia">Азия</option>
-            <option value="AU">Австралия</option>
-          </select>
-        </div>
-
-        {/* Протокол */}
-        <div className="option">
-          <label><FaLock /> Протокол VPN</label>
-          <select 
-            value={protocol} 
-            onChange={(e) => setProtocol(e.target.value)}
-            className="vpn-select"
-          >
-            <option value="OpenVPN">OpenVPN</option>
-            <option value="WireGuard">WireGuard</option>
-            <option value="IPSec">IPSec</option>
-            <option value="PPTP">PPTP</option>
-          </select>
-        </div>
-
-        {/* Шифрование */}
-        <div className="option">
-          <label><FaLock /> Шифрование</label>
-          <input 
-            type="number" 
-            value={encryption} 
-            onChange={(e) => setEncryption(Math.min(Math.max(e.target.value, 0), 100))} // Ограничиваем диапазон от 0 до 100
-            className="vpn-input"
-            placeholder="Шифрование (0-100%)"
-            max="100"
-            min="0"
-          />
-          <span>%</span>
-        </div>
-
-        {/* Логин */}
-        <div className="option">
-          <label><FaKey /> Логин</label>
-          <input 
-            type="text" 
-            value={username} 
-            onChange={(e) => setUsername(e.target.value)} 
-            className="vpn-input" 
-            placeholder="Введите логин"
-          />
-        </div>
-
-        {/* Пароль */}
-        <div className="option">
-          <label><FaKey /> Пароль</label>
-          <input 
-            type="password" 
-            value={password} 
-            onChange={(e) => setPassword(e.target.value)} 
-            className="vpn-input" 
-            placeholder="Введите пароль"
-          />
-        </div>
-
-        {/* Лимит подключений */}
-        <div className="option">
-          <label><FaUsers /> Лимит подключений</label>
-          <input 
-            type="number" 
-            value={connectionLimit} 
-            onChange={(e) => setConnectionLimit(Math.min(Math.max(e.target.value, 1), 100))} // Ограничиваем диапазон от 1 до 100
-            className="vpn-input" 
-            min="1" 
-            max="100"
-          />
-          <span>%</span>
-        </div>
+      <div className="text-center mt-3">
+        <Button variant="success" onClick={handleAddVPN}>
+          Add VPN
+        </Button>
       </div>
-
-      <div className="vpn-footer">
-        <button className="save-button" onClick={handleSaveSettings}>
-          Сохранить настройки
-        </button>
-      </div>
-    </div>
+      <VPNModal
+        show={showModal}
+        onHide={() => setShowModal(false)}
+        vpn={selectedVPN}
+        onSave={handleSaveChanges}
+      />
+    </Container>
   );
 };
 
-export default VPNSetup;
+export default VPNManager;

@@ -856,7 +856,7 @@
 
 
   //Services
-.services {
+  .services {
     width: 90vw;
     margin: 5vw 0;
   
@@ -866,32 +866,53 @@
       font-weight: 600;
       color: var(--h2-text-color);
     }
-
+  
     .service-list {
       display: flex;
       justify-content: space-between;
+      flex-wrap: wrap; /* для адаптивности */
     }
-    
+  
     .service-item {
       width: 25vw;
-      height: 30vw;
+      height: 28vw; /* Немного увеличим высоту для лучшего отображения */
       border-radius: 1.5vw;
       padding: 2vh 0;
     
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: flex-start;
-      
-      -webkit-box-shadow: var(--box-shadow);
-      -moz-box-shadow: var(--box-shadow);
+      justify-content: space-between; /* Располагаем элементы с отступами между ними */
+    
       box-shadow: var(--box-shadow);
       background-color: var(--bg-color-service);
-
+    
+      .service-icon {
+        width: 4vw; /* Фиксированная ширина */
+        height: 4vw; /* Фиксированная высота */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+  
+        svg {
+          width: 3vw; /* Иконка будет иметь фиксированный размер */
+          height: 3vw; /* Иконка будет иметь фиксированный размер */
+        }
+      }
+    
       .green-box-heading {
         margin: 1vw 0;
         font-size: 1.5vw;
         color: var(--h1-text-color);
+      }
+    
+      .service-description {
+        padding: 0 2vw;
+        font-size: 1vw;
+        color: var(--description-color);
+        margin: 0.5vw 0;
+        text-align: justify;
+        line-height: 1.4;
       }
     
       .green-box {
@@ -899,45 +920,36 @@
         height: 20vw;
         margin: 1vw 0;
         border-radius: 1.5vw;
-    
         background: var(--content-block-service);
-
+    
         .img-block {
-
+          // Стиль для картинок, если нужно
         }
-
-        .vpn-block {
-
-        }
-
-        .domain-block {
-
-        }
-
-        .bulletproof-block {
-
-        }
-
       }
-
+    
       .green-box-btn {
         width: 8vw;
         height: 2.5vw;
         border-radius: 0.5vw;
-
         font-weight: 600;
         font-size: 1vw;
         color: var(--button-text-color);
         background: var(--green-block);
+        margin-top: auto; /* Кнопка будет прижата к низу */
+        margin-bottom: 1vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-
+    
       .green-box-btn:hover {
-        margin: 1vw 0;
         filter: brightness(90%);
       }
     }
+    
   }
 }
+  
 
 //Footer
 .footer {

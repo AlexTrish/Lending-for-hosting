@@ -18,14 +18,15 @@ import VDSService from './Menu/VDSService';
 import VPSService from './Menu/VPSService';
 import CloudPanelService from './Menu/CloudPanelService';
 import DomainService from './Menu/DomainService';
-import Discounts from './Menu/Discounts'; // Добавлен компонент скидок
-import Support from './Menu/Support'; // Добавлен компонент поддержки
-import Statistics from './Menu/Statistics'; // Добавлен компонент статистики
+import Discounts from './Menu/Discounts';
+import Support from './Menu/Support';
+import Statistics from './Menu/Statistics';
+import Servers from './Menu/Servers';
 
 function PersonalAccount() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [currentMenu, setCurrentMenu] = useState('profile'); // Дефолтное меню - профиль
+  const [currentMenu, setCurrentMenu] = useState('profile');
 
   useEffect(() => {
     document.body.style.overflowY = 'hidden';
@@ -37,7 +38,6 @@ function PersonalAccount() {
     };
   }, []);
 
-  // Данные пользователя (могут быть заменены на реальные из API)
   const user = {
     name: 'Иван Иванов',
     email: 'ivan.ivanov@example.com',
@@ -55,11 +55,10 @@ function PersonalAccount() {
 
   return (
     <div className="container-Personal-Account">
-      <Sidebar onSelect={handleSelect} /> {/* Sidebar для отображения выбранного меню */}
+      <Sidebar onSelect={handleSelect} />
       <div className="menu-container">
         <Header />
         <div className="menu-body-container">
-          {/* Динамическое отображение компонентов в зависимости от выбранного меню */}
           {currentMenu === 'profile' && <Profile />}
           {currentMenu === 'referral' && <Referral />}
           {currentMenu === 'PayersPage' && <PayersPage />}
@@ -74,9 +73,10 @@ function PersonalAccount() {
           {currentMenu === 'vds' && <VDSService />}
           {currentMenu === 'cloud-panel' && <CloudPanelService />}
           {currentMenu === 'domains' && <DomainService />}
-          {currentMenu === 'discounts' && <Discounts />} {/* Добавляем компонент скидок */}
-          {currentMenu === 'support' && <Support />} {/* Добавляем компонент поддержки */}
-          {currentMenu === 'statistics' && <Statistics />} {/* Добавляем компонент статистики */}
+          {currentMenu === 'discounts' && <Discounts />}
+          {currentMenu === 'support' && <Support />}
+          {currentMenu === 'statistics' && <Statistics />}
+          {currentMenu === 'servers' && <Servers />}
         </div>
         <Footer />
       </div>
