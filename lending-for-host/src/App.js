@@ -5,7 +5,6 @@ import Dashboard from './components/js/Dashboard';
 import PersonalAccount from './components/js/Personal-account/PersonalAccount';
 import LoginPage from './pages/LoginPage'; // Страница авторизации
 import RegisterPage from './pages/RegisterPage'; // Страница регистрации
-import { AuthProvider } from './AuthContext';
 import './components/css/styles.scss';
 
 function App() {

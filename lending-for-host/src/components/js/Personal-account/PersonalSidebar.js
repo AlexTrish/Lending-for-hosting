@@ -1,21 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaCog, FaServer, FaCloud, FaGlobe, FaPercentage, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
 import './PersonalPage.scss';
 
 const Sidebar = ({ onSelect }) => {
   const [isClientsOpen, setIsClientsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [userName, setUserName] = useState('Загрузка...');
+  const [balance, setBalance] = useState('...');
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const response = await fetch('http://45.84.88.14:8001/api/test/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            url: 'https://cp.retry.host/billmgr?',
+            func: 'dashboard',
+            out: 'xjson',
+          }),
+        });
+
+        const data = await response.json();
+
+        if (data?.doc?.messages) {
+          const userData = data.doc.messages;
+          setUserName(userData.name);
+          setBalance(userData.balance);
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+        setUserName('Ошибка');
+        setBalance('0.00');
+      }
+    };
+
+    fetchUserData();
+  }, []);
 
   return (
     <div className="sidebar-container">
       <div className="Profile-container">
         <div className="img-container"></div>
         <div className="profile-info">
-          <h3>UserName</h3>
+          <h3>{userName}</h3>
           <div className="block-element">
             <p>Баланс:</p>
             <div className="green-block">
-              <p>1234.00</p>
+              <p>{balance}</p>
               <p className="rub">₽</p>
             </div>
           </div>

@@ -1,9 +1,7 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { AuthContext } from '../../AuthContext';
-import AuthHeader from './AuthHeader';
-import Footer from './Footer';
 import Header from './Header';
+import Footer from './Footer';
 import Main from './lending-content/Main';
 import Company from './lending-content/Company';
 import About_us from './lending-content/About-us';
@@ -17,7 +15,6 @@ import '../css/styles.scss';
 
 function Dashboard({ setCurrentMenu, currentMenu }) {
   const { t } = useTranslation();
-  const { isAuthenticated } = useContext(AuthContext); // Получаем статус авторизации
 
   const pricingPlans = [
     { title: t('plans.basic.name'), price: t('plans.basic.price'), key: "basic" },
@@ -31,7 +28,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
   }, [currentMenu]);
 
   const renderPricingCards = (cardPlans) => (
-    <section className='buy-cards'>      
+    <section className='buy-cards'>
       {cardPlans.map((plan) => (
         <div className='buy-card' key={plan.key}>
           <div className='buy-card-header'>
@@ -61,13 +58,7 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
 
   return (
     <div className="dashboard">
-      {/* Проверка на авторизацию и рендеринг соответствующего заголовка */}
-      {isAuthenticated ? (
-        <AuthHeader setCurrentMenu={setCurrentMenu} />
-      ) : (
-        <Header setCurrentMenu={setCurrentMenu} />
-      )}
-      
+      <Header setCurrentMenu={setCurrentMenu} />
       {currentMenu === 'Main' && (
         <>
           <Main />
@@ -79,7 +70,6 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
           <Pay />
         </>
       )}
-      {/* Рендеринг содержимого на основе выбранного меню */}
       {currentMenu === 'VPS' && (
         <>
           <section className='main-container'>

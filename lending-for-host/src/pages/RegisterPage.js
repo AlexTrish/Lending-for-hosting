@@ -21,16 +21,16 @@ function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-
+    
         const constructedUrl = `https://cp.retry.host/billmgr?`;
-
+    
         try {
-            const response = await fetch('http://109.237.99.125:8000/api/test/', {
+            const response = await fetch('http://45.84.88.14:8001/api/test/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     url: constructedUrl,
                     need_manual_action: '',
                     email_exists: '',
@@ -59,25 +59,26 @@ function RegisterPage() {
                     elid: '',
                     clicked_button: 'ok',
                     out: 'xjson',
-                 }),
+                }),
             });
-
+    
             const data = await response.json();
-
-            if (e) {
+    
+            if (response.ok && data?.doc?.messages?.$checked) {
                 const userData = {
-                    
+                    username,
+                    email,
+                    checked: data.doc.messages.$checked,
                 };
-
+    
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
-
+    
                 // Сохраняем данные в localStorage
                 localStorage.setItem('user', JSON.stringify(userData));
                 localStorage.setItem('expiresAt', expiresAt.toISOString());
-
-                setUsername(userData);
-                navigate('/');
+    
+                navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
             }
@@ -193,9 +194,7 @@ function RegisterPage() {
                             <p className="mb-0">Зарегистрируйтесь с помощью</p>
                             <span className="line"></span>
                         </div>
-                        <a className="google-auth" onClick={handleGoogleSignUp}>
-                            <FaGoogle />
-                        </a>
+                        <button className="google-auth" onClick={handleGoogleSignUp}><FaGoogle /></button>
                     </div>
 
                     <div className="mt-3 text-center">

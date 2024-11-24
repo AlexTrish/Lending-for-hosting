@@ -2,7 +2,6 @@
 import React, { useContext, useState } from 'react';
 import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { AuthContext } from '../../AuthContext';
 import { ThemeContext, themes } from './theme/ThemeContext';
 import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
 import '../css/styles.scss';
@@ -18,10 +17,6 @@ function Header({ setCurrentMenu }) {
 
   const handleLoginClick = () => {
     navigate('/login'); 
-  };
-
-  const handlePerconal = () => {
-    navigate('/personal-account'); 
   };
 
   return (
@@ -48,7 +43,7 @@ function Header({ setCurrentMenu }) {
                 <Nav.Link className='referal-link' onClick={() => setCurrentMenu('referal')}>{t("menu.referral")}</Nav.Link>
                 <NavDropdown className='about-link' title={t("menu.about")} id="about-dropdown">
                   <NavDropdown.Item onClick={() => setCurrentMenu('rules')}>{t("menu.rules")}</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handlePerconal}>{t("menu.terms")}</NavDropdown.Item> {/**onClick={() => setCurrentMenu('terms')}>{t("menu.terms")} */}
+                  {/* <NavDropdown.Item onClick={() => setCurrentMenu('terms')}>{t("menu.terms")}>{t("menu.terms")}</NavDropdown.Item> */}
                 </NavDropdown>
               </Nav>
               <div className='btn-container-wrapper'>

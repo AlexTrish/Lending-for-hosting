@@ -33,7 +33,7 @@ function LoginPage() {
         const constructedUrl = `https://cp.retry.host/billmgr?`;
 
         try {
-            const response = await fetch('http://109.237.99.125:8000/api/test/', {
+            const response = await fetch('http://45.84.88.14:8001/api/test/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -51,9 +51,9 @@ function LoginPage() {
 
             const data = await response.json();
 
-            if (data.doc.auth.$id) {
+            if (data.doc.messages.$checked) {
                 const userData = {
-                    $id: data.doc.auth.$id,
+                    $checked: data.doc.messages.$checked,
                 };
 
                 const expiresAt = new Date();
@@ -64,7 +64,7 @@ function LoginPage() {
                 localStorage.setItem('expiresAt', expiresAt.toISOString());
 
                 setUser(userData); // Обновляем состояние
-                navigate('/'); // Редирект
+                navigate('/personal-account'); // Редирект
             } else {
                 setError(t('form-sign-in.authError'));
             }

@@ -11,7 +11,7 @@
     .container {
       width: 100vw;
       position: fixed;
-      bottom: 46.12vw;
+      top: 0vw;
       left: 5.15vw;
       z-index: 1000;
 
@@ -24,7 +24,6 @@
           flex-direction: row;
           align-items: center;
           justify-content: space-between;
-          margin-right: 5vw;
         
           text-align: center;
           font-weight: 700;
@@ -59,10 +58,10 @@
         }
   
         h3 {
-          margin: 1vw 0 1.5vw 0;
+          margin: 0vw 0 1.5vw 0;
           text-align: center;
           font-size: 2vw;
-          font-weight: 400;
+          font-weight: 700;
           color: var(--h2-text-color);
         }
   
@@ -76,6 +75,8 @@
             height: 2.5vw;
             margin-bottom: 1vw;
             border: none;
+
+            font-size: 1vw;
             color: var(--text-color);
             background: var(--bg-color-input);
           }
@@ -88,6 +89,9 @@
           button {
             margin-top: 1vw;
             border: none;
+
+            font-weight: 600;
+            font-size: 1vw;
             background: var(--green-block);
           }
           button:hover {
