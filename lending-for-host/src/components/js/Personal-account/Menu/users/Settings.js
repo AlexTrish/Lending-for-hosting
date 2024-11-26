@@ -1,5 +1,5 @@
 import React from 'react';
-import '../PersonalPage.scss';
+import '../../PersonalPage.scss';
 
 const Settings = () => {
   

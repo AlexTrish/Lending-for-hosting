@@ -3,8 +3,9 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'; // Импортируем роутинг
 import Dashboard from './components/js/Dashboard';
 import PersonalAccount from './components/js/Personal-account/PersonalAccount';
-import LoginPage from './pages/LoginPage'; // Страница авторизации
-import RegisterPage from './pages/RegisterPage'; // Страница регистрации
+import LoginPage from './pages/LoginPage';
+import RegisterPage from './pages/RegisterPage';
+import FABButton from './components/js/FABButton';
 import './components/css/styles.scss';
 
 function App() {
@@ -37,6 +38,8 @@ function App() {
                             element={<PersonalAccount />}
                         />
                     </Routes>
+
+                    <FABButton />
                 </div>
             </Router>
         // </AuthProvider>

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { FaCreditCard, FaPlusCircle, FaTrash } from "react-icons/fa";
-import '../PersonalPage.scss';
+import '../../PersonalPage.scss';
 
 const PaymentMethodsPage = () => {
   const [cards, setCards] = useState([

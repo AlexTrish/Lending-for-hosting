@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Row, Col, Button, InputGroup, FormControl, Card } from 'react-bootstrap';
-import '../PersonalPage.scss';
+import '../../PersonalPage.scss';
 
 function Referral() {
   const referralLink = 'https://example.com/referral?code=YOUR_CODE';

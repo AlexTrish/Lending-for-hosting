@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Card, Button, ListGroup } from 'react-bootstrap';
-import '../PersonalPage.scss';
+import '../../PersonalPage.scss';
 
 function CartPage() {
   // Пример состояния для корзины

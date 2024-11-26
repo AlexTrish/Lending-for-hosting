@@ -1,0 +1,73 @@
+.fab-container {
+  position: fixed;
+  bottom: 2vw;
+  right: 1vw; /* Отступ справа */
+  display: flex;
+  flex-direction: column-reverse; /* Чтобы кнопки выдвигались вверх */
+  align-items: flex-end; /* Выравнивание по правой стороне */
+  z-index: 1000;
+}
+
+.fab-button {
+  width: 2.5vw;
+  height: 2.5vw;
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  font-size: 1.15vw;
+  color: var(--button-text-color);
+  background-color: var(--green-block);
+  cursor: pointer;
+  transition: transform 0.3s, background-color 0.3s;
+
+  &:hover {
+    filter: brightness(65%);
+    transform: scale(1.05);
+  }
+}
+
+.fab-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25vw;
+  margin-bottom: 0.5vw;
+}
+
+.fab-option {
+  border: none;
+  border-radius: 20px;
+  padding: 0.5vw 0.75vw;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  -webkit-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  text-align: right;
+
+  color: var(--h2-text-color);
+  background-color: var(--buy-block);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+
+  &:hover {
+    background-color: var(--green-block);
+    color: var(--button-text-color);
+    transform: translateY(-2px);
+  }
+
+  span {
+    font-size: 14px;
+    white-space: nowrap; /* Чтобы текст не переносился */
+  }
+}

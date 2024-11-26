@@ -3,25 +3,24 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from './PersonalSidebar';
 import Header from './PersonalHeader';
-import Footer from './PersonalFooter';
-import Profile from './Menu/Profile';
-import Referral from './Menu/Referral';
-import Services from './Menu/Services';
+import Profile from './Menu/users/Profile';
+import Referral from './Menu/users/Referral';
+import Services from './Menu/users/Services';
 import Dashboard from './Menu/Dashboard';
-import Settings from './Menu/Settings';
+import Settings from './Menu/users/Settings';
 import Transactions from './Menu/Transactions';
-import PayersPage from './Menu/PayersPage';
-import CartPage from './Menu/CartPage';
-import PaymentMethods from './Menu/PaymentMethods';
-import VPNService from './Menu/VPNService';
-import VDSService from './Menu/VDSService';
-import VPSService from './Menu/VPSService';
-import CloudPanelService from './Menu/CloudPanelService';
-import DomainService from './Menu/DomainService';
-import Discounts from './Menu/Discounts';
+import PayersPage from './Menu/users/PayersPage';
+import CartPage from './Menu/users/CartPage';
+import PaymentMethods from './Menu/users/PaymentMethods';
+import VPNService from './Menu/servicelist/VPNService';
+import VDSService from './Menu/servicelist/VDSService';
+import VPSService from './Menu/servicelist/VPSService';
+import CloudPanelService from './Menu/servicelist/CloudPanelService';
+import DomainService from './Menu/servicelist/DomainService';
+import Discounts from './Menu/users/Discounts';
 import Support from './Menu/Support';
 import Statistics from './Menu/Statistics';
-import Servers from './Menu/Servers';
+import Servers from './Menu/servicelist/Servers';
 
 function PersonalAccount() {
   const { t } = useTranslation();
@@ -78,7 +77,6 @@ function PersonalAccount() {
           {currentMenu === 'statistics' && <Statistics />}
           {currentMenu === 'servers' && <Servers />}
         </div>
-        <Footer />
       </div>
     </div>
   );

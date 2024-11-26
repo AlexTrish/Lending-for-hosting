@@ -12,40 +12,64 @@ function Content_4() {
       <div className="service-list">
         {/* VPN */}
         <div className="service-item">
-          <div className="service-icon">
-            <FaShieldAlt size={50} color="#4CAF50" />
+          <div className="service-header">
+            <div className="service-icon">
+              <FaShieldAlt size={50} />
+            </div>
+            <h3 className="green-box-heading">{t("menu.vpn")}</h3>
+            <div className="line"></div>
           </div>
-          <h3 className="green-box-heading">{t("menu.vpn")}</h3>
-          <p className="service-description">
-            {t("menu.vpn-desc")} {/* Краткое описание VPN */}
-          </p>
-          <button className="green-box-btn">{t('Details')}</button>
+          <div className="service-body">
+            <p className="service-description">
+              {t("menu.vpn-desc")} {/* Краткое описание VPN */}
+            </p>
+          </div>
+          <div className="service-footer">
+            <div className="line"></div>
+            <button className="green-box-btn">{t('Details')}</button>
+          </div>
         </div>
 
         {/* Domains */}
         <div className="service-item">
-          <div className="service-icon">
-            <FaServer size={50} color="#FF9800" />
+          <div className="service-header">
+            <div className="service-icon">
+            <FaServer size={50} />
+            </div>
+            <h3 className="green-box-heading">{t("menu.domains")}</h3>
+            <div className="line"></div>
           </div>
-          <h3 className="green-box-heading">{t("menu.domains")}</h3>
-          <p className="service-description">
-            {t("menu.domains-desc")} {/* Краткое описание доменов */}
-          </p>
-          <button className="green-box-btn">{t('Details')}</button>
+          <div className="service-body">
+            <p className="service-description">
+            {t("menu.domains-desc")}
+            </p>
+          </div>
+          <div className="service-footer">
+            <div className="line"></div>
+            <button className="green-box-btn">{t('Details')}</button>
+          </div>
         </div>
 
         {/* Bulletproof */}
         <div className="service-item">
-          <div className="service-icon">
-            <FaCloud size={50} color="#2196F3" />
+            <div className="service-header">
+              <div className="service-icon">
+              <FaCloud size={50} />
+              </div>
+              <h3 className="green-box-heading">{t("menu.bulletproof")}</h3>
+              <div className="line"></div>
+            </div>
+            <div className="service-body">
+              <p className="service-description">
+              {t("menu.bulletproof-desc")}
+              </p>
+            </div>
+            <div className="service-footer">
+              <div className="line"></div>
+              <button className="green-box-btn">{t('Details')}</button>
+            </div>
           </div>
-          <h3 className="green-box-heading">{t("menu.bulletproof")}</h3>
-          <p className="service-description">
-            {t("menu.bulletproof-desc")} {/* Краткое описание абузоустойчивых серверов */}
-          </p>
-          <button className="green-box-btn">{t('Details')}</button>
         </div>
-      </div>
     </section>
   );
 }

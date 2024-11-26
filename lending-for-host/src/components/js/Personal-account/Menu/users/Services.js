@@ -1,6 +1,6 @@
 import React from "react";
 import { FaServer, FaCloud, FaShieldAlt, FaGlobe, FaDatabase } from "react-icons/fa";
-import '../PersonalPage.scss';
+import '../../PersonalPage.scss';
 
 const PurchasedItemsPage = () => {
   const services = [

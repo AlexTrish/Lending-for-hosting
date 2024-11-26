@@ -1,12 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaCog, FaServer, FaCloud, FaGlobe, FaPercentage, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
+import { ThemeContext, themes } from '../theme/ThemeContext';
 import './PersonalPage.scss';
 
 const Sidebar = ({ onSelect }) => {
+  const { theme, setTheme } = useContext(ThemeContext);
+  const { t, i18n } = useTranslation();
   const [isClientsOpen, setIsClientsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [userName, setUserName] = useState('Загрузка...');
   const [balance, setBalance] = useState('...');
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
+  };
 
   useEffect(() => {
     const fetchUserData = async () => {
