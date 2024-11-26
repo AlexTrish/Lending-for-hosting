@@ -354,61 +354,81 @@
           }
           
           .add-button {
-            background-color: var(--green-block);
-            color: #fff;
             border: none;
-            padding: 10px 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
+            padding: 0.5vw 0.75vw;
+            margin-bottom: 0.75vw;
+            border-radius: 0.5vw;
+
+            font-size: 0.85vw;
+            font-weight: 600;
+            color: var(--button-text-color);
+            background-color: var(--green-block);
             cursor: pointer;
           }
           
           .table {
+            height: 38vw;
+            border: 0.125vw solid var(--footer-line);
+            border-radius: 10px;
             display: grid;
             grid-template-rows: auto 1fr;
             background-color: var(--buy-block);
-            border-radius: 10px;
             overflow: hidden;
-            height: 38vw;
           }
           
           .table-header,
           .table-row {
             display: grid;
             grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
-            padding: 10px;
+            padding: 0.5vw;
             align-items: center;
           }
           
           .table-header {
-            background-color: var(--green-block);
-            color: #fff;
-            font-weight: bold;
+            border-bottom: 0.125vw solid var(--footer-line);
+
+            font-weight: 900;
+            text-align: center;
+            color: var(--h2-text-color);
+            background-color: var(--bg-color-input);
           }
           
           .table-body {
             overflow-y: auto;
-          }
-          
-          .table-row {
-            border-bottom: 1px solid var(--footer-line);
-          }
-          
-          .actions {
-            display: flex;
-            gap: 10px;
-          }
-          
-          button {
-            background: none;
-            border: none;
-            cursor: pointer;
+
+            .table-row {
+              border-bottom: 0.125vw solid var(--footer-line);
+
+              span {
+                width: 100%;
+
+                border: none;
+                color: var(--text-color);
+                background-color: var(--buy-block);
+              }
+
+              .actions {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5vw;
+
+                border: none;
+                background: none;
+
+                button {
+                  background: none;
+                  border: none;
+                  cursor: pointer;
+                }
+              }
+            }
           }
           
           .edit-button svg,
           .delete-button svg {
-            font-size: 18px;
-            color: var(--h2-text-color);
+            font-size: 0.85vw;
+            color: var(--text-color);
           }
           
           .modal {
