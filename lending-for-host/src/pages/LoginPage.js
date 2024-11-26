@@ -33,7 +33,7 @@ function LoginPage() {
         const constructedUrl = `https://cp.retry.host/billmgr?`;
 
         try {
-            const response = await fetch('https://lending.retry.host/api/test', {
+            const response = await fetch('https://lending.retry.host:8001/api/test', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
