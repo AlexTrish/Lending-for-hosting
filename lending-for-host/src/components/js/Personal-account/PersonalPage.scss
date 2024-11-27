@@ -369,9 +369,11 @@
           .table {
             height: 38vw;
             border: 0.125vw solid var(--footer-line);
-            border-radius: 10px;
+            border-radius: 0.5vw;
+            
             display: grid;
             grid-template-rows: auto 1fr;
+
             background-color: var(--buy-block);
             overflow: hidden;
           }
@@ -381,14 +383,12 @@
             display: grid;
             grid-template-columns: 1fr 2fr 2fr 2fr 1fr 1fr;
             padding: 0.5vw;
-            align-items: center;
           }
           
           .table-header {
             border-bottom: 0.125vw solid var(--footer-line);
 
             font-weight: 900;
-            text-align: center;
             color: var(--h2-text-color);
             background-color: var(--bg-color-input);
           }
@@ -409,8 +409,6 @@
 
               .actions {
                 display: flex;
-                align-items: center;
-                justify-content: center;
                 gap: 0.5vw;
 
                 border: none;

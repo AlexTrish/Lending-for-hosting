@@ -53,38 +53,36 @@ const Transactions = () => {
   };
 
   return (
-    <div className="container mt-3" style={{ width: '100%' }}>
-      <h1 className="mb-3">Transaction History</h1>
-
-      {/* Таблица транзакций */}
-      <Table striped bordered hover responsive size="sm" style={{ fontSize: '1rem' }}>
-        <thead style={{ backgroundColor: '#007bff', color: '#fff' }}>
-          <tr>
-            <th>Date</th>
-            <th>Amount</th>
-            <th>Type</th>
-            <th>Status</th>
-            <th>Details</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {transactions.map((transaction) => (
-            <tr key={transaction.id}>
-              <td>{transaction.date}</td>
-              <td>{transaction.amount}</td>
-              <td>{transaction.type}</td>
-              <td>{transaction.status}</td>
-              <td>{transaction.details}</td>
-              <td>
-                <Button variant="info" size="sm" onClick={() => handleShowModal(transaction)}>
-                  View Details
-                </Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+    <div className="payers-page">
+      <div className="container">
+        <h2>Транзакции</h2>
+        <div className="table">
+          <div className="table-header">
+            <span>Дата</span>
+            <span>Тип</span>
+            <span>Статус</span>
+            <span>Сумма</span>
+            <span>Детали</span>
+            <span>Подробнее</span>
+          </div>
+          <div className="table-body">
+            {transactions.map((transaction) => (
+              <div className="table-row" key={transaction.id}>
+                <span>{transaction.date}</span>
+                <span>{transaction.type}</span>
+                <span>{transaction.status}</span>
+                <span>{transaction.amount}</span>
+                <span>{transaction.details}</span>
+                <div className="actions">
+                  <Button variant="info" size="sm" onClick={() => handleShowModal(transaction)}>
+                    View Details
+                  </Button>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
 
       {/* Модальное окно с подробностями транзакции */}
       <Modal show={showModal} onHide={handleCloseModal} centered>
