@@ -17,7 +17,6 @@ import VDSService from './Menu/servicelist/VDSService';
 import VPSService from './Menu/servicelist/VPSService';
 import CloudPanelService from './Menu/servicelist/CloudPanelService';
 import DomainService from './Menu/servicelist/DomainService';
-import Support from './Menu/Support';
 import Statistics from './Menu/Statistics';
 import Servers from './Menu/servicelist/Servers';
 
@@ -78,7 +77,6 @@ function PersonalAccount() {
           {currentMenu === 'vds' && <VDSService />}
           {currentMenu === 'cloud-panel' && <CloudPanelService />}
           {currentMenu === 'domains' && <DomainService />}
-          {currentMenu === 'support' && <Support />}
           {currentMenu === 'statistics' && <Statistics />}
           {currentMenu === 'servers' && <Servers />}
         </div>

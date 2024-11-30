@@ -1,60 +1,107 @@
 import React, { useState } from "react";
-import { FaCreditCard, FaPlusCircle, FaTrash } from "react-icons/fa";
-import '../../PersonalPage.scss';
 
-const PaymentMethodsPage = () => {
-  const [cards, setCards] = useState([
-    { id: 1, number: "**** **** **** 1234", type: "MasterCard", expDate: "12/24" },
-    { id: 2, number: "**** **** **** 5678", type: "Visa", expDate: "08/25" },
-  ]);
+// Моковые данные для карточек
+const paymentMethods = [
+  { id: 1, type: "Visa", last4: "1234", expDate: "12/24" },
+  { id: 2, type: "MasterCard", last4: "5678", expDate: "11/23" },
+  { id: 3, type: "American Express", last4: "9876", expDate: "01/25" },
+];
 
-  const addCard = () => {
-    // Функция для добавления новой карты
-    // В реальности, здесь будет логика открытия модалки или формы для ввода данных карты
-    alert("Открытие формы для добавления карты");
+const PaymentMethods = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+  const [newCard, setNewCard] = useState({
+    cardType: "",
+    cardNumber: "",
+    expDate: "",
+  });
+
+  const openModal = () => {
+    setModalOpen(true);
   };
 
-  const deleteCard = (id) => {
-    setCards(cards.filter(card => card.id !== id));
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  const handleCardSubmit = (e) => {
+    e.preventDefault();
+    // Логика для добавления нового способа оплаты
+    console.log(newCard);
+    setModalOpen(false);
   };
 
   return (
-    <div className="container my-5">
-      <h2 className='header-title'>Способы оплаты</h2>
-      
-      <div className="row">
-        <div className="col-12 col-md-6 mb-4">
-          <div className="card p-4 shadow-sm rounded">
-            <div className="d-flex justify-content-between">
-              <h5 className="card-title mb-0">Добавить новый способ оплаты</h5>
-              <button onClick={addCard} className="btn btn-success">
-                <FaPlusCircle className="me-2" />
-                Добавить
-              </button>
+    <div className="payment-methods-container">
+      <h2 className='header-title'>Ваши способы оплаты</h2>
+      <div className="payment-slider">
+        {paymentMethods.map((method) => (
+          <div key={method.id} className="payment-card">
+            <div className="card-header">
+              <span>{method.type}</span>
+              <span>•••• {method.last4}</span>
             </div>
-            <p className="card-text text-muted">Добавьте свой способ оплаты, чтобы быстро совершать покупки.</p>
-          </div>
-        </div>
-        
-        {cards.map((card) => (
-          <div key={card.id} className="col-12 col-md-6 mb-4">
-            <div className="card p-4 shadow-sm rounded">
-              <div className="d-flex justify-content-between">
-                <div>
-                  <h5 className="card-title">{card.type}</h5>
-                  <p className="card-text">{card.number}</p>
-                  <p className="card-text text-muted">Срок действия: {card.expDate}</p>
-                </div>
-                <button onClick={() => deleteCard(card.id)} className="btn btn-danger">
-                  <FaTrash />
-                </button>
-              </div>
+            <div className="card-body">
+              <p>Срок действия: {method.expDate}</p>
+            </div>
+            <div className="card-footer">
+              <button className="edit-btn">Изменить</button>
             </div>
           </div>
         ))}
+      </div>
+
+      <button className="add-card-btn" onClick={openModal}>
+        Добавить способ оплаты
+      </button>
+
+      {/* Модальное окно */}
+      <div
+        className={`modal-overlay ${isModalOpen ? "show" : ""}`}
+        onClick={closeModal}
+      >
+        <div
+          className="modal-content"
+          onClick={(e) => e.stopPropagation()}
+        >
+          <div className="modal-header">Добавить способ оплаты</div>
+          <form onSubmit={handleCardSubmit} className="modal-body">
+            <input
+              type="text"
+              placeholder="Тип карты"
+              className="input-field"
+              value={newCard.cardType}
+              onChange={(e) =>
+                setNewCard({ ...newCard, cardType: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Номер карты"
+              className="input-field"
+              value={newCard.cardNumber}
+              onChange={(e) =>
+                setNewCard({ ...newCard, cardNumber: e.target.value })
+              }
+            />
+            <input
+              type="text"
+              placeholder="Срок действия"
+              className="input-field"
+              value={newCard.expDate}
+              onChange={(e) =>
+                setNewCard({ ...newCard, expDate: e.target.value })
+              }
+            />
+          </form>
+          <div className="modal-footer">
+            <button className="close-btn" type="submit">
+              Добавить
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   );
 };
 
-export default PaymentMethodsPage;
+export default PaymentMethods;

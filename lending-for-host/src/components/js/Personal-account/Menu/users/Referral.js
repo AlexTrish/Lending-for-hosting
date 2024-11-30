@@ -26,11 +26,10 @@ const ReferralCard = () => {
     const constructedUrl = 'https://cp.retry.host/billmgr?'; // URL для запроса данных пользователя
 
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?out=xjson&apikey=${token}`, {
+      const response = await fetch(`https://lending.retry.host/api/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
         },
         body: JSON.stringify({
           out: 'xjson',

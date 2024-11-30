@@ -59,6 +59,7 @@
     --opacity-sun: 1;
     --opacity-moon: 0;
     --filter-dropdown: brightness(80%);
+    --filter-dropdown-dark: brightness(80%);
     --filter-dropdown-text: brightness(100%);
     --filter-btn-close: none;
 }
@@ -123,6 +124,7 @@
     --opacity-sun: 0;
     --opacity-moon: 1;
     --filter-dropdown: brightness(150%);
+    --filter-dropdown-dark: brightness(80%);
     --filter-dropdown-text: brightness(1000%);
     --filter-btn-close: brightness(0) invert(1);
 }

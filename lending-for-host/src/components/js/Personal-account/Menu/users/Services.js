@@ -1,26 +1,57 @@
-import React from "react";
-import { FaServer, FaCloud, FaShieldAlt, FaGlobe, FaDatabase } from "react-icons/fa";
-import '../../PersonalPage.scss';
+import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { FaCloud, FaServer, FaShieldAlt, FaRegWindowMaximize, FaCogs } from 'react-icons/fa';
 
-const PurchasedItemsPage = () => {
-  const services = [
-    { id: 1, name: "VPN", icon: <FaShieldAlt />, description: "Безопасное интернет-соединение." },
-    { id: 2, name: "VDS", icon: <FaServer />, description: "Выделенный виртуальный сервер." },
-    { id: 3, name: "VPS", icon: <FaDatabase />, description: "Гибкие виртуальные сервера." },
-    { id: 4, name: "Cloud-Panel", icon: <FaCloud />, description: "Управление облачной инфраструктурой." },
-    { id: 5, name: "Домены", icon: <FaGlobe />, description: "Управление и покупка доменных имён." },
-  ];
+const services = [
+  {
+    title: "VPN",
+    description: "Приватный доступ к сети для защиты ваших данных и анонимности.",
+    icon: <FaShieldAlt />,
+  },
+  {
+    title: "VPS",
+    description: "Виртуальные серверы с гарантированными ресурсами для вашего бизнеса.",
+    icon: <FaServer />,
+  },
+  {
+    title: "VDS",
+    description: "Мощные выделенные серверы для ресурсоёмких приложений.",
+    icon: <FaRegWindowMaximize />,
+  },
+  {
+    title: "Cloud-Panel",
+    description: "Управление вашими облачными сервисами через интуитивно понятную панель.",
+    icon: <FaCloud />,
+  },
+  {
+    title: "Аренда домена",
+    description: "Регистрация и аренда доменов для вашего проекта.",
+    icon: <FaCogs />,
+  },
+];
 
+const ServicesCard = () => {
   return (
-    <div className="container my-5">
-      <h2 className='header-title'>Мои покупки</h2>
-      <div className="service-grid">
-        {services.map((service) => (
-          <div key={service.id} className="service-tile">
-            <div className="tile-content">
-              <div className="icon mb-3">{service.icon}</div>
-              <h5 className="tile-title">{service.name}</h5>
-              <p className="tile-description">{service.description}</p>
+    <div className="container py-5">
+      <h2 className="header-title">Заказать услугу</h2>
+      <div className="container-grid">
+        {services.map((service, index) => (
+          <div key={index} className="col">
+            <div className="card">
+              <div className="card-body text-center">
+                <div className="card-icon mb-3">
+                  {service.icon}
+                </div>
+                <h5 className="card-title">
+                  {service.title}
+                </h5>
+                <p className="card-text">
+                  {service.description}
+                </p>
+                <a href="#" className="btn">
+                  Купить
+                </a>
+              </div>
             </div>
           </div>
         ))}
@@ -29,4 +60,4 @@ const PurchasedItemsPage = () => {
   );
 };
 
-export default PurchasedItemsPage;
+export default ServicesCard;

@@ -13,15 +13,11 @@ function PersonalHeader({ setCurrentMenu, logout, user }) {
         setShowProfileMenu(!showProfileMenu);
     };
 
-    const handleLogoClick = () => {
-      navigate('/');
-  };
-
   return (
   <div className="header-personal">
     <Container>
       <Navbar.Collapse id="navbar-nav">
-        <div className="container-logo" onClick={handleLogoClick} style={{ cursor: 'pointer' }}>
+        <div className="container-logo">
           <div className="logo"></div>
             <Navbar.Brand>{t('brand')}</Navbar.Brand>
           </div>

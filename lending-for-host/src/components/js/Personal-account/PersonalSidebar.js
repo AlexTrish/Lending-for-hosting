@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaServer, FaCloud, FaGlobe, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
+import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaServer, FaCloud, FaGlobe, FaClipboardList, FaWallet, FaShieldAlt, FaSignOutAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext, themes } from '../theme/ThemeContext';
+import { ThemeContext } from '../theme/ThemeContext';
+import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate для редиректа
 import './PersonalPage.scss';
 
 const Sidebar = ({ onSelect }) => {
@@ -11,6 +12,7 @@ const Sidebar = ({ onSelect }) => {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
   const [userName, setUserName] = useState('Загрузка...');
   const [balance, setBalance] = useState('...');
+  const navigate = useNavigate(); // Инициализируем navigate
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
@@ -48,6 +50,17 @@ const Sidebar = ({ onSelect }) => {
     fetchUserData();
   }, []);
 
+  // Обработчик выхода из аккаунта
+  const handleLogout = () => {
+    // Очистка данных из localStorage
+    localStorage.clear();  // Очистить все данные из localStorage
+    // Или, если нужно очистить конкретные данные:
+    // localStorage.removeItem('userToken'); // Пример для удаления конкретного элемента
+
+    // Перенаправление на главную страницу
+    navigate('/');
+  };
+
   return (
     <div className="sidebar-container">
       <div className="Profile-container">
@@ -77,10 +90,6 @@ const Sidebar = ({ onSelect }) => {
         </button>
         {isClientsOpen && (
           <div className="submenu">
-            {/* <button onClick={() => onSelect('profile')}>
-              <FaUser className="sidebar-icon" />
-              Профиль
-            </button> */}
             <button onClick={() => onSelect('PayersPage')}>
               <FaWallet className="sidebar-icon" />
               Плательщики
@@ -143,13 +152,11 @@ const Sidebar = ({ onSelect }) => {
           <FaCoins className="sidebar-icon" />
           Транзакции
         </button>
-        <button onClick={() => onSelect('support')}>
-          <FaRegHandshake className="sidebar-icon" />
-          Поддержка
-        </button>
-        <button onClick={() => onSelect('statistics')}>
-          <FaChartLine className="sidebar-icon" />
-          Статистика
+
+        {/* Кнопка выхода */}
+        <button onClick={handleLogout} className="logout-button">
+          <FaSignOutAlt className="sidebar-icon" />
+          Выйти
         </button>
       </div>
     </div>
