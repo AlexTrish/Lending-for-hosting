@@ -47,7 +47,6 @@ function Header({ setCurrentMenu }) {
                 <Nav.Link className='referal-link' onClick={() => setCurrentMenu('referal')}>{t("menu.referral")}</Nav.Link>
                 <NavDropdown className='about-link' title={t("menu.about")} id="about-dropdown">
                   <NavDropdown.Item onClick={() => setCurrentMenu('rules')}>{t("menu.rules")}</NavDropdown.Item>
-                  <NavDropdown.Item onClick={handleProf}>{t("menu.terms")}</NavDropdown.Item>
                 </NavDropdown>
               </Nav>
               <div className='btn-container-wrapper'>
