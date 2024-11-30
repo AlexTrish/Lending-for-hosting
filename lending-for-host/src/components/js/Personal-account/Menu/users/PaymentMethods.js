@@ -20,7 +20,7 @@ const PaymentMethodsPage = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Способы оплаты</h2>
+      <h2 className='header-title'>Способы оплаты</h2>
       
       <div className="row">
         <div className="col-12 col-md-6 mb-4">

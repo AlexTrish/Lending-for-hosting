@@ -51,12 +51,6 @@ function Header({ setCurrentMenu }) {
                 </NavDropdown>
               </Nav>
               <div className='btn-container-wrapper'>
-                <button id="switch-language" className='sidebar-icon' onClick={toggleLanguage}>
-                  {i18n.language === 'ru' ? 'EN' : 'RU'}
-                </button>
-                <button id="settings-ico" className="sidebar-icon" onClick={() => setTheme(theme === themes.dark ? themes.light : themes.dark)}>
-                  <div className='bi-fill'></div>
-                </button>
                 <button className="btn auth-btn" onClick={handleLoginClick}>{t("menu.auth")}</button> {/* Обновлено для перехода на /login */}
               </div>
             </div>

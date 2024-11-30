@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaCog, FaServer, FaCloud, FaGlobe, FaPercentage, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
+import { FaUser, FaUsers, FaDatabase, FaChartLine, FaRegHandshake, FaCoins, FaBoxOpen, FaShoppingCart, FaDollarSign, FaServer, FaCloud, FaGlobe, FaClipboardList, FaWallet, FaShieldAlt } from 'react-icons/fa';
 import { useTranslation } from 'react-i18next';
 import { ThemeContext, themes } from '../theme/ThemeContext';
 import './PersonalPage.scss';
@@ -19,7 +19,7 @@ const Sidebar = ({ onSelect }) => {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch('http://45.84.88.14:8001/api/test/', {
+        const response = await fetch('https://lending.retry.host/api/test', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -77,10 +77,10 @@ const Sidebar = ({ onSelect }) => {
         </button>
         {isClientsOpen && (
           <div className="submenu">
-            <button onClick={() => onSelect('profile')}>
+            {/* <button onClick={() => onSelect('profile')}>
               <FaUser className="sidebar-icon" />
               Профиль
-            </button>
+            </button> */}
             <button onClick={() => onSelect('PayersPage')}>
               <FaWallet className="sidebar-icon" />
               Плательщики
@@ -100,14 +100,6 @@ const Sidebar = ({ onSelect }) => {
             <button onClick={() => onSelect('payment-methods')}>
               <FaDollarSign className="sidebar-icon" />
               Способы оплаты
-            </button>
-            <button onClick={() => onSelect('discounts')}>
-              <FaPercentage className="sidebar-icon" />
-              Скидки
-            </button>
-            <button onClick={() => onSelect('user-settings')}>
-              <FaCog className="sidebar-icon" />
-              Настройки пользователя
             </button>
           </div>
         )}

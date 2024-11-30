@@ -43,29 +43,29 @@ const PayersPage = () => {
   return (
     <div className="payers-page">
       <div className="container">
-        <h2>Доверенные плательщики</h2>
+        <h2 className='header-title'>Доверенные плательщики</h2>
         <button className="add-button" onClick={handleAddPayer}>
           Добавить плательщика
         </button>
 
         <div className="table">
           <div className="table-header">
-            <span>Номер (id)</span>
-            <span>ФИО</span>
-            <span>Электронная почта</span>
-            <span>Телефон</span>
-            <span>Статус</span>
-            <span>Действия</span>
+            <span className="number">Номер (id)</span>
+            <span className="name">ФИО</span>
+            <span className="email">Электронная почта</span>
+            <span className="phone">Телефон</span>
+            <span className="stat">Статус</span>
+            <span className="move">Действия</span>
           </div>
           <div className="table-body">
             {data.map((row) => (
               <div className="table-row" key={row.id}>
-                <span>{row.id}</span>
-                <span>{row.name}</span>
-                <span>{row.email}</span>
-                <span>{row.phone}</span>
-                <span>{row.status}</span>
-                <div className="actions">
+                <span className="number">{row.id}</span>
+                <span className="name">{row.name}</span>
+                <span className="email">{row.email}</span>
+                <span className="phone">{row.phone}</span>
+                <span className="stat">{row.status}</span>
+                <div className="actions move">
                   <button className="edit-button">
                     <FaEdit />
                   </button>

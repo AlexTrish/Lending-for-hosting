@@ -15,11 +15,13 @@ function LoginPage() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        const savedUser = JSON.parse(localStorage.getItem('user'));
+        // Проверяем наличие данных пользователя в localStorage
+        const storedUser = localStorage.getItem('user');
         const expiresAt = localStorage.getItem('expiresAt');
 
-        if (savedUser && expiresAt && new Date().getTime() < new Date(expiresAt).getTime()) {
-            setUser(savedUser);
+        if (storedUser && expiresAt && new Date().getTime() < new Date(expiresAt).getTime()) {
+            // Если данные есть и они не просрочены, сохраняем их в состояние
+            setUser(JSON.parse(storedUser));
         } else {
             localStorage.removeItem('user');
             localStorage.removeItem('expiresAt');
@@ -29,11 +31,11 @@ function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-
+    
         const constructedUrl = `https://cp.retry.host/billmgr?`;
-
+    
         try {
-            const response = await fetch('https://lending.retry.host/api/test/', {
+            const response = await fetch('https://lending.retry.host/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -46,23 +48,29 @@ function LoginPage() {
                     password: `${password}`,
                     lang: 'ru',
                     out: 'xjson'
-                 }),
+                }),
             });
-
+    
+            // Проверка статуса ответа
+            if (!response.ok) {
+                throw new Error('Server responded with an error: ' + response.statusText);
+            }
+    
+            // Попытка парсинга JSON
             const data = await response.json();
-
-            if (data.doc.messages.$checked) {
+    
+            if (data.doc && data.doc.auth && data.doc.auth.$id) {
                 const userData = {
-                    $checked: data.doc.messages.$checked,
+                    $id: data.doc.auth.$id
                 };
-
+    
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7); // Устанавливаем срок на 7 дней
-
-                // Сохраняем данные в localStorage
+    
+                // Сохраняем данные без шифрования
                 localStorage.setItem('user', JSON.stringify(userData));
-                localStorage.setItem('expiresAt', expiresAt.toISOString());
-
+                localStorage.setItem('expiresAt', expiresAt);
+    
                 setUser(userData); // Обновляем состояние
                 navigate('/personal-account'); // Редирект
             } else {
@@ -73,9 +81,9 @@ function LoginPage() {
             setError(t('form-sign-in.serverError'));
         }
     };
+    
 
     const handleLogout = () => {
-        // Удаление данных при выходе
         localStorage.removeItem('user');
         localStorage.removeItem('expiresAt');
         setUser(null);

@@ -29,6 +29,7 @@
     --bg-color-profile: #DBDBDB !important;
     --bg-color-prof-block: #ffffff !important;
     --bg-color-prof-block-content: #E1E1E1 !important;
+    --bg-color-cards-ref: #000000 !important;
     --scrollbar-color: #fff !important;
     --white-block: #FFFFFF !important;
     --green-block: #55B45C !important;
@@ -53,6 +54,7 @@
     --placeholder-color: #606060 !important;
 
     --box-shadow: 12px 32px 80px -20px rgba(0, 0, 0, 0.12);
+    --box-shadow-new: 0 0.25vw 0.5vw rgba(0, 0, 0, 0.1);
     --box-shadow-inset: None;
     --opacity-sun: 1;
     --opacity-moon: 0;
@@ -86,11 +88,12 @@
     --bg-color-navbar: #1a1a1a3d !important;
     --bg-color-dropdown: #0e0e0ee4 !important;
     --bg-color-dropdown-hover: #000000d1 !important;
-    --bg-color-input: #1e1e1e !important;
+    --bg-color-input: #272727 !important;
     --bg-color-service: #4a4a4a !important;
     --bg-color-profile: #272727 !important;
     --bg-color-prof-block: #2A2A2A !important;
     --bg-color-prof-block-content: #383838 !important;
+    --bg-color-cards-ref: #fff !important;
     --scrollbar-color: #000 !important;
     --white-block: #D9D9D9 !important;
     --green-block: #1ABB8F !important;
@@ -115,6 +118,7 @@
     --placeholder-color: #606060!important;
 
     --box-shadow: none;
+    --box-shadow-new: none;
     --box-shadow-inset: 0px 0px 15px 0px rgba(0, 0, 0, 0.25) inset;
     --opacity-sun: 0;
     --opacity-moon: 1;

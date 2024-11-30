@@ -25,7 +25,7 @@ function RegisterPage() {
         const constructedUrl = `https://cp.retry.host/billmgr?`;
     
         try {
-            const response = await fetch('https://lending.retry.host/api/test/', {
+            const response = await fetch('https://lending.retry.host/api/register/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

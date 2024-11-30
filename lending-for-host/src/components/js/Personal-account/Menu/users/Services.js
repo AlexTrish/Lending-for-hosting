@@ -13,7 +13,7 @@ const PurchasedItemsPage = () => {
 
   return (
     <div className="container my-5">
-      <h2 className="text-center mb-4">Мои покупки</h2>
+      <h2 className='header-title'>Мои покупки</h2>
       <div className="service-grid">
         {services.map((service) => (
           <div key={service.id} className="service-tile">

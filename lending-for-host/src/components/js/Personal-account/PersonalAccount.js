@@ -17,7 +17,6 @@ import VDSService from './Menu/servicelist/VDSService';
 import VPSService from './Menu/servicelist/VPSService';
 import CloudPanelService from './Menu/servicelist/CloudPanelService';
 import DomainService from './Menu/servicelist/DomainService';
-import Discounts from './Menu/users/Discounts';
 import Support from './Menu/Support';
 import Statistics from './Menu/Statistics';
 import Servers from './Menu/servicelist/Servers';
@@ -25,9 +24,16 @@ import Servers from './Menu/servicelist/Servers';
 function PersonalAccount() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const [currentMenu, setCurrentMenu] = useState('profile');
+
+  // Загрузка состояния из localStorage, если оно есть
+  const savedMenu = localStorage.getItem('currentMenu') || 'profile';
+  const [currentMenu, setCurrentMenu] = useState(savedMenu);
 
   useEffect(() => {
+    // Сохранение состояния в localStorage при изменении currentMenu
+    localStorage.setItem('currentMenu', currentMenu);
+
+    // Очистка стилей body при монтировании компонента
     document.body.style.overflowY = 'hidden';
     document.body.style.padding = '0';
 
@@ -35,7 +41,7 @@ function PersonalAccount() {
       document.body.style.overflowY = '';
       document.body.style.padding = '';
     };
-  }, []);
+  }, [currentMenu]); // Будет вызываться при изменении currentMenu
 
   const user = {
     name: 'Иван Иванов',
@@ -72,7 +78,6 @@ function PersonalAccount() {
           {currentMenu === 'vds' && <VDSService />}
           {currentMenu === 'cloud-panel' && <CloudPanelService />}
           {currentMenu === 'domains' && <DomainService />}
-          {currentMenu === 'discounts' && <Discounts />}
           {currentMenu === 'support' && <Support />}
           {currentMenu === 'statistics' && <Statistics />}
           {currentMenu === 'servers' && <Servers />}
