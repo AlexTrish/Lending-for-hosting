@@ -36,12 +36,12 @@ function LoginPage() {
             const response = await fetch('https://cp.retry.host/billmgr', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded', // API Billmanager использует форму
+                    'Content-Type': 'application/x-www-form-urlencoded',
                 },
                 body: new URLSearchParams({
                     func: 'auth',
-                    out: 'json', // Используем JSON формат ответа
-                    forget: 'on', // Параметр для сброса предыдущей сессии
+                    out: 'json',
+                    forget: 'on',
                     username: identifier,
                     password: password,
                     lang: 'ru',
@@ -50,7 +50,6 @@ function LoginPage() {
     
             const responseText = await response.text();
     
-            // Логируем полный ответ для диагностики
             console.log('Response status:', response.status);
             console.log('Response text:', responseText);
     
@@ -58,34 +57,34 @@ function LoginPage() {
                 throw new Error(`Server responded with status ${response.status}`);
             }
     
-            // Проверяем, является ли ответ JSON
-            if (response.headers.get('Content-Type')?.includes('application/json')) {
-                const data = JSON.parse(responseText);
+            // Обрабатываем JSON-ответ
+            const data = JSON.parse(responseText);
     
-                if (data?.auth?.$id) {
-                    const userData = { $id: data.auth.$id };
+            // Проверка наличия ключа auth.$id
+            if (data?.auth?.$id) {
+                console.log('Authentication successful:', data.auth.$id);
     
-                    // Устанавливаем срок действия сессии
-                    const expiresAt = new Date();
-                    expiresAt.setDate(expiresAt.getDate() + 7);
+                const userData = { $id: data.auth.$id };
     
-                    // Сохраняем данные в localStorage
-                    localStorage.setItem('user', JSON.stringify(userData));
-                    localStorage.setItem('expiresAt', expiresAt);
+                const expiresAt = new Date();
+                expiresAt.setDate(expiresAt.getDate() + 7);
     
-                    setUser(userData); // Устанавливаем пользователя
-                    navigate('/personal-account'); // Перенаправляем
-                } else {
-                    setError(t('form-sign-in.authError')); // Обрабатываем ошибку авторизации
-                }
+                // Сохраняем данные в localStorage
+                localStorage.setItem('user', JSON.parce(userData).$id);
+                localStorage.setItem('expiresAt', expiresAt);
+    
+                setUser(userData);
+                navigate('/personal-account');
             } else {
-                setError('Unexpected response format'); // Если формат ответа не JSON
+                console.error('Authentication failed:', data);
+                setError(data.error || t('form-sign-in.authError'));
             }
         } catch (error) {
             console.error('Error during API request:', error);
-            setError(t('form-sign-in.serverError')); // Общая ошибка
+            setError(t('form-sign-in.serverError'));
         }
     };
+    
     
     
 
