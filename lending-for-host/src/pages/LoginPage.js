@@ -33,7 +33,7 @@ function LoginPage() {
         setError(null);
     
         try {
-            const response = await fetch('https://cp.retry.host/billmgr?', {
+            const response = await fetch('https://cp.retry.host/billmgr?out=xjson', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,7 +44,6 @@ function LoginPage() {
                     username: `${identifier}`,
                     password: `${password}`,
                     lang: 'ru',
-                    out: 'xjson'
                 }),
             });
             
