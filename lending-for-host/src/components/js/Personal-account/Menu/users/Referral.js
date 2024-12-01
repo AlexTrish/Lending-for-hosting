@@ -15,46 +15,43 @@ const ReferralCard = () => {
   const [userId, setUserId] = useState(null); // ID пользователя
   const [referralLink, setReferralLink] = useState(''); // Реферальная ссылка
 
-  // const fetchUserId = async () => {
-  //   setLoading(true);
-  //   setError(null);
+  const fetchUserId = async () => {
+    setLoading(true);
+    setError(null);
 
-  //   const apiKey = localStorage.getItem('user');
-  //   const token = JSON.parse(apiKey).$id;
-  //   console.log('Token:', token);
+    const apiKey = localStorage.getItem('user');
+    const token = JSON.parse(apiKey).$id;
+    console.log('Token:', token);
 
-  //   const constructedUrl = 'https://cp.retry.host/billmgr?'; // URL для запроса данных пользователя
+    try {
+      const response = await fetch(`https://cp.retry.host/billmgr?`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "Authorization": `${token}`
+        },
+        body: JSON.stringify({
+          out: 'xjson',
+        }),
+      });
 
-  //   try {
-  //     const response = await fetch(`https://lending.retry.host/api/register`, {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({
-  //         out: 'xjson',
-  //         apikey: token,
-  //         sok: 'ok',
-  //       }),
-  //     });
+      const data = await response.json();
 
-  //     const data = await response.json();
-
-  //     if (data?.doc?.user?.$account) {
-  //       const userId = data.doc.user.$account;
-  //       setUserId(userId);
-  //       setReferralLink(`https://cp.retry.host/?p=${userId}`);
-  //       console.log(userId)
-  //     } else {
-  //       throw new Error('Не удалось получить ID пользователя');
-  //     }
-  //   } catch (err) {
-  //     console.error('Ошибка при запросе к API:', err);
-  //     setError('Ошибка при загрузке данных пользователя');
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+      if (data?.doc?.user?.$account) {
+        const userId = data.doc.user.$account;
+        setUserId(userId);
+        setReferralLink(`https://cp.retry.host/?p=${userId}`);
+        console.log(userId)
+      } else {
+        throw new Error('Не удалось получить ID пользователя');
+      }
+    } catch (err) {
+      console.error('Ошибка при запросе к API:', err);
+      setError('Ошибка при загрузке данных пользователя');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Получение данных пользователя при загрузке компонента
   useEffect(() => {

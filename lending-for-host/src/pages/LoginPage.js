@@ -32,16 +32,13 @@ function LoginPage() {
         e.preventDefault();
         setError(null);
     
-        // const constructedUrl = `https://cp.retry.host/billmgr?`;
-    
         try {
-            const response = await fetch('https://cp.domain.com/billmgr?', { {/*https://lending.retry.host/api/register/*/}
+            const response = await fetch('https://cp.retry.host/billmgr?', { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
-                    // url: constructedUrl,
                     func: 'auth',
                     forget: 'on',
                     username: `${identifier}`,

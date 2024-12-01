@@ -19,33 +19,37 @@ const Sidebar = ({ onSelect }) => {
   };
 
   useEffect(() => {
-    // const fetchUserData = async () => {
-    //   try {
-    //     const response = await fetch('https://lending.retry.host/api/test', {
-    //       method: 'POST',
-    //       headers: {
-    //         'Content-Type': 'application/json',
-    //       },
-    //       body: JSON.stringify({
-    //         url: 'https://cp.retry.host/billmgr?',
-    //         func: 'dashboard',
-    //         out: 'xjson',
-    //       }),
-    //     });
+    const fetchUserData = async () => {
 
-    //     const data = await response.json();
+      const apiKey = localStorage.getItem('user');
+      const token = JSON.parse(apiKey).$id;
 
-    //     if (data?.doc?.messages) {
-    //       const userData = data.doc.messages;
-    //       setUserName(userData.name);
-    //       setBalance(userData.balance);
-    //     }
-    //   } catch (error) {
-    //     console.error('Ошибка при получении данных пользователя:', error);
-    //     setUserName('Ошибка');
-    //     setBalance('0.00');
-    //   }
-    // };
+      try {
+        const response = await fetch('https://cp.retry.host/billmgr?', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `${token}`
+          },
+          body: JSON.stringify({
+            func: 'dashboard',
+            out: 'xjson',
+          }),
+        });
+
+        const data = await response.json();
+
+        if (data?.doc?.messages) {
+          const userData = data.doc.messages;
+          setUserName(userData.name);
+          setBalance(userData.balance);
+        }
+      } catch (error) {
+        console.error('Ошибка при получении данных пользователя:', error);
+        setUserName('Ошибка');
+        setBalance('0.00');
+      }
+    };
 
     fetchUserData();
   }, []);
