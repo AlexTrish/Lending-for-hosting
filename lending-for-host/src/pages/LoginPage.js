@@ -62,23 +62,19 @@ function LoginPage() {
     
             // Проверка наличия ключа auth.$id
             if (data?.auth?.$id) {
-                console.log('Authentication successful:', data.auth.$id);
-    
-                const userData = { $id: data.auth.$id };
-    
+                const token = data.auth.$id;
+            
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
-    
-                // Сохраняем данные в localStorage
-                localStorage.setItem('user', JSON.parce(userData).$id);
+            
+                localStorage.setItem('user', JSON.stringify(token));
                 localStorage.setItem('expiresAt', expiresAt);
-    
-                setUser(userData);
+            
+                setUser({ id: token });
                 navigate('/personal-account');
             } else {
-                console.error('Authentication failed:', data);
-                setError(data.error || t('form-sign-in.authError'));
-            }
+                setError(t('form-sign-in.authError'));
+            }            
         } catch (error) {
             console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
