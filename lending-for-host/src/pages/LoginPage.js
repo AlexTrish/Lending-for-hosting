@@ -33,8 +33,11 @@ function LoginPage() {
         setError(null);
     
         try {
-            const response = await fetch('https://cp.retry.host/billmgr?', { 
+            const response = await fetch('https://cp.retry.host/billmgr?', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json', // Указывает, что отправляется JSON
+                },
                 body: JSON.stringify({ 
                     func: 'auth',
                     forget: 'on',
@@ -44,6 +47,7 @@ function LoginPage() {
                     out: 'xjson'
                 }),
             });
+            
     
             // Проверка статуса ответа
             if (!response.ok) {
