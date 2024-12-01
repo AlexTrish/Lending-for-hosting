@@ -36,7 +36,7 @@ function LoginPage() {
             const response = await fetch('https://cp.retry.host/billmgr?', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json', // Указывает, что отправляется JSON
+                    'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ 
                     func: 'auth',
