@@ -38,41 +38,20 @@ function LoginPage() {
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     func: 'auth',
                     forget: 'on',
-                    username: `${identifier}`,
-                    password: `${password}`,
+                    username: identifier,
+                    password: password,
                     lang: 'ru',
                 }),
             });
-            
-    
-            // Проверка статуса ответа
-            if (!response.ok) {
-                throw new Error('Server responded with an error: ' + response.statusText);
-            }
-    
-            // Попытка парсинга JSON
-            const data = await response.json();
-    
-            if (data.doc && data.doc.auth && data.doc.auth.$id) {
-                const userData = {
-                    $id: data.doc.auth.$id
-                };
-    
-                const expiresAt = new Date();
-                expiresAt.setDate(expiresAt.getDate() + 7); // Устанавливаем срок на 7 дней
-    
-                // Сохраняем данные без шифрования
-                localStorage.setItem('user', JSON.stringify(userData));
-                localStorage.setItem('expiresAt', expiresAt);
-    
-                setUser(userData); // Обновляем состояние
-                navigate('/personal-account'); // Редирект
-            } else {
-                setError(t('form-sign-in.authError'));
-            }
+        
+            const responseText = await response.text(); // Считываем ответ как текст
+            console.log('Response text:', responseText);
+        
+            const data = JSON.parse(responseText); // Пробуем распарсить как JSON
+            console.log('Parsed data:', data);
         } catch (error) {
             console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
