@@ -26,9 +26,6 @@ function RegisterPage() {
         try {
             const response = await fetch('https://cp.retry.host/billmgr?', {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
                 body: JSON.stringify({
                     need_manual_action: '',
                     email_exists: '',
