@@ -48,21 +48,16 @@ function LoginPage() {
                 }),
             });
     
-            const responseText = await response.text();
-    
-            console.log('Response status:', response.status);
-            console.log('Response text:', responseText);
+            const responseText = await response.json();
     
             if (!response.ok) {
                 throw new Error(`Server responded with status ${response.status}`);
             }
-    
-            // Обрабатываем JSON-ответ
-            const data = JSON.parse(responseText);
+
     
             // Проверка наличия ключа auth.$id
-            if (data?.auth?.$id) {
-                const token = data.auth.$id;
+            if (responseText.doc?.auth?.$id) {
+                const token = responseText.doc.auth.$id;
             
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
