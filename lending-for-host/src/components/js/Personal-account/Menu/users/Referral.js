@@ -24,23 +24,24 @@ const ReferralCard = () => {
     console.log('Token:', token);
 
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?out=xjson&apikey=${token}`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
-    
-      const responseText = await response.text(); // Получаем текст ответа
-    
+      const responseText = await response.text();
+      
       if (!response.ok) {
-        console.error('HTML Error response:', responseText); // Логируем, если это HTML
+        console.error('HTML Error response:', responseText); // Логируем ответ
         throw new Error(`Server responded with status ${response.status}`);
       }
-    
-      const responseData = JSON.parse(responseText); // Пробуем преобразовать в JSON
+      
+      // Проверяем, является ли текст JSON
+      let responseData;
+      try {
+        responseData = JSON.parse(responseText);
+      } catch (e) {
+        console.error('Response is not JSON:', responseText);
+        throw new Error('Invalid JSON response');
+      }
+      
       console.log('Parsed response data:', responseData);
-    
+      
       if (responseData.doc?.user?.$account) {
         const userId = responseData.doc.user.$account;
         setUserId(userId);
@@ -48,10 +49,11 @@ const ReferralCard = () => {
       } else {
         throw new Error('Не удалось получить ID пользователя');
       }
-      } catch (err) {
-        console.error('Ошибка при запросе к API:', err);
-        setError('Ошибка при загрузке данных пользователя');
-      }
+    } catch (err) {
+      console.error('Ошибка при запросе к API:', err);
+      setError('Ошибка при загрузке данных пользователя');
+    } finally {
+      setLoading(false);
     }
   };
 
