@@ -20,15 +20,15 @@ const ReferralCard = () => {
     setError(null);
 
     const apiKey = localStorage.getItem('user');
-    const token = JSON.parse(apiKey).$id;
-    console.log('Token:', token);
+    // const token = JSON.parse(apiKey).$id;
+    console.log('Token:', apiKey);
 
     try {
       const response = await fetch(`https://cp.retry.host/billmgr?`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          "Authorization": `${token}`
+          "Authorization": `${apiKey}`
         },
         body: JSON.stringify({
           out: 'xjson',
