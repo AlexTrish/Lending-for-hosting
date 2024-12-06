@@ -31,7 +31,8 @@ const ReferralCard = () => {
         },
         body: JSON.stringify({
           out: 'json',
-          apikey: token
+          apikey: token,
+          sok: 'ok'
         })
       });
     
