@@ -24,14 +24,20 @@ const ReferralCard = () => {
     console.log('Token:', token);
 
     try {
+      const response = await fetch(`https://cp.retry.host/billmgr?out=xjson&apikey=${token}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded',
+        },
+      });
+    
       const responseText = await response.text();
-      
+    
       if (!response.ok) {
-        console.error('HTML Error response:', responseText); // Логируем ответ
+        console.error('HTML Error response:', responseText);
         throw new Error(`Server responded with status ${response.status}`);
       }
-      
-      // Проверяем, является ли текст JSON
+    
       let responseData;
       try {
         responseData = JSON.parse(responseText);
@@ -39,16 +45,8 @@ const ReferralCard = () => {
         console.error('Response is not JSON:', responseText);
         throw new Error('Invalid JSON response');
       }
-      
-      console.log('Parsed response data:', responseData);
-      
-      if (responseData.doc?.user?.$account) {
-        const userId = responseData.doc.user.$account;
-        setUserId(userId);
-        setReferralLink(`https://cp.retry.host/?p=${userId}`);
-      } else {
-        throw new Error('Не удалось получить ID пользователя');
-      }
+    
+      // Остальной код...
     } catch (err) {
       console.error('Ошибка при запросе к API:', err);
       setError('Ошибка при загрузке данных пользователя');
