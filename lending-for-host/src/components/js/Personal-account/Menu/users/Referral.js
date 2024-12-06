@@ -30,28 +30,28 @@ const ReferralCard = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
       });
-
-      const responseText = await response.json();
+    
+      const responseText = await response.text(); // Получаем текст ответа
     
       if (!response.ok) {
-          throw new Error(`Server responded with status ${response.status}`);
+        console.error('HTML Error response:', responseText); // Логируем, если это HTML
+        throw new Error(`Server responded with status ${response.status}`);
       }
-
     
-      // Проверка
-      if (responseText.doc?.user?.$account) {
-        const userId = responseText.doc.user.$account;
+      const responseData = JSON.parse(responseText); // Пробуем преобразовать в JSON
+      console.log('Parsed response data:', responseData);
+    
+      if (responseData.doc?.user?.$account) {
+        const userId = responseData.doc.user.$account;
         setUserId(userId);
         setReferralLink(`https://cp.retry.host/?p=${userId}`);
-        console.log(userId)
       } else {
         throw new Error('Не удалось получить ID пользователя');
       }
-    } catch (err) {
-      console.error('Ошибка при запросе к API:', err);
-      setError('Ошибка при загрузке данных пользователя');
-    } finally {
-      setLoading(false);
+      } catch (err) {
+        console.error('Ошибка при запросе к API:', err);
+        setError('Ошибка при загрузке данных пользователя');
+      }
     }
   };
 
