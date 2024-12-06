@@ -24,13 +24,14 @@ const ReferralCard = () => {
     console.log('Token:', token);
 
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?out=xjson&apikey=${token}`, {
+      const response = await fetch(`https://cp.retry.host/billmgr?`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
-          out: 'xjson'
+          out: 'xjson',
+          apikey: token
         })
       });
     
