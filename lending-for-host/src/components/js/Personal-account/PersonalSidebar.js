@@ -32,7 +32,7 @@ const Sidebar = ({ onSelect }) => {
             'Authorization': `${token}`
           },
           body: JSON.stringify({
-            func: 'clientoption',
+            func: 'authinfo',
             out: 'xjson',
           }),
         });
