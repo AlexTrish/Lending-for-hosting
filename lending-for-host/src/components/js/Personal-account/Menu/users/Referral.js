@@ -30,7 +30,7 @@ const ReferralCard = () => {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: JSON.stringify({
-          out: 'xjson',
+          out: 'json',
           apikey: token
         })
       });
