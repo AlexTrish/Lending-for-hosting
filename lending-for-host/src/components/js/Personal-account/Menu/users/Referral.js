@@ -20,8 +20,8 @@ const ReferralCard = () => {
     setError(null);
 
     const apiKey = localStorage.getItem('user');
-    const token = JSON.parse(apiKey).$id;
-    console.log('Token:', apiKey);
+    const token = JSON.parse(apiKey);
+    console.log('Token:', token);
 
     try {
       const response = await fetch(`https://cp.retry.host/billmgr?out=xjson&apikey=${token}`, {
@@ -38,7 +38,7 @@ const ReferralCard = () => {
       }
 
     
-      // Проверка наличия ключа auth.$id
+      // Проверка
       if (responseText.doc?.user?.$account) {
         const userId = responseText.doc.user.$account;
         setUserId(userId);
