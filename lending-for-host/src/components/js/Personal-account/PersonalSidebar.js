@@ -33,7 +33,6 @@ const Sidebar = ({ onSelect }) => {
           },
           body: JSON.stringify({
             func: 'clientoption',
-            clickstat: 'yes',
             out: 'xjson',
           }),
         });
