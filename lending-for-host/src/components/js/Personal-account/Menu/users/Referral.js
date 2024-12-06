@@ -29,6 +29,9 @@ const ReferralCard = () => {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
+        body: JSON.stringify({
+          out: 'xjson'
+        })
       });
     
       const responseText = await response.text();
