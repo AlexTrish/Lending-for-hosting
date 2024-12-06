@@ -27,7 +27,7 @@ const ReferralCard = () => {
       const response = await fetch(`https://cp.retry.host/billmgr?`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/x-www-form-urlencoded',
           "Authorization": `${apiKey}`
         },
         body: JSON.stringify({
@@ -35,10 +35,16 @@ const ReferralCard = () => {
         }),
       });
 
-      const data = await response.json();
+      const responseText = await response.json();
+    
+      if (!response.ok) {
+          throw new Error(`Server responded with status ${response.status}`);
+      }
 
-      if (data?.doc?.user?.$account) {
-        const userId = data.doc.user.$account;
+    
+      // Проверка наличия ключа auth.$id
+      if (responseText.doc?.user?.$account) {
+        const userId = responseText.doc.user.$account;
         setUserId(userId);
         setReferralLink(`https://cp.retry.host/?p=${userId}`);
         console.log(userId)

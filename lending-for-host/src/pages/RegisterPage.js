@@ -10,6 +10,7 @@ function RegisterPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
+    const [setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,8 +25,11 @@ function RegisterPage() {
     
     
         try {
-            const response = await fetch('https://cp.retry.host/billmgr?', {
+            const response = await fetch('https://cp.retry.host/billmgr', {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
                 body: JSON.stringify({
                     need_manual_action: '',
                     email_exists: '',
@@ -57,26 +61,28 @@ function RegisterPage() {
                 }),
             });
     
-            const data = await response.json();
+            const responseText = await response.json();
     
-            if (response.ok && data?.doc?.messages?.$checked) {
-                const userData = {
-                    username,
-                    email,
-                    checked: data.doc.messages.$checked,
-                };
+            if (!response.ok) {
+                throw new Error(`Server responded with status ${response.status}`);
+            }
+
     
+            // Проверка наличия ключа auth.$id
+            if (responseText.doc?.auth?.$id) {
+                const token = responseText.doc.auth.$id;
+            
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
-    
-                // Сохраняем данные в localStorage
-                localStorage.setItem('user', JSON.stringify(userData));
-                localStorage.setItem('expiresAt', expiresAt.toISOString());
-    
+            
+                localStorage.setItem('user', JSON.stringify(token));
+                localStorage.setItem('expiresAt', expiresAt);
+            
+                setUser({ id: token });
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
-            }
+            }            
         } catch (error) {
             console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
