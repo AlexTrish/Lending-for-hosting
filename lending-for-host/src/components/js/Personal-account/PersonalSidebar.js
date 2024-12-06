@@ -26,7 +26,7 @@ const Sidebar = ({ onSelect }) => {
 
       try {
         const response = await fetch('	https://cp.retry.host/billmgr?', {
-          method: 'GET',
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `${token}`
