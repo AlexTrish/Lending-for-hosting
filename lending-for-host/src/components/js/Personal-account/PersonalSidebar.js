@@ -25,14 +25,15 @@ const Sidebar = ({ onSelect }) => {
       const token = JSON.parse(apiKey).$id;
 
       try {
-        const response = await fetch('https://cp.retry.host/billmgr?', {
-          method: 'POST',
+        const response = await fetch('	https://cp.retry.host/billmgr?', {
+          method: 'GET',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `${token}`
           },
           body: JSON.stringify({
-            func: 'dashboard',
+            func: 'clientoption',
+            clickstat: 'yes',
             out: 'xjson',
           }),
         });

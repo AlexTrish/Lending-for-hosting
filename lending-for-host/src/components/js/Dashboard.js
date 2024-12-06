@@ -17,10 +17,10 @@ function Dashboard({ setCurrentMenu, currentMenu }) {
   const { t } = useTranslation();
 
   const pricingPlans = [
-    { title: t('plans.basic.name'), price: t('plans.basic.price'), key: "basic" },
-    { title: t('plans.improved.name'), price: t('plans.improved.price'), key: "improved" },
-    { title: t('plans.advanced.name'), price: t('plans.advanced.price'), key: "advanced" },
-    { title: t('plans.premium.name'), price: t('plans.premium.price'), key: "premium" },
+    { title: t('plans.basic.name'), price: t('plans.basic.price'), key: "light" },
+    { title: t('plans.improved.name'), price: t('plans.improved.price'), key: "VIP" },
+    { title: t('plans.advanced.name'), price: t('plans.advanced.price'), key: "Hard Class" },
+    { title: t('plans.premium.name'), price: t('plans.premium.price'), key: "Alpha" },
   ];
 
   useEffect(() => {
