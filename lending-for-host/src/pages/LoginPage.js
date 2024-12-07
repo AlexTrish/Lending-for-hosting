@@ -15,16 +15,10 @@ function LoginPage() {
     const [user, setUser] = useState(null);
 
     useEffect(() => {
-        // Проверяем наличие данных пользователя в localStorage
-        const storedUser = localStorage.getItem('user');
-        const expiresAt = localStorage.getItem('expiresAt');
-
-        if (storedUser && expiresAt && new Date().getTime() < new Date(expiresAt).getTime()) {
-            // Если данные есть и они не просрочены, сохраняем их в состояние
+        // Проверяем наличие данных пользователя в sessionStorage
+        const storedUser = sessionStorage.getItem('user');
+        if (storedUser) {
             setUser(JSON.parse(storedUser));
-        } else {
-            localStorage.removeItem('user');
-            localStorage.removeItem('expiresAt');
         }
     }, []);
 
@@ -54,37 +48,27 @@ function LoginPage() {
                 throw new Error(`Server responded with status ${response.status}`);
             }
 
-    
-            // Проверка наличия ключа auth.$id
             if (responseText.doc?.auth?.$id) {
                 const token = responseText.doc.auth.$id;
-            
-                const expiresAt = new Date();
-                expiresAt.setDate(expiresAt.getDate() + 7);
-
-                localStorage.setItem('login', JSON.stringify(identifier));
-                localStorage.setItem('password', JSON.stringify(password));
-            
-                localStorage.setItem('user', JSON.stringify(token));
-                localStorage.setItem('expiresAt', expiresAt);
+                sessionStorage.setItem('login', JSON.stringify(identifier));
+                sessionStorage.setItem('password', JSON.stringify(password));
+                sessionStorage.setItem('user', JSON.stringify(token));
             
                 setUser({ id: token });
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
-            }            
+            }
         } catch (error) {
             console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
         }
     };
-    
-    
-    
 
     const handleLogout = () => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('expiresAt');
+        sessionStorage.removeItem('user');
+        sessionStorage.removeItem('login');
+        sessionStorage.removeItem('password');
         setUser(null);
         navigate('/');
     };

@@ -18,27 +18,31 @@ const ReferralCard = () => {
   const fetchUserId = async () => {
     setLoading(true);
     setError(null);
-
-    const apiKey = localStorage.getItem('user');
-    const UserLogin = localStorage.getItem('login')
-    const UserPassword = localStorage.getItem('password')
-
-    const token = JSON.parse(apiKey);
-    console.log('Token:', token);
-
+  
+    // Получаем данные из sessionStorage
+    const sessionToken = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
+    const userLogin = sessionStorage.getItem('login');
+    const userPassword = sessionStorage.getItem('password');
+  
+    if (!sessionToken || !userLogin || !userPassword) {
+      console.error('Не найдены данные в sessionStorage');
+      setError('Не найдены данные в хранилище сессии');
+      setLoading(false);
+      return;
+    }
+  
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${UserLogin}:${UserPassword}&func=subaccount&out=xjson`, {
+      const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
         method: 'GET',
       });
-
-    
+  
       const responseText = await response.text();
-    
+  
       if (!response.ok) {
         console.error('HTML Error response:', responseText);
         throw new Error(`Server responded with status ${response.status}`);
       }
-    
+  
       let responseData;
       try {
         responseData = JSON.parse(responseText);
@@ -46,8 +50,11 @@ const ReferralCard = () => {
         console.error('Response is not JSON:', responseText);
         throw new Error('Invalid JSON response');
       }
-    
-      // Остальной код...
+  
+      // Обновляем состояние реферальной ссылки на основе userId или другого значения
+      const userId = responseData.userId; // Укажите, где в ответе содержится userId
+      setUserId(userId);
+      setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
     } catch (err) {
       console.error('Ошибка при запросе к API:', err);
       setError('Ошибка при загрузке данных пользователя');
