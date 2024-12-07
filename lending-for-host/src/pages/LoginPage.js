@@ -62,8 +62,8 @@ function LoginPage() {
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
 
-                localStorage.setItem('login', identifier)
-                localStorage.setItem('password', password)
+                localStorage.setItem('login', JSON.stringify(identifier));
+                localStorage.setItem('password', JSON.stringify(password));
             
                 localStorage.setItem('user', JSON.stringify(token));
                 localStorage.setItem('expiresAt', expiresAt);
