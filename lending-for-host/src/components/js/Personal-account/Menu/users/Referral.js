@@ -21,8 +21,16 @@ const ReferralCard = () => {
   
     // Получаем данные из sessionStorage
     const sessionToken = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
-    const userLogin = sessionStorage.getItem('login');
-    const userPassword = sessionStorage.getItem('password');
+    const sessionUserLogin = sessionStorage.getItem('login');
+    const sessionUserPassword = sessionStorage.getItem('password');
+
+    const token = JSON.parse(sessionToken);
+    const userLogin = JSON.parse(sessionUserLogin);
+    const userPassword = JSON.parse(sessionUserPassword);
+
+    console.log('Token:', token);
+    console.log('Login:', userLogin);
+    console.log('Password:', userPassword);
   
     if (!sessionToken || !userLogin || !userPassword) {
       console.error('Не найдены данные в sessionStorage');
