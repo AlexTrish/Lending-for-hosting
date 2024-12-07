@@ -51,12 +51,7 @@ const Sidebar = ({ onSelect }) => {
 
   // Обработчик выхода из аккаунта
   const handleLogout = () => {
-    // Очистка данных из localStorage
-    localStorage.clear();  // Очистить все данные из localStorage
-    // Или, если нужно очистить конкретные данные:
-    // localStorage.removeItem('userToken'); // Пример для удаления конкретного элемента
-
-    // Перенаправление на главную страницу
+    localStorage.clear();
     navigate('/');
   };
 
