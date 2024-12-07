@@ -24,7 +24,7 @@ const ReferralCard = () => {
     console.log('Token:', token);
 
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?func=clientoption&apikey=${token}&out=xjson`, {
+      const response = await fetch(`https://cp.retry.host/billmgr?func=subaccount&apikey=${token}&out=xjson`, {
         method: 'GET',
       });
 

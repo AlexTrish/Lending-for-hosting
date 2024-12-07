@@ -26,7 +26,7 @@ const Sidebar = ({ onSelect }) => {
       console.log('Token:', token);
 
       try {
-        const response = await fetch(`https://cp.retry.host/billmgr?func=clientoption&apikey=${token}&out=xjson`, {
+        const response = await fetch(`https://cp.retry.host/billmgr?apikey=${token}&func=subaccount&out=xjson`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',
