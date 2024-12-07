@@ -22,7 +22,7 @@ const Sidebar = ({ onSelect }) => {
     const fetchUserData = async () => {
 
       const apiKey = localStorage.getItem('user');
-      const token = JSON.parse(apiKey).$id;
+      const token = JSON.parse(apiKey);
       console.log(token)
 
       try {
