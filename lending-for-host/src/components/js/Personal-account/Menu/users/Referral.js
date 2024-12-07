@@ -20,11 +20,14 @@ const ReferralCard = () => {
     setError(null);
 
     const apiKey = localStorage.getItem('user');
+    const UserLogin = localStorage.getItem('login')
+    const UserPassword = localStorage.getItem('password')
+
     const token = JSON.parse(apiKey);
     console.log('Token:', token);
 
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?func=subaccount&apikey=${token}&out=xjson`, {
+      const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${UserLogin}:${UserPassword}&func=subaccount&out=xjson`, {
         method: 'GET',
       });
 
