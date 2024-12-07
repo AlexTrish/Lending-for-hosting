@@ -23,6 +23,7 @@ const Sidebar = ({ onSelect }) => {
 
       const apiKey = localStorage.getItem('user');
       const token = JSON.parse(apiKey).$id;
+      console.log(token)
 
       try {
         const response = await fetch(`https://cp.retry.host/billmgr?func=clientoption&apikey=${token}&out=xjson`, {
