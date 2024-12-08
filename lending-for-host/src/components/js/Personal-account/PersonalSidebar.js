@@ -21,20 +21,30 @@ const Sidebar = ({ onSelect }) => {
   useEffect(() => {
     const fetchUserData = async () => {
 
-      const apiKey = localStorage.getItem('user');
-      const UserLogin = localStorage.getItem('login')
-      const UserPassword = localStorage.getItem('password')
-
-      const token = JSON.parse(apiKey);
-      console.log('Token:', token);
-
-      try {
-        const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${UserLogin}:${UserPassword}&func=subaccount&out=xjson`, {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        });
+       // Получаем данные из sessionStorage
+        const Token = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
+        const sessionUserLogin = sessionStorage.getItem('login');
+        const sessionUserPassword = sessionStorage.getItem('password');
+      
+        const token = JSON.parse(Token);
+        const userLogin = JSON.parse(sessionUserLogin);
+        const userPassword = JSON.parse(sessionUserPassword);
+      
+        console.log('Token:', token);
+        console.log('Login:', userLogin);
+        console.log('Password:', userPassword);
+      
+        if (!token || !userLogin || !userPassword) { // Здесь заменяем sessionToken на token
+          console.error('Не найдены данные в sessionStorage');
+          setError('Не найдены данные в хранилище сессии');
+          setLoading(false);
+          return;
+        }
+      
+        try {
+          const response = await fetch(`https://cp.retry.host/billmgr?apikey=${token}&func=subaccount&out=xjson`, {
+            method: 'GET',
+          });
 
         const data = await response.json();
 
