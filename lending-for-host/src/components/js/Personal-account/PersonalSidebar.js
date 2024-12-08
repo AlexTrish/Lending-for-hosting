@@ -10,6 +10,8 @@ const Sidebar = ({ onSelect }) => {
   const { t, i18n } = useTranslation();
   const [isClientsOpen, setIsClientsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [loading, setLoading] = useState(false); // Управление загрузкой
+  const [error, setError] = useState(null); // Управление ошибками
   const [userName, setUserName] = useState('Загрузка...');
   const [balance, setBalance] = useState('...');
   const navigate = useNavigate(); // Инициализируем navigate
@@ -20,6 +22,8 @@ const Sidebar = ({ onSelect }) => {
 
   useEffect(() => {
     const fetchUserData = async () => {
+      setLoading(true);
+      setError(null);
 
        // Получаем данные из sessionStorage
         const Token = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
