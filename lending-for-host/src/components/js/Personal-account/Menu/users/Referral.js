@@ -23,16 +23,16 @@ const ReferralCard = () => {
     const Token = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
     const sessionUserLogin = sessionStorage.getItem('login');
     const sessionUserPassword = sessionStorage.getItem('password');
-
+  
     const token = JSON.parse(Token);
     const userLogin = JSON.parse(sessionUserLogin);
     const userPassword = JSON.parse(sessionUserPassword);
-
+  
     console.log('Token:', token);
     console.log('Login:', userLogin);
     console.log('Password:', userPassword);
   
-    if (!sessionToken || !userLogin || !userPassword) {
+    if (!token || !userLogin || !userPassword) { // Здесь заменяем sessionToken на token
       console.error('Не найдены данные в sessionStorage');
       setError('Не найдены данные в хранилище сессии');
       setLoading(false);
@@ -70,6 +70,7 @@ const ReferralCard = () => {
       setLoading(false);
     }
   };
+  
 
   // Получение данных пользователя при загрузке компонента
   useEffect(() => {
