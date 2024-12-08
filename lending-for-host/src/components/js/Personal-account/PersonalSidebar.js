@@ -46,7 +46,7 @@ const Sidebar = ({ onSelect }) => {
         }
       
         try {
-          const response = await fetch(`https://cp.retry.host/billmgr?apikey=${token}&func=subaccount&out=xjson`, {
+          const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
             method: 'GET',
           });
 
