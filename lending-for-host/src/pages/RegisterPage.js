@@ -71,15 +71,10 @@ function RegisterPage() {
             // Проверка наличия ключа auth.$id
             if (responseText.doc?.auth?.$id) {
                 const token = responseText.doc.auth.$id;
-            
-                const expiresAt = new Date();
-                expiresAt.setDate(expiresAt.getDate() + 7);
-            
                 sessionStorage.setItem('login', JSON.stringify(email));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
-            
-                setUser({ id: token });
+                
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
