@@ -40,27 +40,8 @@ const ReferralCard = () => {
     }
   
     try {
-      const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
-        method: 'GET',
-      });
-  
-      const responseText = await response.text();
-  
-      if (!response.ok) {
-        console.error('HTML Error response:', responseText);
-        throw new Error(`Server responded with status ${response.status}`);
-      }
-  
-      let responseData;
-      try {
-        responseData = JSON.parse(responseText);
-      } catch (e) {
-        console.error('Response is not JSON:', responseText);
-        throw new Error('Invalid JSON response');
-      }
-  
-      
-      const userId = responseData.userId;
+      const sessionUserId = sessionStorage.getItem('userId');
+      const userId = JSON.parse(sessionUserId);
       setUserId(userId);
       setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
     } catch (err) {
