@@ -25,7 +25,7 @@ function RegisterPage() {
     
     
         try {
-            const response = await fetch('https://cp.retry.host/billmgr', {
+            const response = await fetch('https://enapihost.retry.host/billmgr', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
@@ -75,8 +75,9 @@ function RegisterPage() {
                 const expiresAt = new Date();
                 expiresAt.setDate(expiresAt.getDate() + 7);
             
-                localStorage.setItem('user', JSON.stringify(token));
-                localStorage.setItem('expiresAt', expiresAt);
+                sessionStorage.setItem('login', JSON.stringify(email));
+                sessionStorage.setItem('password', JSON.stringify(password));
+                sessionStorage.setItem('user', JSON.stringify(token));
             
                 setUser({ id: token });
                 navigate('/personal-account');

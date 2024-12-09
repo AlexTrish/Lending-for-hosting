@@ -46,11 +46,11 @@ const Sidebar = ({ onSelect }) => {
         }
       
         try {
-          const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
+          const response = await fetch(`https://enapihost.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
             method: 'GET',
           });
 
-          const response2 = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=user&out=xjson`, {
+          const response2 = await fetch(`https://enapihost.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=user&out=xjson`, {
             method: 'GET',
           });
 
