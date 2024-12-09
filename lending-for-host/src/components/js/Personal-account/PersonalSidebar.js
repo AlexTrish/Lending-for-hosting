@@ -58,11 +58,14 @@ const Sidebar = ({ onSelect }) => {
         const data2 = await response2.json()
 
         if (data?.doc?.elem) {
-          const userData = data.doc.elem[0];
+          const userData = data.doc?.elem[0];
           setBalance(userData.balance?.$);
 
-          const userData2 = data2.doc.elem[0];
+          const userData2 = data2.doc?.elem[0];
           setUserName(userData2.realname?.$);
+
+          const userDataId = data2.doc?.elem[0].account_id?.$
+          sessionStorage.setItem('userID', JSON.stringify(userDataId));
         }
       } catch (error) {
         console.error('Ошибка при получении данных пользователя:', error);
@@ -76,7 +79,7 @@ const Sidebar = ({ onSelect }) => {
 
   // Обработчик выхода из аккаунта
   const handleLogout = () => {
-    localStorage.clear();
+    sessionStorage.clear();
     navigate('/');
   };
 
