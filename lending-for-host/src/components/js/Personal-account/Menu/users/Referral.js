@@ -59,8 +59,8 @@ const ReferralCard = () => {
         throw new Error('Invalid JSON response');
       }
   
-      // Обновляем состояние реферальной ссылки на основе userId или другого значения
-      const userId = responseData.userId; // Укажите, где в ответе содержится userId
+      
+      const userId = responseData.userId;
       setUserId(userId);
       setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
     } catch (err) {

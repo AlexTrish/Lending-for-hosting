@@ -50,12 +50,19 @@ const Sidebar = ({ onSelect }) => {
             method: 'GET',
           });
 
-        const data = await response.json();
+          const response2 = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=user&out=xjson`, {
+            method: 'GET',
+          });
 
-        if (data?.doc?.messages) {
-          const userData = data.doc.messages;
-          setUserName(userData.name);
-          setBalance(userData.balance);
+        const data = await response.json();
+        const data2 = await response2.json()
+
+        if (data?.doc?.elem) && (data2?.doc) {
+          const userData = data.doc.elem;
+          setBalance(userData.balance.$);
+
+          const userData2 = data2.doc;
+          setUserName(userData2);
         }
       } catch (error) {
         console.error('Ошибка при получении данных пользователя:', error);
