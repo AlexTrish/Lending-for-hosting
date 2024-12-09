@@ -53,8 +53,7 @@ function LoginPage() {
                 sessionStorage.setItem('login', JSON.stringify(identifier));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
-            
-                setUser({ id: token });
+                
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));

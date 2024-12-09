@@ -34,11 +34,11 @@ function RegisterPage() {
                     need_manual_action: '',
                     email_exists: '',
                     socnetwork_account_exist: '',
-                    realname: `${username}`,
+                    realname: username,
                     recaptcha_type: '',
                     _ga: '',
                     _ym_uid: '',
-                    email: `${email}`,
+                    email: email,
                     project: '1',
                     partner: '',
                     sesid: '',
@@ -46,8 +46,8 @@ function RegisterPage() {
                     redirect_params: '',
                     redirect_auth: '',
                     tzoffset: '',
-                    passwd: `${password}`,
-                    confirm: `${confirmPassword}`,
+                    passwd: password,
+                    confirm: confirmPassword,
                     country: '1',
                     state: '',
                     field_2: 'on',
@@ -67,18 +67,16 @@ function RegisterPage() {
                 throw new Error(`Server responded with status ${response.status}`);
             }
 
-    
-            // Проверка наличия ключа auth.$id
             if (responseText.doc?.auth?.$id) {
                 const token = responseText.doc.auth.$id;
-                sessionStorage.setItem('login', JSON.stringify(email));
+                sessionStorage.setItem('login', JSON.stringify(username));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
                 
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
-            }            
+            }
         } catch (error) {
             console.error('Error during API request:', error);
             setError(t('form-sign-in.serverError'));
