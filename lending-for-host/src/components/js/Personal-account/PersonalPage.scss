@@ -1729,6 +1729,9 @@
         &:hover {
           filter: brightness(80%);
         }
+        &:active {
+          transform: scale(0.98);
+        }
       }
     }
   }
