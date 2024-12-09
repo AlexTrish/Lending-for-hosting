@@ -59,10 +59,10 @@ const Sidebar = ({ onSelect }) => {
 
         if (data?.doc?.elem) {
           const userData = data.doc.elem[0];
-          setBalance(JSON.parse(userData.balance.$));
+          setBalance(JSON.parse(userData.balance).$);
 
           const userData2 = data2.doc.elem[0];
-          setUserName(JSON.parse(userData2.realname.$));
+          setUserName(JSON.parse(userData2.realname).$);
         }
       } catch (error) {
         console.error('Ошибка при получении данных пользователя:', error);
