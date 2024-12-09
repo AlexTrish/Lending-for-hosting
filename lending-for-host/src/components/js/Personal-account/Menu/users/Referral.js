@@ -44,7 +44,7 @@ const ReferralCard = () => {
   
     try {
       setUserId(userId);
-      setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
+      setReferralLink(`referer_${userId}`);
     } catch (err) {
       console.error('Ошибка при запросе к API:', err);
       setError('Ошибка при загрузке данных пользователя');
@@ -168,8 +168,8 @@ const ReferralCard = () => {
 
       {/* Первая карточка: Реферальная ссылка */}
       <div className="card refferal-link">
-        <h2>Ваша реферальная ссылка</h2>
-        <p>Поделитесь этой ссылкой, чтобы пригласить друзей!</p>
+        <h2>Ваш реферальный промокод</h2>
+        <p>Поделитесь этим промокодом, чтобы пригласить друзей!</p>
         <div className="referral-container">
           <span>{referralLink}</span>
           <button onClick={handleCopy} className="copy-btn">Копировать</button>
