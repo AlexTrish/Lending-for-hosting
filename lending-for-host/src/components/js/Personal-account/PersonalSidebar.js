@@ -58,10 +58,10 @@ const Sidebar = ({ onSelect }) => {
         const data2 = await response2.json()
 
         if (data?.doc?.elem) {
-          const userData = data.doc.elem.[0];
+          const userData = data.doc.elem[0];
           setBalance(JSON.parse(userData.balance.$));
 
-          const userData2 = data2.doc.elem.[0];
+          const userData2 = data2.doc.elem[0];
           setUserName(JSON.parse(userData2.realname.$));
         }
       } catch (error) {
