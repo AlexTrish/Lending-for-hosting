@@ -57,7 +57,7 @@ const Sidebar = ({ onSelect }) => {
         const data = await response.json();
         const data2 = await response2.json()
 
-        if (data?.doc?.elem) && (data2?.doc) {
+        if (data?.doc?.elem) {
           const userData = data.doc.elem;
           setBalance(userData.balance.$);
 
