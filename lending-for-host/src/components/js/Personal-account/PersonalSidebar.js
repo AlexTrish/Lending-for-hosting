@@ -61,8 +61,8 @@ const Sidebar = ({ onSelect }) => {
           const userData = data.doc.elem;
           setBalance(userData.balance.$);
 
-          const userData2 = data2.doc;
-          setUserName(userData2);
+          const userData2 = data2.doc.elem;
+          setUserName(userData2.realname.$);
         }
       } catch (error) {
         console.error('Ошибка при получении данных пользователя:', error);
