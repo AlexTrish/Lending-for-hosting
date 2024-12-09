@@ -26,7 +26,7 @@ const Sidebar = ({ onSelect }) => {
       setError(null);
 
        // Получаем данные из sessionStorage
-        const Token = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
+        const Token = sessionStorage.getItem('user'); // Пример ключа, поменяйте на ваш
         const sessionUserLogin = sessionStorage.getItem('login');
         const sessionUserPassword = sessionStorage.getItem('password');
       

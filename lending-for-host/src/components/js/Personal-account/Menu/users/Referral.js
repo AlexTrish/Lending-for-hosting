@@ -20,11 +20,11 @@ const ReferralCard = () => {
     setError(null);
   
     // Получаем данные из sessionStorage
-    const Token = sessionStorage.getItem('sessionToken'); // Пример ключа, поменяйте на ваш
+    const sessionToken = sessionStorage.getItem('user'); // Пример ключа, поменяйте на ваш
     const sessionUserLogin = sessionStorage.getItem('login');
     const sessionUserPassword = sessionStorage.getItem('password');
   
-    const token = JSON.parse(Token);
+    const token = JSON.parse(sessionToken);
     const userLogin = JSON.parse(sessionUserLogin);
     const userPassword = JSON.parse(sessionUserPassword);
   
