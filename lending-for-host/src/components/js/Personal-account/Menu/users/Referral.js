@@ -23,14 +23,17 @@ const ReferralCard = () => {
     const sessionToken = sessionStorage.getItem('user'); // Пример ключа, поменяйте на ваш
     const sessionUserLogin = sessionStorage.getItem('login');
     const sessionUserPassword = sessionStorage.getItem('password');
+    const sessionUserId = sessionStorage.getItem('userDataId');
   
     const token = JSON.parse(sessionToken);
     const userLogin = JSON.parse(sessionUserLogin);
     const userPassword = JSON.parse(sessionUserPassword);
+    const userId = JSON.parse(sessionUserId);
   
     console.log('Token:', token);
     console.log('Login:', userLogin);
     console.log('Password:', userPassword);
+    console.log('UserID:', userId);
   
     if (!token || !userLogin || !userPassword) { // Здесь заменяем sessionToken на token
       console.error('Не найдены данные в sessionStorage');
@@ -40,8 +43,6 @@ const ReferralCard = () => {
     }
   
     try {
-      const sessionUserId = sessionStorage.getItem('userDataId');
-      const userId = JSON.parse(sessionUserId);
       setUserId(userId);
       setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
     } catch (err) {
