@@ -46,8 +46,14 @@ const Sidebar = ({ onSelect }) => {
         }
       
         try {
-          const response = await fetch(`https://cp.retry.host/billmgr?authinfo=${userLogin}:${userPassword}&func=subaccount&out=xjson`, {
-            method: 'GET',
+          const response = await fetch(`https://cp.retry.host/billmgr?`, {
+            method: 'POST',
+            body: new URLSearchParams({
+              authinfo: `${userLogin}:${userPassword}`,
+              func: 'subaccount',
+              out: 'json',
+              lang: 'ru',
+            }),
           });
 
         const data = await response.json();
