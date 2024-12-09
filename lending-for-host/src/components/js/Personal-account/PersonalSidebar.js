@@ -93,7 +93,6 @@ const Sidebar = ({ onSelect }) => {
             <p>Баланс:</p>
             <div className="green-block">
               <p>{balance}</p>
-              <p className="rub">₽</p>
             </div>
           </div>
         </div>
