@@ -23,7 +23,7 @@ const ReferralCard = () => {
     const sessionToken = sessionStorage.getItem('user'); // Пример ключа, поменяйте на ваш
     const sessionUserLogin = sessionStorage.getItem('login');
     const sessionUserPassword = sessionStorage.getItem('password');
-    const sessionUserId = sessionStorage.getItem('userDataId');
+    const sessionUserId = sessionStorage.getItem('userID');
   
     const token = JSON.parse(sessionToken);
     const userLogin = JSON.parse(sessionUserLogin);
