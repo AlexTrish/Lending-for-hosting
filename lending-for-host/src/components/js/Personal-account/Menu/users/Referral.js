@@ -40,7 +40,7 @@ const ReferralCard = () => {
     }
   
     try {
-      const sessionUserId = sessionStorage.getItem('userId');
+      const sessionUserId = sessionStorage.getItem('userDataId');
       const userId = JSON.parse(sessionUserId);
       setUserId(userId);
       setReferralLink(`https://cp.retry.host/register?referral=${userId}`);
