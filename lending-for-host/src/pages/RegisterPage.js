@@ -25,40 +25,8 @@ function RegisterPage() {
     
     
         try {
-            const response = await fetch('https://enapihost.retry.host/billmgr?', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                body: JSON.stringify({
-                    need_manual_action: '',
-                    email_exists: '',
-                    socnetwork_account_exist: '',
-                    realname: username,
-                    recaptcha_type: '',
-                    _ga: '',
-                    _ym_uid: '',
-                    email: email,
-                    project: '1',
-                    partner: '',
-                    sesid: '',
-                    currency_fromsite: '',
-                    redirect_params: '',
-                    redirect_auth: '',
-                    tzoffset: '',
-                    passwd: password,
-                    confirm: confirmPassword,
-                    country: '1',
-                    state: '',
-                    field_2: 'on',
-                    sfromextform: 'yes',
-                    newwindow: 'extform',
-                    func: 'register',
-                    sok: 'ok',
-                    elid: '',
-                    clicked_button: 'ok',
-                    out: 'xjson',
-                }),
+            const response = await fetch(`https://enapihost.retry.host/billmgr?realname=${username}&email=${email}&project=1&passwd=${password}&confirm=${confirmPassword}&country=1&field_2=on&sfromextform=yes&newwindow=extform&func=register&sok=ok&clicked_button=ok&out=xjson`, {
+                method: 'GET',
             });
     
             const responseText = await response.json();
