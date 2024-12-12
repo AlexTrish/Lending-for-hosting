@@ -25,8 +25,8 @@ function RegisterPage() {
     
     
         try {
-            const response = await fetch(`https://enapihost.retry.host/billmgr?realname=${username}&email=${email}&project=1&passwd=${password}&confirm=${confirmPassword}&country=1&field_2=on&sfromextform=yes&newwindow=extform&func=register&sok=ok&clicked_button=ok&out=xjson`, {
-                method: 'GET',
+            const response = await fetch(`https://enapihost.retry.host/?_ga=&_ym_uid=&clicked_button=ok&confirm=${confirmPassword}&country=15&currency_fromsite=126&email=${email}&email_exists=&field_2=on&func=register&need_manual_action=&newwindow=extform&out=xjson&partner=&passwd=${password}&project=1&realname=${username}&recaptcha_type=&redirect_auth=&redirect_params=&sesid=&sfromextform=yes&socnetwork_account_exist=&sok=ok&state=&tzoffset=180%2C0`, {
+                method: 'POST',
             });
     
             const responseText = await response.json();
