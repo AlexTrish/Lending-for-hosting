@@ -27,7 +27,7 @@ function LoginPage() {
         setError(null);
     
         try {
-            const response = await fetch('https://enapihost.retry.host/billmgr', {
+            const response = await fetch('https://enapihost.retry.host/billmgr?', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
