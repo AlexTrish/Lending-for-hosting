@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navbar, Container, Alert, Button } from 'react-bootstrap';
@@ -25,35 +26,27 @@ function LoginPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-    
+
         try {
-            const response = await fetch('https://enapihost.retry.host/billmgr?', {
-                method: 'POST',
+            const response = await axios.post('https://enapihost.retry.host/billmgr?', new URLSearchParams({
+                func: 'auth',
+                out: 'json',
+                forget: 'on',
+                username: identifier,
+                password: password,
+                lang: 'ru',
+            }), {
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                 },
-                body: new URLSearchParams({
-                    func: 'auth',
-                    out: 'json',
-                    forget: 'on',
-                    username: identifier,
-                    password: password,
-                    lang: 'ru',
-                }),
             });
-    
-            const responseText = await response.json();
-    
-            if (!response.ok) {
-                throw new Error(`Server responded with status ${response.status}`);
-            }
 
-            if (responseText.doc?.auth?.$id) {
-                const token = responseText.doc.auth.$id;
+            if (response.data?.doc?.auth?.$id) {
+                const token = response.data.doc.auth.$id;
                 sessionStorage.setItem('login', JSON.stringify(identifier));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
-                
+
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));

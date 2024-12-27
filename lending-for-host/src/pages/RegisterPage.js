@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Navbar, Container, Alert } from 'react-bootstrap';
@@ -22,16 +23,42 @@ function RegisterPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setError(null);
-    
-    
+
         try {
-            const response = await fetch(`https://enapihost.retry.host/?_ga=&_ym_uid=&clicked_button=ok&confirm=${confirmPassword}&country=15&currency_fromsite=126&email=${email}&email_exists=&field_2=on&func=register&need_manual_action=&newwindow=extform&out=xjson&partner=&passwd=${password}&project=1&realname=${username}&recaptcha_type=&redirect_auth=&redirect_params=&sesid=&sfromextform=yes&socnetwork_account_exist=&sok=ok&state=&tzoffset=180%2C0`, {
-                method: 'GET',
+            const response = await axios.get('https://enapihost.retry.host/', {
+                params: {
+                    _ga: '',
+                    _ym_uid: '',
+                    clicked_button: 'ok',
+                    confirm: confirmPassword,
+                    country: 15,
+                    currency_fromsite: 126,
+                    email: email,
+                    email_exists: '',
+                    field_2: 'on',
+                    func: 'register',
+                    need_manual_action: '',
+                    newwindow: 'extform',
+                    out: 'xjson',
+                    partner: '',
+                    passwd: password,
+                    project: 1,
+                    realname: username,
+                    recaptcha_type: '',
+                    redirect_auth: '',
+                    redirect_params: '',
+                    sesid: '',
+                    sfromextform: 'yes',
+                    socnetwork_account_exist: '',
+                    sok: 'ok',
+                    state: '',
+                    tzoffset: '180,0',
+                },
             });
-    
-            const responseText = await response.json();
-    
-            if (!response.ok) {
+
+            const responseText = response.data;
+
+            if (response.status !== 200) {
                 throw new Error(`Server responded with status ${response.status}`);
             }
 
@@ -40,7 +67,7 @@ function RegisterPage() {
                 sessionStorage.setItem('login', JSON.stringify(username));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
-                
+
                 navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
