@@ -11,7 +11,6 @@ function RegisterPage() {
     const { t } = useTranslation();
     const navigate = useNavigate();
 
-    const [setUser] = useState(null);
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -56,19 +55,40 @@ function RegisterPage() {
                 },
             });
 
-            const responseText = response.data;
-
             if (response.status !== 200) {
                 throw new Error(`Server responded with status ${response.status}`);
             }
 
-            if (responseText.doc?.auth?.$id) {
-                const token = responseText.doc.auth.$id;
-                sessionStorage.setItem('login', JSON.stringify(username));
-                sessionStorage.setItem('password', JSON.stringify(password));
-                sessionStorage.setItem('user', JSON.stringify(token));
+            if (response.status == 200) {
+                try {
+                    const response = await axios.post('https://enapihost.retry.host/billmgr?', new URLSearchParams({
+                        func: 'auth',
+                        out: 'json',
+                        forget: 'on',
+                        username: email,
+                        password: password,
+                        lang: 'ru',
+                    }), {
+                        headers: {
+                            'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                    });
+        
+                    if (response.data?.doc?.auth?.$id) {
+                        const token = response.data.doc.auth.$id;
+                        sessionStorage.setItem('login', JSON.stringify(identifier));
+                        sessionStorage.setItem('password', JSON.stringify(password));
+                        sessionStorage.setItem('user', JSON.stringify(token));
+        
+                        navigate('/personal-account');
+                    } else {
+                        setError(t('form-sign-in.authError'));
+                    }
+                } catch (error) {
+                    console.error('Error during API request:', error);
+                    setError(t('form-sign-in.serverError'));
+                }
 
-                navigate('/personal-account');
             } else {
                 setError(t('form-sign-in.authError'));
             }
