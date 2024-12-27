@@ -61,8 +61,8 @@ function RegisterPage() {
                 throw new Error(`Server responded with status ${response.status}`);
             }
 
-            if (responseText.doc?.auth?.$id) {
-                const token = responseText.doc.auth.$id;
+            if (responseText.data?.doc?.auth?.$id) {
+                const token = responseText.data.doc.auth.$id;
                 sessionStorage.setItem('login', JSON.stringify(username));
                 sessionStorage.setItem('password', JSON.stringify(password));
                 sessionStorage.setItem('user', JSON.stringify(token));
