@@ -76,7 +76,7 @@ function RegisterPage() {
         
                     if (response.data?.doc?.auth?.$id) {
                         const token = response.data.doc.auth.$id;
-                        sessionStorage.setItem('login', JSON.stringify(identifier));
+                        sessionStorage.setItem('login', JSON.stringify(email));
                         sessionStorage.setItem('password', JSON.stringify(password));
                         sessionStorage.setItem('user', JSON.stringify(token));
         
