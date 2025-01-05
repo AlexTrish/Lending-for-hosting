@@ -25,7 +25,6 @@ const PaymentMethods = () => {
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    // Логика для добавления нового способа оплаты
     console.log(newCard);
     setModalOpen(false);
   };
