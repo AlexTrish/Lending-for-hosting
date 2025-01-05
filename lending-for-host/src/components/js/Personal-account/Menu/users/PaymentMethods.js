@@ -64,17 +64,17 @@ const PaymentMethods = () => {
         >
           <div className="modal-header">Добавить способ оплаты</div>
           <form onSubmit={handleCardSubmit} className="modal-body">
-            <span>Full Name</span>
+            <span className="fullname-span">Full Name</span>
             <input
               type="text"
               placeholder="Full name"
-              className="input-field"
+              className="input-field fullname"
               value={newCard.cardType}
               onChange={(e) =>
                 setNewCard({ ...newCard, cardType: e.target.value })
               }
             />
-            <span>Card number</span>
+            <span className="cardnumber-span">Card number</span>
             <input
               type="text"
               placeholder="Номер карты"
@@ -84,16 +84,17 @@ const PaymentMethods = () => {
                 setNewCard({ ...newCard, cardNumber: e.target.value })
               }
             />
-            <span>Card number</span>
+            <span className="fullname-span">Card expiration</span>
             <input
-              type="text"
+              type="date"
               placeholder="Срок действия"
-              className="input-field"
+              className="input-field сardExp"
               value={newCard.expDate}
               onChange={(e) =>
                 setNewCard({ ...newCard, expDate: e.target.value })
               }
             />
+            <span className="CVV-span">CVV</span>
             <input
               type="text"
               placeholder="CVV"
