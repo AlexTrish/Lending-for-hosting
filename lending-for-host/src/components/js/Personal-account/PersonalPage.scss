@@ -622,7 +622,7 @@
 
           .modal-footer {
             display: flex;
-            border: none;
+            border-top: 1px solid var(--footer-line);
             justify-content: space-between;
           }
 
