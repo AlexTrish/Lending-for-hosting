@@ -599,6 +599,11 @@
             padding: 20px;
             border-radius: 10px;
             width: 35vw;
+
+            h3 {
+              margin-bottom: 10vw;
+              font-size: 1.5vw;
+            }
           }
 
           .modal-content input {
@@ -617,12 +622,13 @@
 
           .modal-footer {
             display: flex;
+            border: none;
             justify-content: space-between;
           }
 
           .modal-button {
             background-color: var(--green-block);
-            color: #fff;
+            color: var(--button-text-color);
             border: none;
             padding: 10px 15px;
             border-radius: 5px;
