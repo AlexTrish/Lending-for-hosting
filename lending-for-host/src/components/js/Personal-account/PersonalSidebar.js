@@ -90,7 +90,7 @@ const Sidebar = ({ onSelect }) => {
         <div className="profile-info">
           <h3>{userName}</h3>
           <div className="block-element">
-            <p>Баланс:</p>
+            <p>{t("profile.balance")}</p>
             <div className="green-block">
               <p>{balance}</p>
             </div>
@@ -99,7 +99,7 @@ const Sidebar = ({ onSelect }) => {
       </div>
 
       <div className="sidebar-header">
-        <h2>Меню</h2>
+        <h2>{t("profile.menu")}</h2>
       </div>
       <div className="line"></div>
 
@@ -107,29 +107,29 @@ const Sidebar = ({ onSelect }) => {
         {/* Клиенты */}
         <button onClick={() => setIsClientsOpen(!isClientsOpen)} className="accordion-button">
           <FaUsers className="sidebar-icon" />
-          Клиенты
+          {t("profile.clients.main")}
         </button>
         {isClientsOpen && (
           <div className="submenu">
             <button onClick={() => onSelect('PayersPage')}>
               <FaWallet className="sidebar-icon" />
-              Плательщики
+              {t("profile.clients.payers")}
             </button>
             <button onClick={() => onSelect('referral')}>
               <FaRegHandshake className="sidebar-icon" />
-              Реферальная программа
+              {t("profile.clients.referralProgram")}
             </button>
             <button onClick={() => onSelect('CartPage')}>
               <FaShoppingCart className="sidebar-icon" />
-              Корзина
+              {t("profile.clients.card")}
             </button>
             <button onClick={() => onSelect('services')}>
               <FaClipboardList className="sidebar-icon" />
-              Заказы
+              {t("profile.clients.orders")}
             </button>
             <button onClick={() => onSelect('payment-methods')}>
               <FaDollarSign className="sidebar-icon" />
-              Способы оплаты
+              {t("profile.clients.paymentMethods")}
             </button>
           </div>
         )}
@@ -137,33 +137,33 @@ const Sidebar = ({ onSelect }) => {
         {/* Товары/Услуги */}
         <button onClick={() => setIsProductsOpen(!isProductsOpen)} className="accordion-button">
           <FaBoxOpen className="sidebar-icon" />
-          Товары/Услуги
+          {t("profile.productsServices.main")}
         </button>
         {isProductsOpen && (
           <div className="submenu">
             <button onClick={() => onSelect('servers')}>
               <FaServer className="sidebar-icon" />
-              Абузоустойчивые сервера
+              {t("profile.productsServices.bulletproofServers")}
             </button>
             <button onClick={() => onSelect('vps')}>
               <FaDatabase className="sidebar-icon" />
-              VPS
+              {t("profile.productsServices.VPS")}
             </button>
             <button onClick={() => onSelect('vds')}>
               <FaServer className="sidebar-icon" />
-              VDS
+              {t("profile.productsServices.VDS")}
             </button>
             <button onClick={() => onSelect('vpn')}>
               <FaShieldAlt className="sidebar-icon" />
-              VPN
+              {t("profile.productsServices.VPN")}
             </button>
             <button onClick={() => onSelect('cloud-panel')}>
               <FaCloud className="sidebar-icon" />
-              Cloud-Panel
+              {t("profile.productsServices.cloudPanel")}
             </button>
             <button onClick={() => onSelect('domains')}>
               <FaGlobe className="sidebar-icon" />
-              Домены
+              {t("profile.productsServices.domains")}
             </button>
           </div>
         )}
@@ -171,13 +171,13 @@ const Sidebar = ({ onSelect }) => {
         {/* Другие разделы */}
         <button onClick={() => onSelect('transactions')}>
           <FaCoins className="sidebar-icon" />
-          Транзакции
+          {t("profile.activity")}
         </button>
 
         {/* Кнопка выхода */}
         <button onClick={handleLogout} className="logout-button">
           <FaSignOutAlt className="sidebar-icon" />
-          Выйти
+          {t("exit")}
         </button>
       </div>
     </div>

@@ -105,7 +105,7 @@ function RegisterPage() {
                 </Navbar.Collapse>
             </Container>
             <div className="card">
-                <h3>Регистрация</h3>
+                <h3>{t("form-sign-in.signUpTitle")}</h3>
                 <div className="card-body">
                     {error && (
                         <Alert variant="danger" className="mb-4">
@@ -115,37 +115,37 @@ function RegisterPage() {
 
                     <form onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label htmlFor="username" className="form-label">Имя пользователя</label>
+                            <label htmlFor="username" className="form-label">{t("form-sign-in.user")}</label>
                             <input
                                 type="text"
                                 id="username"
                                 className="form-control"
-                                placeholder="Введите имя пользователя"
+                                placeholder={t("form-sign-in.userPlaceholder")}
                                 value={username}
                                 onChange={(e) => setUsername(e.target.value)}
                             />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="email" className="form-label">Электронная почта</label>
+                            <label htmlFor="email" className="form-label">{t("form-sign-in.email")}</label>
                             <input
                                 type="email"
                                 id="email"
                                 className="form-control"
-                                placeholder="Введите электронную почту"
+                                placeholder={t("form-sign-in.emailPlaceholder")}
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="password" className="form-label">Пароль</label>
+                            <label htmlFor="password" className="form-label">{t("form-sign-in.pass")}</label>
                             <div className="input-group">
                                 <input
                                     type={showPassword ? "text" : "password"}
                                     id="password"
                                     className="form-control"
-                                    placeholder="Введите пароль"
+                                    placeholder={t("form-sign-in.passPlaceholder")}
                                     value={password}
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
@@ -156,13 +156,13 @@ function RegisterPage() {
                         </div>
 
                         <div className="mb-3">
-                            <label htmlFor="confirmPassword" className="form-label">Подтверждение пароля</label>
+                            <label htmlFor="confirmPassword" className="form-label">{t("form-sign-in.passConfirmation")}</label>
                             <div className="input-group">
                                 <input
                                     type={showConfirmPassword ? "text" : "password"}
                                     id="confirmPassword"
                                     className="form-control"
-                                    placeholder="Подтвердите пароль"
+                                    placeholder={t("form-sign-in.passConfirmationPlaceholder")}
                                     value={confirmPassword}
                                     onChange={(e) => setConfirmPassword(e.target.value)}
                                 />
@@ -173,21 +173,21 @@ function RegisterPage() {
                         </div>
 
                         <button type="submit" className="btn btn-success w-100">
-                            Зарегистрироваться
+                            {t("form-sign-in.register")}
                         </button>
                     </form>
 
                     <div className="mt-3 text-center registr-cont">
                         <div className="line-container">
                             <span className="line"></span>
-                            <p className="mb-0">Зарегистрируйтесь с помощью</p>
+                            <p className="mb-0">{t("form-sign-in.signUpWith")}</p>
                             <span className="line"></span>
                         </div>
                         <button className="google-auth" onClick={handleGoogleSignUp}><FaGoogle /></button>
                     </div>
 
                     <div className="mt-3 text-center">
-                        <p className="mb-0">У вас уже есть аккаунт? <a href="/login">Авторизоваться</a></p>
+                        <p className="mb-0">{t("form-sign-in.haveAccount")} <a href="/login">{t("form-sign-in.registerTitle")}</a></p>
                     </div>
                 </div>
             </div>

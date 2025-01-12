@@ -16,7 +16,7 @@ function Header({ setCurrentMenu }) {
   };
 
   const handleLoginClick = () => {
-    navigate('/login'); 
+    navigate('/personal-account');
   };
 
   const handleProf = () => {

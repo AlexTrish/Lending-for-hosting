@@ -168,8 +168,8 @@ const ReferralCard = () => {
 
       {/* Первая карточка: Реферальная ссылка */}
       <div className="card refferal-link">
-        <h2>Ваш реферальный промокод</h2>
-        <p>Поделитесь этим промокодом, чтобы пригласить друзей!</p>
+        <h2>{t("referral.refferal-link.main")}</h2>
+        <p>{t("referral.refferal-link.description")}</p>
         <div className="referral-container">
           <span>{referralLink}</span>
           <button onClick={handleCopy} className="copy-btn">Копировать</button>
@@ -178,36 +178,36 @@ const ReferralCard = () => {
 
       {/* Вторая карточка: Список рефералов */}
       <div className="card refferal-list">
-        <h2>Ваши рефералы</h2>
+        <h2>{t("referral.refferal-list.main")}</h2>
         {referralList.length > 0 ? (
           <div className="referral-card">
             {referralList.map((referral, index) => (
               <div key={index} className="card referral-item">
                 <h3>{referral.name}</h3>
                 <div className='text'>
-                  <p>Дата регистрации:</p><p>{referral.date}</p>
+                  <p>{t("referral.refferal-list.registrationDate")}</p><p>{referral.date}</p>
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <p>У вас пока нет рефералов.</p>
+          <p>{t("referral.refferal-list.youDontHaveReferrals")}</p>
         )}
       </div>
 
       {/* Третья карточка: Статистика */}
       <div className="card refferal-stat">
-        <h2>Статистика дохода</h2>
+        <h2>{t("referral.refferal-stat.main")}</h2>
 
         {/* Фильтр для выбора периода */}
         <div className="wrapper">
           <div className="filter-container">
-            <label htmlFor="time-period" className="filter-label">Выберите период:</label>
-            <select id="time-period" value={timePeriod} onChange={handleTimePeriodChange}className="filter-select">
-              <option value="day">Дни</option>
-              <option value="week">Недели</option>
-              <option value="month">Месяцы</option>
-              <option value="year">Годы</option>
+            <label htmlFor="time-period" className="filter-label">{t("referral.refferal-stat.selectPeriod")}</label>
+            <select id="time-period" value={timePeriod} onChange={handleTimePeriodChange} className="filter-select">
+              <option value="day">{t("referral.refferal-stat.time-period.days")}</option>
+              <option value="week">{t("referral.refferal-stat.time-period.weeks")}</option>
+              <option value="month">{t("referral.refferal-stat.time-period.months")}</option>
+              <option value="year">{t("referral.refferal-stat.time-period.years")}</option>
             </select>
           </div>
 
@@ -240,7 +240,7 @@ const ReferralCard = () => {
       </div>
 
       {/* Алерт */}
-      {showAlert && <div className="alert">Ссылка успешно скопирована!</div>}
+      {showAlert && <div className="alert">{t("referral.linkSuccessfullyCopied")}</div>}
     </div>
   );
 };

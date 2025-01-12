@@ -131,7 +131,7 @@ function LoginPage() {
 
                         <div className="mt-3 text-center">
                             <p className="mb-0">
-                                У вас нет аккаунта? <a href="/register">Зарегистрироваться</a>
+                                {t("form-sign-in.notHaveAccount")} <a href="/register">{t("form-sign-in.register")}</a>
                             </p>
                         </div>
                     </div>
