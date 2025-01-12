@@ -172,7 +172,7 @@ const ReferralCard = () => {
         <p>{t("referral.refferal-link.description")}</p>
         <div className="referral-container">
           <span>{referralLink}</span>
-          <button onClick={handleCopy} className="copy-btn">Копировать</button>
+          <button onClick={handleCopy} className="copy-btn">{t("referral.refferal-list.copy-btn")}</button>
         </div>
       </div>
 

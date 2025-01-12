@@ -93,18 +93,19 @@ i18n.use(initReactI18next).init({
         "buyButton": "Purchase Domain"
       },
       "referral": {
-        "title": "Referral System",
+        "title": "Referral system",
         "refferal-link": {
-          "main": "Your Referral Promo Code",
+          "main": "Your referral promo code",
           "description": "Share this promo code to invite your friends!",
         },
         "refferal-list": {
-          "main": "Your Referrals",
-          "registrationDate": "Registration Date:",
+          "main": "Your referrals",
+          "registrationDate": "Registration date:",
           "youDontHaveReferrals": "You dont have referrals",
+          "copy-btn": "Copy",
         },
         "refferal-stat": {
-          "main": "Income Statistics",
+          "main": "Income statistics",
           "selectPeriod": "Select Period:",
           "time-period": {
             "days": "Days",
@@ -204,10 +205,10 @@ i18n.use(initReactI18next).init({
         "payers-page": {
           "headerTitle": "Trusted Payers",
           "addPayer": "Add Payer",
-          "numberId": "ID",
+          "numberId": "Number (ID)",
           "fullName": "Full Name",
           "eMail": "EMail",
-          "telephone": "Tel",
+          "telephone": "Phone",
           "status": "Status",
           "actions": "Actions",
           "addPayers": {
@@ -471,6 +472,7 @@ i18n.use(initReactI18next).init({
           "main": "Ваши рефералы",
           "registrationDate": "Дата регистрации:",
           "youDontHaveReferrals": "У вас пока нет рефералов.",
+          "copy-btn": "Копировать",
         },
         "refferal-stat": {
           "main": "Статистика дохода",
@@ -572,7 +574,7 @@ i18n.use(initReactI18next).init({
       "payers-page": {
         "headerTitle": "Доверенные плательщики",
         "addPayer": "Добавить плательщика",
-        "numberId": "Номер (id)",
+        "numberId": "Номер (ID)",
         "fullName": "ФИО",
         "eMail": "Электронная почта",
         "telephone": "Телефон",

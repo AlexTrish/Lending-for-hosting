@@ -58,58 +58,32 @@ const PaymentMethods = () => {
         className={`modal-overlay ${isModalOpen ? "show" : ""}`}
         onClick={closeModal}
       >
-        <div
-          className="modal-content"
-          onClick={(e) => e.stopPropagation()}
-        >
-          <div className="modal-header">Добавить способ оплаты</div>
-          <form onSubmit={handleCardSubmit} className="modal-body">
-            <span className="fullname-span">Full Name</span>
-            <input
-              type="text"
-              placeholder="Full name"
-              className="input-field fullname"
-              value={newCard.cardType}
-              onChange={(e) =>
-                setNewCard({ ...newCard, cardType: e.target.value })
-              }
-            />
-            <span className="cardnumber-span">Card number</span>
-            <input
-              type="text"
-              placeholder="Номер карты"
-              className="input-field"
-              value={newCard.cardNumber}
-              onChange={(e) =>
-                setNewCard({ ...newCard, cardNumber: e.target.value })
-              }
-            />
-            <span className="fullname-span">Card expiration</span>
-            <input
-              type="date"
-              placeholder="Срок действия"
-              className="input-field сardExp"
-              value={newCard.expDate}
-              onChange={(e) =>
-                setNewCard({ ...newCard, expDate: e.target.value })
-              }
-            />
-            <span className="CVV-span">CVV</span>
-            <input
-              type="text"
-              placeholder="CVV"
-              className="input-field"
-              value={newCard.expDate}
-              onChange={(e) =>
-                setNewCard({ ...newCard, expDate: e.target.value })
-              }
-            />
-          </form>
-          <div className="modal-footer">
-            <button className="close-btn" type="submit">
-              Добавить
-            </button>
+        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+          {/* Credit-Card */}
+          <div className="credit-card-container">
+
           </div>
+          {/* Form for credit-card */}
+          <form className="form-container">
+            <div className="form-group">
+              <label htmlFor="cardType">ФИО</label>
+              <input type="text" name="Fullname" id="Fullname" />
+              <label htmlFor="cardNumber">Номер карты</label>
+              <input type="text" name="cardNumber" id="cardNumber" />
+            </div>
+            <div className="form-group">
+              <label htmlFor="expDate">Срок действия</label>
+              <div className="exp-date">
+              <input type="number" name="expDate-mm" id="expDate-mm" />
+              <input type="number" name="expDate-yy" id="expDate-yy" />
+              </div>
+
+              <label htmlFor="cvv">CVC/CVV code</label>
+              <input type="number" name="cvv" id="cvv" />
+            </div>
+            <button className="cancel-card-btn" onClick={closeModal}>Отмена</button>
+            <button className="add-card-btn" onClick={handleCardSubmit}>Добавить</button>
+          </form>
         </div>
       </div>
     </div>

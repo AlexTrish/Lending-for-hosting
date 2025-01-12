@@ -1537,51 +1537,7 @@
       border-radius: 1vw;
       box-shadow: var(--shadow-box-new);
       width: 40vw;
-
-      .modal-header {
-        font-size: 1.5vw;
-        font-weight: bold;
-        color: var(--h2-text-color);
-        margin-bottom: 1vw;
-      }
-
-      .modal-body {
-        display: flex;
-        flex-direction: column;
-        gap: 1vw;
-
-        .input-field {
-          width: 95%;
-          height: 1.5vw;
-          padding: 1vw;
-          border-radius: 0.5vw;
-          border: 1px solid var(--border-color);
-          font-size: 1vw;
-        }
-      }
-
-      .modal-footer {
-        margin-top: 2vw;
-        display: flex;
-        justify-content: flex-end;
-
-        .close-btn {
-          padding: 0.7vw 1.5vw;
-          font-size: 1vw;
-          background-color: var(--green-block);
-          color: var(--button-text-color);
-          border-radius: 0.5vw;
-          cursor: pointer;
-          border: none;
-          transition: background-color 0.3s ease;
-
-          &:hover {
-            filter: var(--filter-dropdown);
-          }
-        }
-      }
     }
-
   }
 }
 
