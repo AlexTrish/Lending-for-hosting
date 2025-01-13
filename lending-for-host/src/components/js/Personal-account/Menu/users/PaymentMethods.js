@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Modal } from 'react-bootstrap';
 
 // Моковые данные для карточек
 const paymentMethods = [
@@ -8,25 +9,14 @@ const paymentMethods = [
 ];
 
 const PaymentMethods = () => {
-  const [isModalOpen, setModalOpen] = useState(false);
-  const [newCard, setNewCard] = useState({
-    cardType: "",
-    cardNumber: "",
-    expDate: "",
-  });
+  const [show, setShow] = useState(false);
 
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const handleCardSubmit = (e) => {
     e.preventDefault();
-    console.log(newCard);
-    setModalOpen(false);
+    setShow(false);
   };
 
   return (
@@ -49,43 +39,40 @@ const PaymentMethods = () => {
         ))}
       </div>
 
-      <button className="add-card-btn" onClick={openModal}>
+      <button className="add-card-btn" onClick={handleShow}>
         Добавить способ оплаты
       </button>
 
       {/* Модальное окно */}
-      <div
-        className={`modal-overlay ${isModalOpen ? "show" : ""}`}
-        onClick={closeModal}
-      >
-        <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-          {/* Credit-Card */}
-          <div className="credit-card-container">
+      <Modal show={show} onHide={handleClose}>
+        {/* Credit-Card */}
+        <div className="credit-card-container">
 
+        </div>
+        {/* Form for credit-card */}
+        <form className="form-container">
+          <div className="form-group-one">
+              {/* FullName */}
+            <label htmlFor="cardType">ФИО</label>
+            <input type="text" name="Fullname" id="Fullname" />
+              {/* Card Number */}
+            <label htmlFor="cardNumber">Номер карты</label>
+            <input type="text" name="cardNumber" id="cardNumber" />
           </div>
-          {/* Form for credit-card */}
-          <form className="form-container">
-            <div className="form-group">
-              <label htmlFor="cardType">ФИО</label>
-              <input type="text" name="Fullname" id="Fullname" />
-              <label htmlFor="cardNumber">Номер карты</label>
-              <input type="text" name="cardNumber" id="cardNumber" />
-            </div>
-            <div className="form-group">
-              <label htmlFor="expDate">Срок действия</label>
-              <div className="exp-date">
+          <div className="form-group-two">
+            <label htmlFor="expDate">Срок действия</label>
+            <div className="exp-date">
               <input type="number" name="expDate-mm" id="expDate-mm" />
               <input type="number" name="expDate-yy" id="expDate-yy" />
-              </div>
-
-              <label htmlFor="cvv">CVC/CVV code</label>
-              <input type="number" name="cvv" id="cvv" />
             </div>
-            <button className="cancel-card-btn" onClick={closeModal}>Отмена</button>
-            <button className="add-card-btn" onClick={handleCardSubmit}>Добавить</button>
-          </form>
-        </div>
-      </div>
+
+            <label htmlFor="cvv">CVC/CVV code</label>
+            <input type="number" name="cvv" id="cvv" />
+          </div>
+          <button className="cancel-card-btn" onClick={handleClose}>Отмена</button>
+          <button className="add-card-btn" onClick={handleCardSubmit}>Добавить</button>
+        </form>
+      </Modal>
     </div>
   );
 };
