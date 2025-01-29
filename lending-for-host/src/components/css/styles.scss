@@ -19,6 +19,7 @@
 
   font-weight: 600;
   background-color: var(--bg-color-navbar) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
   backdrop-filter: blur(10px) !important;
   z-index: 1000;
 
@@ -78,6 +79,7 @@
   
             .dropdown-menu {
               background-color: var(--bg-color-dropdown) !important;
+              -webkit-backdrop-filter: blur(10px) !important;
               backdrop-filter: blur(10px) !important;
             
               .dropdown-item {
@@ -89,12 +91,14 @@
               .dropdown-item:hover {
                 background-color: var(--bg-color-dropdown-hover) !important;
                 color: var(---navbar-text) !important;
+                -webkit-backdrop-filter: var(--filter-dropdown) !important;
                 backdrop-filter: var(--filter-dropdown) !important;
               }
             }
           }
           
           .nav-link {
+            margin: 0 1vw;
             padding: 0;
             font-size: 1.15vw !important;
             color: var(--h2-text-color) !important;
@@ -102,6 +106,7 @@
   
           .referal-link {
             width: max-content;
+            margin: 0 1vw;
           }
           
           .nav-link:hover {
