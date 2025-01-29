@@ -1,16 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { useNavigate } from 'react-router-dom';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function Content_main() {
     const { t } = useTranslation();
-    const navigate = useNavigate(); // Хук для навигации
-
-    // Функция для перехода на страницу регистрации
-    const handleJoinClick = () => {
-        navigate('/register'); // Переход на страницу регистрации
-    };
 
     return (
         <section className="hero-section">
@@ -20,9 +14,9 @@ function Content_main() {
                     <br /> {t('content_main.title.part3')}
                 </h2>
                 <p>{t('content_main.description')}</p>
-                <button className="btn join-btn" onClick={handleJoinClick}>
-                    {t('content_main.joinButton')}
-                </button>
+                <Link to='https://cp.retry.host/billmgr?func=register'>
+                    <button className="btn join-btn">{t('content_main.joinButton')}</button>
+                </Link>
             </div>
             <div className='content-blocks'>
                 <div className='content-wrapper'>

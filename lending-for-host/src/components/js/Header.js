@@ -1,27 +1,12 @@
 // src/components/js/Header.js
-import React, { useContext, useState } from 'react';
-import { Navbar, Nav, NavDropdown, Container, Button } from 'react-bootstrap';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Navbar, Nav, NavDropdown, Container } from 'react-bootstrap';
 import { useTranslation } from 'react-i18next';
-import { ThemeContext, themes } from './theme/ThemeContext';
-import { useNavigate } from 'react-router-dom'; // Импортируем useNavigate
 import '../css/styles.scss';
 
-function Header({ setCurrentMenu }) {
-  const { theme, setTheme } = useContext(ThemeContext);
-  const { t, i18n } = useTranslation();
-  const navigate = useNavigate(); // Инициализируем navigate для редиректа
-
-  const toggleLanguage = () => {
-    i18n.changeLanguage(i18n.language === 'ru' ? 'en' : 'ru');
-  };
-
-  const handleLoginClick = () => {
-    navigate('/personal-account');
-  };
-
-  const handleProf = () => {
-    navigate('/personal-account');
-  };
+function Header( { setCurrentMenu } ) {
+  const { t } = useTranslation();
 
   return (
     <div className="header">
@@ -50,7 +35,7 @@ function Header({ setCurrentMenu }) {
                 </NavDropdown>
               </Nav>
               <div className='btn-container-wrapper'>
-                <button className="btn auth-btn" onClick={handleLoginClick}>{t("menu.auth")}</button> {/* Обновлено для перехода на /login */}
+                <Link to='https://cp.retry.host/billmgr?func=logon'><button className="btn auth-btn">{t("menu.auth")}</button></Link>
               </div>
             </div>
           </Navbar.Collapse>
